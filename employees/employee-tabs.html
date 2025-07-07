@@ -1,0 +1,72 @@
+<ul class="nav nav-tabs mb-3 d-flex align-items-center" id="employeeTabs">
+    <li class="nav-item">
+      <a class="nav-link" href="/draftDesign/employees/employee-profile.html">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/draftDesign/employees/employee-history.html">History</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/draftDesign/employees/employee-files.html">Files</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/draftDesign/employees/employee-benefits.html">Benefits</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/draftDesign/employees/employee-leave-balances.html">Leave Balances</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/draftDesign/employees/employee-bank-infos.html">Bank Info</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/draftDesign/employees/employee-compensations.html">Compensations</a>
+    </li>
+    <li class="ms-auto">
+      <button class="btn btn-outline-secondary btn-sm ms-3" data-bs-toggle="modal" data-bs-target="#systemAuditModal">
+        <i class="bi bi-shield-lock"></i> System & Audit Info
+      </button>
+    </li>
+  </ul>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- System & Audit Info Modal -->
+  <div class="modal fade" id="systemAuditModal" tabindex="-1" aria-labelledby="systemAuditModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius: 14px; box-shadow: 0 4px 24px rgba(25, 118, 210, 0.10);">
+        <div class="modal-header" style="background: linear-gradient(90deg, #e3f2fd 0%, #fff 100%); border-bottom: 1px solid #e0e7ef;">
+          <h5 class="modal-title d-flex align-items-center gap-2" id="systemAuditModalLabel">
+            <i class="bi bi-shield-lock text-primary" style="font-size: 1.5rem;"></i>
+            System & Audit Info
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body small" style="background: #f7fafd; border-radius: 0 0 14px 14px;">
+          <div class="mb-2 pb-2 border-bottom"><strong class="text-primary">System Identifiers</strong></div>
+          <div class="row mb-2">
+            <div class="col-6"><strong>Staff ID:</strong> EMP00123</div>
+            <div class="col-6"><strong>Company ID:</strong> C001</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6"><strong>Payroll No:</strong> 1001</div>
+            <div class="col-6"><strong>Title:</strong> Ms</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6"><strong>National ID Type:</strong> NINO</div>
+            <div class="col-6"><strong>National ID Number:</strong> AB123456C</div>
+          </div>
+          <div class="mb-2 mt-3 pb-2 border-bottom"><strong class="text-primary">Audit Trail</strong></div>
+          <div class="row mb-1">
+            <div class="col-6"><strong>Created By:</strong> System</div>
+            <div class="col-6"><strong>Created At:</strong> 2020-01-01 09:00</div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-6"><strong>Updated By:</strong> System</div>
+            <div class="col-6"><strong>Updated At:</strong> 2023-01-01 09:00</div>
+          </div>
+          <div class="row">
+            <div class="col-6"><strong>Approved By:</strong> System</div>
+            <div class="col-6"><strong>Approved At:</strong> 2023-01-02 09:00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

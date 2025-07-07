@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HR System Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/shared.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body class="bg-light d-flex align-items-center" style="height:100vh;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="card shadow">
+          <div class="card-body">
+            <h3 class="card-title text-center mb-4">DCG HR System Login</h3>
+            <form>
+              <div class="mb-3">
+                <label for="country" class="form-label">Country</label>
+                <select class="form-select" id="country" required>
+                  <option value="">Select Country</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="US">United States</option>
+                  <option value="CN">China</option>
+                  <option value="AU">Australia</option>
+                  <option value="...">...</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" required>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    fetch('includes/topbar.html').then(r => r.text()).then(html => document.getElementById('topbar').outerHTML = html);
+    fetch('includes/sidebar.html').then(r => r.text()).then(html => document.getElementById('sidebar').outerHTML = html);
+  </script>
+</body>
+</html>

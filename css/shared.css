@@ -1,0 +1,62 @@
+body {
+  background: #f5f6fa;
+}
+.topbar {
+  height: 60px;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+.sidebar {
+  width: 220px;
+  position: fixed;
+  top: 60px; /* Start below the topbar */
+  left: 0;
+  min-height: calc(100vh - 60px);
+  background: #fff;
+  border-right: 1px solid #e5e5e5;
+  z-index: 999;
+  padding-top: 24px;
+}
+.sidebar .nav-link {
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.sidebar .nav-link.active {
+  background: #e6f7ff;
+  color: #1890ff;
+  border-radius: 6px;
+}
+.main-content {
+  margin-left: 220px;
+  margin-top: 60px;
+  padding: 32px;
+}
+@media (max-width: 991.98px) {
+  .sidebar {
+    width: 100px;
+    padding-top: 24px;
+  }
+  .main-content {
+    margin-left: 100px;
+  }
+}
+/* Rotating arrow for sidebar dropdowns */
+.sidebar-arrow {
+  display: inline-block;
+  transition: transform 0.2s;
+  margin-left: 6px;
+}
+.collapse.show ~ .sidebar-arrow,
+[aria-expanded="true"] .sidebar-arrow {
+  transform: rotate(90deg);
+} 

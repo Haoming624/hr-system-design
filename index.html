@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/shared.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body>
+  <div id="topbar"></div>
+  <div id="sidebar"></div>
+  <div class="main-content p-3">
+    <div class="row g-3 mb-3">
+      <div class="col-12 col-lg-6 col-xl-3">
+        <div class="card h-100">
+          <div class="card-header bg-light fw-bold"><i class="bi bi-bar-chart-fill text-primary me-2"></i>Contract Type Distribution</div>
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-success me-2">Permanent</span>
+              <span class="badge bg-primary me-2">Fixed Term</span>
+              <span class="badge bg-warning text-dark">Contractor</span>
+            </div>
+            <div class="text-muted small">(Chart Placeholder)</div>
+            <div style="height:100px;background:conic-gradient(#198754 0 60%, #0d6efd 0 85%, #ffc107 0 100%);border-radius:50%;width:100px;margin:auto;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 col-xl-3">
+        <div class="card h-100">
+          <div class="card-header bg-light fw-bold"><i class="bi bi-person-check-fill text-primary me-2"></i>Pending Leave Requests</div>
+          <div class="card-body">
+            <div class="text-primary mb-2">Pending Approval</div>
+            <div class="display-6 fw-bold text-center">3</div>
+            <div class="text-muted small text-center">(Sample Data)</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 col-xl-3">
+        <div class="card h-100">
+          <div class="card-header bg-light fw-bold"><i class="bi bi-arrow-repeat text-primary me-2"></i>Pending Role Changes</div>
+          <div class="card-body">
+            <div class="text-primary mb-2">Awaiting Action</div>
+            <div class="display-6 fw-bold text-center">2</div>
+            <div class="text-muted small text-center">(Sample Data)</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 col-xl-3">
+        <div class="card h-100">
+          <div class="card-header bg-light fw-bold"><i class="bi bi-people-fill text-primary me-2"></i>Employee Distribution</div>
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-info me-2">HR</span>
+              <span class="badge bg-primary me-2">IT</span>
+              <span class="badge bg-success">Other</span>
+            </div>
+            <div style="height:100px;background:conic-gradient(#0dcaf0 0 40%, #0d6efd 0 70%, #198754 0 100%);border-radius:50%;width:100px;margin:auto;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-12 col-lg-6">
+        <div class="card h-100">
+          <div class="card-header bg-light fw-bold"><i class="bi bi-calendar-check-fill text-primary me-2"></i>Upcoming Holidays & Leave</div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Jane Doe <span class="badge bg-warning text-dark">Annual Leave</span> <span class="text-muted small">2025-07-01</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                John Smith <span class="badge bg-warning text-dark">Sick Leave</span> <span class="text-muted small">2025-07-03</span>
+              </li>
+              <!-- More rows as needed -->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="card h-100">
+          <div class="card-header bg-light fw-bold"><i class="bi bi-bell-fill text-primary me-2"></i>Recent Alerts & Approvals</div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Probation End: Jane Doe <span class="badge bg-info">Pending</span></li>
+              <li class="list-group-item">Role Change: John Smith <span class="badge bg-warning text-dark">Awaiting Approval</span></li>
+              <!-- More rows as needed -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="ui-highlighting.js"></script>
+  <script>
+    fetch('includes/topbar.html').then(r => r.text()).then(html => document.getElementById('topbar').outerHTML = html);
+    fetch('includes/sidebar.html').then(r => r.text()).then(html => {
+      document.getElementById('sidebar').outerHTML = html;
+      highlightSidebarLink();
+    });
+  </script>
+</body>
+</html> 

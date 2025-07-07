@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="../css/shared.css" rel="stylesheet">
+  <style>
+    .profile-section-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    .profile-row {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1.2rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .profile-row:last-child {
+      border-bottom: none;
+    }
+    .profile-label {
+      min-width: 120px;
+      font-weight: 500;
+      color: #222;
+      margin-right: 0.7rem;
+    }
+    .profile-value {
+      flex: 1;
+      color: #555;
+      margin-left: 0.3rem;
+      padding-left: 0.5rem;
+      border-left: 1px solid #f0f0f0;
+    }
+    .profile-action {
+      min-width: 28px;
+      text-align: right;
+    }
+    .profile-section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      background: #f7f9fa;
+      padding: 0.4rem 1.2rem;
+      border-bottom: 1px solid #e9ecef;
+      color: #333;
+    }
+    @media (max-width: 767px) {
+      .profile-row, .profile-section-title { padding: 0.7rem; }
+    }
+  </style>
+</head>
+<body style="background:#fafbfc;">
+  <div id="topbar"></div>
+  <div id="sidebar"></div>
+  <div class="main-content" style="padding-right: 1.5rem;">
+    <!-- Profile Header Card: always visible above all main sections -->
+    <div class="card mb-4 shadow-sm border-0" style="background: linear-gradient(90deg, #e3f2fd 0%, #fff 100%);">
+      <div class="card-body d-flex align-items-center">
+        <div class="me-4 position-relative" style="width:64px;height:64px;">
+          <div class="rounded-circle bg-primary d-flex justify-content-center align-items-center" style="width:64px;height:64px;font-size:2rem;color:#fff;">
+            <i class="bi bi-person"></i>
+          </div>
+          <button class="btn btn-light btn-sm rounded-circle position-absolute" title="Edit Profile Picture" data-bs-toggle="modal" data-bs-target="#editProfilePictureModal" style="bottom:-8px; right:-8px; box-shadow:0 2px 6px rgba(0,0,0,0.10); padding:0.15rem 0.22rem; width:28px; height:28px; display:flex; align-items:center; justify-content:center;">
+            <i class="bi bi-pencil" style="font-size:1rem;"></i>
+          </button>
+        </div>
+        <div class="flex-grow-1">
+          <h3 class="mb-0">Jane Doe <span class="badge bg-success ms-2">Active</span></h3>
+          <div class="text-muted">HR Manager, Corporate Division</div>
+        </div>
+        <div class="text-end">
+          <span class="badge bg-info text-dark">Staff ID: EMP00123</span>
+        </div>
+      </div>
+    </div>
+    <div id="employeeTabsContainer"></div>
+    <div class="row g-4">
+      <!-- Directory Navigation -->
+      <div class="col-md-2 d-none d-md-block">
+        <nav class="list-group position-sticky" style="top: 100px;">
+          <a class="list-group-item list-group-item-action directory-link active" href="#personal-details">Personal Details</a>
+          <a class="list-group-item list-group-item-action directory-link" href="#contact-info">Contact Information</a>
+          <a class="list-group-item list-group-item-action directory-link" href="#contacts">Contacts</a>
+          <a class="list-group-item list-group-item-action directory-link" href="#addresses">Addresses</a>
+          <a class="list-group-item list-group-item-action directory-link" href="#bank-info">Bank Info</a>
+          <a class="list-group-item list-group-item-action directory-link" href="#employment-info">Employment Information</a>
+          <a class="list-group-item list-group-item-action directory-link" href="#other-remarks">Other / Remarks</a>
+        </nav>
+      </div>
+      <div class="col-lg-10 col-md-12">
+        <!-- Personal Details Section -->
+        <div class="profile-section-card mb-3 position-relative" id="personal-details" style="border-left: 6px solid #1976d2; box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);">
+          <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #e3f2fd; color: #1976d2;">
+            <span><i class="bi bi-person-circle me-2"></i> Personal Details</span>
+            <button class="btn btn-link p-0" title="Edit Personal Details" data-bs-toggle="modal" data-bs-target="#editPersonalDetailsModal"><i class="bi bi-pencil"></i></button>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Full Name</div>
+            <div class="profile-value">Jane Doe</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Known As</div>
+            <div class="profile-value">Janie</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Gender</div>
+            <div class="profile-value">Female</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Date of Birth</div>
+            <div class="profile-value">1990-05-15</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Nationality</div>
+            <div class="profile-value">British</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Marital Status</div>
+            <div class="profile-value">Single</div>
+          </div>
+        </div>
+        <!-- Contact Information Section -->
+        <div class="profile-section-card mb-3 position-relative" id="contact-info" style="border-left: 6px solid #43a047; box-shadow: 0 4px 16px rgba(67, 160, 71, 0.07);">
+          <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #e8f5e9; color: #388e3c;">
+            <span><i class="bi bi-envelope-at me-2"></i> Contact Information</span>
+            <button class="btn btn-link p-0" title="Edit Contact Information" data-bs-toggle="modal" data-bs-target="#editContactInfoModal"><i class="bi bi-pencil"></i></button>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Email</div>
+            <div class="profile-value">jane.doe@email.com</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Phone</div>
+            <div class="profile-value">+44 1234 567890</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Home Telephone</div>
+            <div class="profile-value"></div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Personal Mobile</div>
+            <div class="profile-value"></div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Work Mobile</div>
+            <div class="profile-value"></div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Personal Email</div>
+            <div class="profile-value"></div>
+          </div>
+        </div>
+        <!-- Contacts Section -->
+        <div class="profile-section-card mb-3 position-relative" id="contacts" style="border-left: 6px solid #0288d1; box-shadow: 0 4px 16px rgba(2, 136, 209, 0.07);">
+          <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #e1f5fe; color: #0277bd;">
+            <span><i class="bi bi-people-fill me-2"></i> Contacts</span>
+            <button class="btn btn-link p-0" title="Edit Contacts" data-bs-toggle="modal" data-bs-target="#editContactsModal"><i class="bi bi-pencil"></i></button>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Emergency Contact</div>
+            <div class="profile-value">John Doe (Brother) - +44 9876 543210</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Secondary Contact</div>
+            <div class="profile-value">Mary Smith (Friend) - +44 5555 123456</div>
+          </div>
+        </div>
+        <!-- Addresses Section -->
+        <div class="profile-section-card mb-3 position-relative" id="addresses" style="border-left: 6px solid #c62828; box-shadow: 0 4px 16px rgba(198, 40, 40, 0.07);">
+          <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #ffebee; color: #b71c1c;">
+            <span><i class="bi bi-geo-alt-fill me-2"></i> Addresses</span>
+            <button class="btn btn-link p-0" title="Edit Addresses" data-bs-toggle="modal" data-bs-target="#editAddressesModal"><i class="bi bi-pencil"></i></button>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Home Address</div>
+            <div class="profile-value">123 Main Street, London, UK</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Mailing Address</div>
+            <div class="profile-value">PO Box 456, London, UK</div>
+          </div>
+        </div>
+        <!-- Bank Info Section -->
+        <div class="profile-section-card mb-3 position-relative" id="bank-info" style="border-left: 6px solid #1976d2; box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);">
+          <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #e3f2fd; color: #1976d2;">
+            <span><i class="bi bi-bank me-2"></i> Bank Info</span>
+            <button class="btn btn-link p-0" title="Edit Bank Info" data-bs-toggle="modal" data-bs-target="#editBankInfoModal"><i class="bi bi-pencil"></i></button>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Bank Name</div>
+            <div class="profile-value">HSBC</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Branch Name</div>
+            <div class="profile-value">London Main</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Sort Code</div>
+            <div class="profile-value">12-34-56</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Account Number</div>
+            <div class="profile-value">12345678</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Building Society</div>
+            <div class="profile-value">ABC Society</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Ref Number</div>
+            <div class="profile-value">REF123</div>
+          </div>
+        </div>
+        <!-- Edit Bank Info Modal -->
+        <div class="modal fade" id="editBankInfoModal" tabindex="-1" aria-labelledby="editBankInfoModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-secondary text-white">
+                <h5 class="modal-title" id="editBankInfoModalLabel">Edit Bank Info</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form>
+                <div class="modal-body p-4">
+                  <div class="mb-3"><label class="form-label">Bank Name</label><input type="text" class="form-control" value="HSBC"></div>
+                  <div class="mb-3"><label class="form-label">Branch Name</label><input type="text" class="form-control" value="London Main"></div>
+                  <div class="mb-3"><label class="form-label">Sort Code</label><input type="text" class="form-control" value="12-34-56"></div>
+                  <div class="mb-3"><label class="form-label">Account Number</label><input type="text" class="form-control" value="12345678"></div>
+                  <div class="mb-3"><label class="form-label">Building Society</label><input type="text" class="form-control" value="ABC Society"></div>
+                  <div class="mb-3"><label class="form-label">Ref Number</label><input type="text" class="form-control" value="REF123"></div>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Edit Personal Details Modal -->
+        <div class="modal fade" id="editPersonalDetailsModal" tabindex="-1" aria-labelledby="editPersonalDetailsModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="editPersonalDetailsModalLabel">Edit Personal Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form>
+                <div class="modal-body p-4">
+                  <div class="mb-3"><label class="form-label">Full Name</label><input type="text" class="form-control" value="Jane Doe"></div>
+                  <div class="mb-3"><label class="form-label">Known As</label><input type="text" class="form-control" value="Janie"></div>
+                  <div class="mb-3"><label class="form-label">Gender</label><select class="form-select"><option>Female</option><option>Male</option><option>Other</option></select></div>
+                  <div class="mb-3"><label class="form-label">Date of Birth</label><input type="date" class="form-control" value="1990-05-15"></div>
+                  <div class="mb-3"><label class="form-label">Nationality</label><input type="text" class="form-control" value="British"></div>
+                  <div class="mb-3"><label class="form-label">Marital Status</label><select class="form-select"><option>Single</option><option>Married</option><option>Divorced</option><option>Widowed</option></select></div>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Edit Contact Info Modal -->
+        <div class="modal fade" id="editContactInfoModal" tabindex="-1" aria-labelledby="editContactInfoModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="editContactInfoModalLabel">Edit Contact Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form>
+                <div class="modal-body p-4">
+                  <div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control" value="jane.doe@email.com"></div>
+                  <div class="mb-3"><label class="form-label">Phone</label><input type="text" class="form-control" value="+44 1234 567890"></div>
+                  <div class="mb-3"><label class="form-label">Home Telephone</label><input type="text" class="form-control"></div>
+                  <div class="mb-3"><label class="form-label">Personal Mobile</label><input type="text" class="form-control"></div>
+                  <div class="mb-3"><label class="form-label">Work Mobile</label><input type="text" class="form-control"></div>
+                  <div class="mb-3"><label class="form-label">Personal Email</label><input type="email" class="form-control"></div>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Edit Contacts Modal -->
+        <div class="modal fade" id="editContactsModal" tabindex="-1" aria-labelledby="editContactsModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-info text-dark">
+                <h5 class="modal-title" id="editContactsModalLabel">Edit Contacts</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form>
+                <div class="modal-body p-4">
+                  <div class="mb-3"><label class="form-label">Emergency Contact</label><input type="text" class="form-control" value="John Doe (Brother) - +44 9876 543210"></div>
+                  <div class="mb-3"><label class="form-label">Secondary Contact</label><input type="text" class="form-control" value="Mary Smith (Friend) - +44 5555 123456"></div>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Edit Addresses Modal -->
+        <div class="modal fade" id="editAddressesModal" tabindex="-1" aria-labelledby="editAddressesModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="editAddressesModalLabel">Edit Addresses</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form>
+                <div class="modal-body p-4">
+                  <div class="mb-3"><label class="form-label">Home Address</label><input type="text" class="form-control" value="123 Main Street, London, UK"></div>
+                  <div class="mb-3"><label class="form-label">Mailing Address</label><input type="text" class="form-control" value="PO Box 456, London, UK"></div>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Edit Other / Remarks Modal -->
+        <div class="modal fade" id="editOtherRemarksModal" tabindex="-1" aria-labelledby="editOtherRemarksModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-purple text-white" style="background: #8e24aa;">
+                <h5 class="modal-title" id="editOtherRemarksModalLabel">Edit Other / Remarks</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form>
+                <div class="modal-body p-4">
+                  <div class="mb-3"><label class="form-label">Remarks</label><textarea class="form-control" rows="3">-</textarea></div>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Edit Employment Info Modal -->
+        <div class="modal fade" id="editEmploymentInfoModal" tabindex="-1" aria-labelledby="editEmploymentInfoModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-warning text-dark">
+                <h5 class="modal-title" id="editEmploymentInfoModalLabel">Edit Employment Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form>
+                <div class="modal-body p-4">
+                  <div class="mb-3"><label class="form-label">Job Title</label><input type="text" class="form-control" value="HR Manager"></div>
+                  <div class="mb-3"><label class="form-label">Department</label><input type="text" class="form-control" value="HR"></div>
+                  <div class="mb-3"><label class="form-label">Manager</label><input type="text" class="form-control" value="John Smith"></div>
+                  <div class="mb-3"><label class="form-label">Employment Type</label><input type="text" class="form-control" value="Full-time"></div>
+                  <div class="mb-3"><label class="form-label">Work Location</label><input type="text" class="form-control" value="London Office"></div>
+                  <div class="mb-3"><label class="form-label">Join Date</label><input type="date" class="form-control" value="2020-01-01"></div>
+                  <div class="mb-3"><label class="form-label">Probation Date</label><input type="date" class="form-control" value="2020-07-01"></div>
+                  <div class="mb-3"><label class="form-label">Status</label><select class="form-select"><option>Active</option><option>Inactive</option></select></div>
+                  <div class="mb-3"><label class="form-label">Last Working Date</label><input type="date" class="form-control"></div>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Employment Information Section -->
+        <div class="profile-section-card mb-3 position-relative" id="employment-info" style="border-left: 6px solid #fbc02d; box-shadow: 0 4px 16px rgba(251, 192, 45, 0.07);">
+          <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #fffde7; color: #f9a825;">
+            <span><i class="bi bi-briefcase me-2"></i> Employment Information</span>
+            <span>
+              <button class="btn btn-link p-0 me-2" title="Edit Employment Information"><i class="bi bi-pencil"></i></button>
+              <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#updateRoleModal">Update Role</button>
+            </span>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Job Title</div>
+            <div class="profile-value">HR Manager</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Department</div>
+            <div class="profile-value">HR</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Manager</div>
+            <div class="profile-value">John Smith</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Employment Type</div>
+            <div class="profile-value">Full-time</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Work Location</div>
+            <div class="profile-value">London Office</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Join Date</div>
+            <div class="profile-value">2020-01-01</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Probation Date</div>
+            <div class="profile-value">2020-07-01</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Status</div>
+            <div class="profile-value"><span class="badge bg-success">Active</span></div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Last Working Date</div>
+            <div class="profile-value">-</div>
+          </div>
+        </div>
+        <!-- Update Role Modal -->
+        <div class="modal fade" id="updateRoleModal" tabindex="-1" aria-labelledby="updateRoleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="updateRoleModalLabel">Update Role / Job Change Request</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form>
+                <div class="modal-body p-4">
+                  <div class="mb-3">
+                    <label class="form-label">Change Type</label>
+                    <select class="form-select" id="roleChangeTypeSelect">
+                      <option value="Promotion">Promotion</option>
+                      <option value="Transfer">Transfer</option>
+                      <option value="Resignation">Resignation</option>
+                      <option value="Demotion">Demotion</option>
+                      <option value="End Assignment">End Assignment</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Old Job <span class="text-muted small">(Read Only)</span></label>
+                    <input type="text" class="form-control" id="oldJobInput" value="HR Assistant" disabled>
+                  </div>
+                  <div class="mb-3" id="newJobField">
+                    <label class="form-label">New Job</label>
+                    <select class="form-select" id="newJobSelect">
+                      <option value="HR Manager">HR Manager</option>
+                      <option value="HR Assistant">HR Assistant</option>
+                      <option value="HR Officer">HR Officer</option>
+                      <!-- More job titles as needed -->
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Effective Date</label>
+                    <input type="date" class="form-control" id="effectiveDateInput">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Supporting Document (optional)</label>
+                    <input type="file" class="form-control" id="supportingDocInput">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Send Request To</label>
+                    <select class="form-select" id="sendRequestToSelect">
+                      <option value="">Select Manager</option>
+                      <option value="mgr1">John Smith</option>
+                      <option value="mgr2">Mary Johnson</option>
+                      <!-- Populate with managers dynamically as needed -->
+                    </select>
+                    <div class="form-text">Only managers are listed here.</div>
+                  </div>
+                  <div class="mb-1">
+                    <label class="form-label">HR Reason</label>
+                    <textarea class="form-control" id="hrReasonInput" rows="3" placeholder="Enter reason for this change..."></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Submit Request</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Other / Remarks Section -->
+        <div class="profile-section-card mb-3 position-relative" id="other-remarks" style="border-left: 6px solid #8e24aa; box-shadow: 0 4px 16px rgba(142, 36, 170, 0.07);">
+          <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #f3e5f5; color: #6a1b9a;">
+            <span><i class="bi bi-chat-left-text me-2"></i> Other / Remarks</span>
+            <button class="btn btn-link p-0" title="Edit Other / Remarks" data-bs-toggle="modal" data-bs-target="#editOtherRemarksModal"><i class="bi bi-pencil"></i></button>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Remarks</div>
+            <div class="profile-value">-</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../ui-highlighting.js"></script>
+  <script>
+    fetch('../includes/topbar.html').then(r => r.text()).then(html => document.getElementById('topbar').outerHTML = html);
+    fetch('../includes/sidebar.html').then(r => r.text()).then(html => {
+      document.getElementById('sidebar').outerHTML = html;
+      highlightSidebarLink();
+    });
+    fetch('employee-tabs.html')
+      .then(r => r.text())
+      .then(html => {
+        // Remove Contacts and Addresses tabs if present
+        let tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        // Remove tabs with text 'Contacts' or 'Addresses'
+        tempDiv.querySelectorAll('a, li, button').forEach(el => {
+          if (el.textContent && (el.textContent.trim() === 'Contacts' || el.textContent.trim() === 'Addresses')) {
+            el.remove();
+          }
+        });
+        document.getElementById('employeeTabsContainer').outerHTML = tempDiv.innerHTML;
+        highlightEmployeeTab();
+      });
+    // Directory nav active state and smooth scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const links = document.querySelectorAll('.directory-link');
+      const sections = [
+        document.getElementById('personal-details'),
+        document.getElementById('contact-info'),
+        document.getElementById('contacts'),
+        document.getElementById('addresses'),
+        document.getElementById('bank-info'),
+        document.getElementById('employment-info'),
+        document.getElementById('other-remarks')
+      ];
+      links.forEach((link, idx) => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          sections[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+      window.addEventListener('scroll', function() {
+        let scrollPos = window.scrollY || document.documentElement.scrollTop;
+        let offset = 120;
+        let found = false;
+        sections.forEach((section, idx) => {
+          if (section.offsetTop - offset <= scrollPos) {
+            links.forEach(l => l.classList.remove('active'));
+            links[idx].classList.add('active');
+            found = true;
+          }
+        });
+        if (!found) links[0].classList.add('active');
+      });
+    });
+    // Add JS to toggle #newJobField based on #roleChangeTypeSelect value
+    document.addEventListener('DOMContentLoaded', function() {
+      var typeSelect = document.getElementById('roleChangeTypeSelect');
+      var newJobField = document.getElementById('newJobField');
+      function toggleNewJobField() {
+        var v = typeSelect.value;
+        if (v === 'Resignation' || v === 'End Assignment') {
+          newJobField.style.display = 'none';
+        } else {
+          newJobField.style.display = '';
+        }
+      }
+      if(typeSelect && newJobField) {
+        typeSelect.addEventListener('change', toggleNewJobField);
+        toggleNewJobField();
+      }
+    });
+  </script>
+</body>
+</html>
