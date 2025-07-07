@@ -52,6 +52,42 @@
     @media (max-width: 767px) {
       .profile-row, .profile-section-title { padding: 0.7rem; }
     }
+    /* Hover effect for all edit (pencil) buttons - lighter */
+    .btn-link[title^='Edit']:hover, .btn-link[data-bs-target*='Edit']:hover {
+      background: #1565c0 !important;
+      color: #fff !important;
+      border-radius: 4px;
+    }
+    .btn-link[title^='Edit']:hover i, .btn-link[data-bs-target*='Edit']:hover i {
+      color: #fff !important;
+    }
+    /* Align Update Role button hover effect with edit buttons */
+    .btn-outline-primary[data-bs-target="#updateRoleModal"]:hover, .btn-outline-primary[data-bs-target="#updateRoleModal"]:focus {
+      background: #1565c0 !important;
+      color: #fff !important;
+      border-color: #1565c0 !important;
+    }
+    /* Larger, circular pencil edit button for all edit buttons */
+    .edit-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s, color 0.2s;
+    }
+    .edit-btn i {
+      font-size: 1.2rem;
+      color: #1565c0;
+      transition: color 0.2s;
+    }
+    .edit-btn:hover, .edit-btn:focus {
+      background: #90caf9 !important;
+    }
+    .edit-btn:hover i, .edit-btn:focus i {
+      color: #1565c0 !important;
+    }
   </style>
 </head>
 <body style="background:#fafbfc;">
@@ -97,7 +133,7 @@
         <div class="profile-section-card mb-3 position-relative" id="personal-details" style="border-left: 6px solid #1976d2; box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);">
           <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #e3f2fd; color: #1976d2;">
             <span><i class="bi bi-person-circle me-2"></i> Personal Details</span>
-            <button class="btn btn-link p-0" title="Edit Personal Details" data-bs-toggle="modal" data-bs-target="#editPersonalDetailsModal"><i class="bi bi-pencil"></i></button>
+            <button class="btn btn-link p-0 edit-btn" title="Edit Personal Details" data-bs-toggle="modal" data-bs-target="#editPersonalDetailsModal"><i class="bi bi-pencil"></i></button>
           </div>
           <div class="profile-row">
             <div class="profile-label">Full Name</div>
@@ -128,7 +164,7 @@
         <div class="profile-section-card mb-3 position-relative" id="contact-info" style="border-left: 6px solid #43a047; box-shadow: 0 4px 16px rgba(67, 160, 71, 0.07);">
           <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #e8f5e9; color: #388e3c;">
             <span><i class="bi bi-envelope-at me-2"></i> Contact Information</span>
-            <button class="btn btn-link p-0" title="Edit Contact Information" data-bs-toggle="modal" data-bs-target="#editContactInfoModal"><i class="bi bi-pencil"></i></button>
+            <button class="btn btn-link p-0 edit-btn" title="Edit Contact Information" data-bs-toggle="modal" data-bs-target="#editContactInfoModal"><i class="bi bi-pencil"></i></button>
           </div>
           <div class="profile-row">
             <div class="profile-label">Email</div>
@@ -159,37 +195,56 @@
         <div class="profile-section-card mb-3 position-relative" id="contacts" style="border-left: 6px solid #0288d1; box-shadow: 0 4px 16px rgba(2, 136, 209, 0.07);">
           <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #e1f5fe; color: #0277bd;">
             <span><i class="bi bi-people-fill me-2"></i> Contacts</span>
-            <button class="btn btn-link p-0" title="Edit Contacts" data-bs-toggle="modal" data-bs-target="#editContactsModal"><i class="bi bi-pencil"></i></button>
           </div>
-          <div class="profile-row">
-            <div class="profile-label">Emergency Contact</div>
-            <div class="profile-value">John Doe (Brother) - +44 9876 543210</div>
-          </div>
-          <div class="profile-row">
-            <div class="profile-label">Secondary Contact</div>
-            <div class="profile-value">Mary Smith (Friend) - +44 5555 123456</div>
+          <div class="table-responsive">
+            <table class="table mb-0">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Full Name</th>
+                  <th>Relationship</th>
+                  <th>Phone</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Emergency</td>
+                  <td>John Doe</td>
+                  <td>Brother</td>
+                  <td>+44 9876 543210</td>
+                  <td class="contacts-edit-cell"><button class="btn btn-link p-0 edit-btn" title="Edit Contact" data-bs-toggle="modal" data-bs-target="#editContactsModal"><i class="bi bi-pencil"></i></button></td>
+                </tr>
+                <tr>
+                  <td>Secondary</td>
+                  <td>Mary Smith</td>
+                  <td>Friend</td>
+                  <td>+44 5555 123456</td>
+                  <td class="contacts-edit-cell"><button class="btn btn-link p-0 edit-btn" title="Edit Contact" data-bs-toggle="modal" data-bs-target="#editContactsModal"><i class="bi bi-pencil"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        <!-- Addresses Section -->
-        <div class="profile-section-card mb-3 position-relative" id="addresses" style="border-left: 6px solid #c62828; box-shadow: 0 4px 16px rgba(198, 40, 40, 0.07);">
+        <!-- Address Section -->
+        <div class="profile-section-card mb-3 position-relative" id="address" style="border-left: 6px solid #c62828; box-shadow: 0 4px 16px rgba(198, 40, 40, 0.07);">
           <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #ffebee; color: #b71c1c;">
-            <span><i class="bi bi-geo-alt-fill me-2"></i> Addresses</span>
-            <button class="btn btn-link p-0" title="Edit Addresses" data-bs-toggle="modal" data-bs-target="#editAddressesModal"><i class="bi bi-pencil"></i></button>
+            <span><i class="bi bi-geo-alt-fill me-2"></i> Address</span>
+            <button class="btn btn-link p-0 edit-btn" title="Edit Address" data-bs-toggle="modal" data-bs-target="#editAddressesModal"><i class="bi bi-pencil"></i></button>
           </div>
-          <div class="profile-row">
-            <div class="profile-label">Home Address</div>
-            <div class="profile-value">123 Main Street, London, UK</div>
-          </div>
-          <div class="profile-row">
-            <div class="profile-label">Mailing Address</div>
-            <div class="profile-value">PO Box 456, London, UK</div>
-          </div>
+          <div class="profile-row"><div class="profile-label">Address Line 1</div><div class="profile-value">123 Main Street</div></div>
+          <div class="profile-row"><div class="profile-label">Address Line 2</div><div class="profile-value">Building 5</div></div>
+          <div class="profile-row"><div class="profile-label">Address Line 3</div><div class="profile-value">Suite 12A</div></div>
+          <div class="profile-row"><div class="profile-label">City</div><div class="profile-value">London</div></div>
+          <div class="profile-row"><div class="profile-label">County</div><div class="profile-value">Greater London</div></div>
+          <div class="profile-row"><div class="profile-label">Post Code</div><div class="profile-value">SW1A 1AA</div></div>
+          <div class="profile-row"><div class="profile-label">Country</div><div class="profile-value">UK</div></div>
         </div>
         <!-- Bank Info Section -->
         <div class="profile-section-card mb-3 position-relative" id="bank-info" style="border-left: 6px solid #1976d2; box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);">
           <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #e3f2fd; color: #1976d2;">
             <span><i class="bi bi-bank me-2"></i> Bank Info</span>
-            <button class="btn btn-link p-0" title="Edit Bank Info" data-bs-toggle="modal" data-bs-target="#editBankInfoModal"><i class="bi bi-pencil"></i></button>
+            <button class="btn btn-link p-0 edit-btn" title="Edit Bank Info" data-bs-toggle="modal" data-bs-target="#editBankInfoModal"><i class="bi bi-pencil"></i></button>
           </div>
           <div class="profile-row">
             <div class="profile-label">Bank Name</div>
@@ -301,8 +356,32 @@
               </div>
               <form>
                 <div class="modal-body p-4">
-                  <div class="mb-3"><label class="form-label">Emergency Contact</label><input type="text" class="form-control" value="John Doe (Brother) - +44 9876 543210"></div>
-                  <div class="mb-3"><label class="form-label">Secondary Contact</label><input type="text" class="form-control" value="Mary Smith (Friend) - +44 5555 123456"></div>
+                  <div class="mb-3">
+                    <label class="form-label">Type</label>
+                    <select class="form-select">
+                      <option>Emergency</option>
+                      <option>Secondary</option>
+                      <option>Next of Kin</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" value="John Doe">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Relationship</label>
+                    <select class="form-select">
+                      <option>Brother</option>
+                      <option>Friend</option>
+                      <option>Spouse</option>
+                      <option>Parent</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Phone</label>
+                    <input type="text" class="form-control" value="+44 9876 543210">
+                  </div>
                 </div>
                 <div class="modal-footer border-0 pt-0">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -322,8 +401,13 @@
               </div>
               <form>
                 <div class="modal-body p-4">
-                  <div class="mb-3"><label class="form-label">Home Address</label><input type="text" class="form-control" value="123 Main Street, London, UK"></div>
-                  <div class="mb-3"><label class="form-label">Mailing Address</label><input type="text" class="form-control" value="PO Box 456, London, UK"></div>
+                  <div class="mb-3"><label class="form-label">Address Line 1</label><input type="text" class="form-control" value="123 Main Street"></div>
+                  <div class="mb-3"><label class="form-label">Address Line 2</label><input type="text" class="form-control" value="Building 5"></div>
+                  <div class="mb-3"><label class="form-label">Address Line 3</label><input type="text" class="form-control" value="Suite 12A"></div>
+                  <div class="mb-3"><label class="form-label">City</label><input type="text" class="form-control" value="London"></div>
+                  <div class="mb-3"><label class="form-label">County</label><input type="text" class="form-control" value="Greater London"></div>
+                  <div class="mb-3"><label class="form-label">Post Code</label><input type="text" class="form-control" value="SW1A 1AA"></div>
+                  <div class="mb-3"><label class="form-label">Country</label><input type="text" class="form-control" value="UK"></div>
                 </div>
                 <div class="modal-footer border-0 pt-0">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -386,7 +470,6 @@
           <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #fffde7; color: #f9a825;">
             <span><i class="bi bi-briefcase me-2"></i> Employment Information</span>
             <span>
-              <button class="btn btn-link p-0 me-2" title="Edit Employment Information"><i class="bi bi-pencil"></i></button>
               <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#updateRoleModal">Update Role</button>
             </span>
           </div>
@@ -431,7 +514,7 @@
         <div class="modal fade" id="updateRoleModal" tabindex="-1" aria-labelledby="updateRoleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
-              <div class="modal-header bg-primary text-white">
+              <div class="modal-header" style="background: #f9a825; color: #fff;">
                 <h5 class="modal-title" id="updateRoleModalLabel">Update Role / Job Change Request</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
@@ -495,7 +578,7 @@
         <div class="profile-section-card mb-3 position-relative" id="other-remarks" style="border-left: 6px solid #8e24aa; box-shadow: 0 4px 16px rgba(142, 36, 170, 0.07);">
           <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #f3e5f5; color: #6a1b9a;">
             <span><i class="bi bi-chat-left-text me-2"></i> Other / Remarks</span>
-            <button class="btn btn-link p-0" title="Edit Other / Remarks" data-bs-toggle="modal" data-bs-target="#editOtherRemarksModal"><i class="bi bi-pencil"></i></button>
+            <button class="btn btn-link p-0 edit-btn" title="Edit Other / Remarks" data-bs-toggle="modal" data-bs-target="#editOtherRemarksModal"><i class="bi bi-pencil"></i></button>
           </div>
           <div class="profile-row">
             <div class="profile-label">Remarks</div>
@@ -535,7 +618,7 @@
         document.getElementById('personal-details'),
         document.getElementById('contact-info'),
         document.getElementById('contacts'),
-        document.getElementById('addresses'),
+        document.getElementById('address'), // Changed from 'addresses' to 'address'
         document.getElementById('bank-info'),
         document.getElementById('employment-info'),
         document.getElementById('other-remarks')
