@@ -88,6 +88,36 @@
     .edit-btn:hover i, .edit-btn:focus i {
       color: #1565c0 !important;
     }
+    .contacts-edit-cell .edit-btn, .contacts-edit-cell .delete-btn {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s, color 0.2s;
+      margin: 0;
+    }
+    .contacts-edit-cell .edit-btn i {
+      color: #1565c0;
+      font-size: 1.1rem;
+    }
+    .contacts-edit-cell .delete-btn i {
+      color: #c62828;
+      font-size: 1.1rem;
+    }
+    .contacts-edit-cell .edit-btn:hover, .contacts-edit-cell .edit-btn:focus {
+      background: #90caf9 !important;
+    }
+    .contacts-edit-cell .edit-btn:hover i, .contacts-edit-cell .edit-btn:focus i {
+      color: #1565c0 !important;
+    }
+    .contacts-edit-cell .delete-btn:hover, .contacts-edit-cell .delete-btn:focus {
+      background: #ffcdd2 !important;
+    }
+    .contacts-edit-cell .delete-btn:hover i, .contacts-edit-cell .delete-btn:focus i {
+      color: #c62828 !important;
+    }
   </style>
 </head>
 <body style="background:#fafbfc;">
@@ -111,6 +141,7 @@
         </div>
         <div class="text-end">
           <span class="badge bg-info text-dark">Staff ID: EMP00123</span>
+          <button class="btn btn-outline-secondary ms-3" id="exportProfileBtn"><i class="bi bi-download me-1"></i>Export Profile</button>
         </div>
       </div>
     </div>
@@ -132,8 +163,14 @@
         <!-- Personal Details Section -->
         <div class="profile-section-card mb-3 position-relative" id="personal-details" style="border-left: 6px solid #1976d2; box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);">
           <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #e3f2fd; color: #1976d2;">
-            <span><i class="bi bi-person-circle me-2"></i> Personal Details</span>
-            <button class="btn btn-link p-0 edit-btn" title="Edit Personal Details" data-bs-toggle="modal" data-bs-target="#editPersonalDetailsModal"><i class="bi bi-pencil"></i></button>
+            <span class="d-flex align-items-center">
+              <i class="bi bi-person-circle me-2"></i> Personal Details
+              <button class="btn btn-link p-0 edit-btn ms-2" title="Edit Personal Details" data-bs-toggle="modal" data-bs-target="#editPersonalDetailsModal"><i class="bi bi-pencil"></i></button>
+            </span>
+            <span>
+              <span class="text-muted small me-3">Last Updated By: Jane Doe / 2023-01-01</span>
+              <button class="btn btn-outline-primary btn-sm me-2" id="exportPersonalDetailsBtn"><i class="bi bi-download"></i> Export Section</button>
+            </span>
           </div>
           <div class="profile-row">
             <div class="profile-label">Full Name</div>
@@ -167,8 +204,14 @@
         <!-- Contact Information Section -->
         <div class="profile-section-card mb-3 position-relative" id="contact-info" style="border-left: 6px solid #43a047; box-shadow: 0 4px 16px rgba(67, 160, 71, 0.07);">
           <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #e8f5e9; color: #388e3c;">
-            <span><i class="bi bi-envelope-at me-2"></i> Contact Information</span>
-            <button class="btn btn-link p-0 edit-btn" title="Edit Contact Information" data-bs-toggle="modal" data-bs-target="#editContactInfoModal"><i class="bi bi-pencil"></i></button>
+            <span class="d-flex align-items-center">
+              <i class="bi bi-envelope-at me-2"></i> Contact Information
+              <button class="btn btn-link p-0 edit-btn ms-2" title="Edit Contact Information" data-bs-toggle="modal" data-bs-target="#editContactInfoModal"><i class="bi bi-pencil"></i></button>
+            </span>
+            <span>
+              <span class="text-muted small me-3">Last Updated By: Jane Doe / 2023-01-01</span>
+              <button class="btn btn-outline-primary btn-sm me-2" id="exportContactInfoBtn"><i class="bi bi-download"></i> Export Section</button>
+            </span>
           </div>
           <div class="profile-row">
             <div class="profile-label">Work Email</div>
@@ -190,7 +233,16 @@
         <!-- Contacts Section -->
         <div class="profile-section-card mb-3 position-relative" id="contacts" style="border-left: 6px solid #0288d1; box-shadow: 0 4px 16px rgba(2, 136, 209, 0.07);">
           <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #e1f5fe; color: #0277bd;">
-            <span><i class="bi bi-people-fill me-2"></i> Contacts</span>
+            <span class="d-flex align-items-center">
+              <i class="bi bi-people-fill me-2"></i> Contacts
+              <button class="btn btn-outline-primary btn-sm ms-2" title="Add New Contact" data-bs-toggle="modal" data-bs-target="#editContactsModal">
+                <i class="bi bi-person-plus me-1"></i> New Contact
+              </button>
+            </span>
+            <span>
+              <span class="text-muted small me-3">Last Updated By: Jane Doe / 2023-01-01</span>
+              <button class="btn btn-outline-primary btn-sm me-2" id="exportContactsBtn"><i class="bi bi-download"></i> Export Section</button>
+            </span>
           </div>
           <div class="table-responsive">
             <table class="table mb-0">
@@ -211,7 +263,16 @@
                   <td>Brother</td>
                   <td>+44 9876 543210</td>
                   <td>john.doe@email.com</td>
-                  <td class="contacts-edit-cell"><button class="btn btn-link p-0 edit-btn" title="Edit Contact" data-bs-toggle="modal" data-bs-target="#editContactsModal"><i class="bi bi-pencil"></i></button></td>
+                  <td class="contacts-edit-cell">
+                    <div class="d-flex align-items-center gap-2">
+                      <button class="btn btn-link p-0 edit-btn" title="Edit Contact" data-bs-toggle="modal" data-bs-target="#editContactsModal">
+                        <i class="bi bi-pencil"></i>
+                      </button>
+                      <button class="btn btn-link p-0 text-danger delete-btn" title="Delete Contact" data-bs-toggle="modal" data-bs-target="#deleteContactModal">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <td>Secondary</td>
@@ -219,7 +280,16 @@
                   <td>Friend</td>
                   <td>+44 5555 123456</td>
                   <td>mary.smith@email.com</td>
-                  <td class="contacts-edit-cell"><button class="btn btn-link p-0 edit-btn" title="Edit Contact" data-bs-toggle="modal" data-bs-target="#editContactsModal"><i class="bi bi-pencil"></i></button></td>
+                  <td class="contacts-edit-cell">
+                    <div class="d-flex align-items-center gap-2">
+                      <button class="btn btn-link p-0 edit-btn" title="Edit Contact" data-bs-toggle="modal" data-bs-target="#editContactsModal">
+                        <i class="bi bi-pencil"></i>
+                      </button>
+                      <button class="btn btn-link p-0 text-danger delete-btn" title="Delete Contact" data-bs-toggle="modal" data-bs-target="#deleteContactModal">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </div>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -228,8 +298,14 @@
         <!-- Address Section -->
         <div class="profile-section-card mb-3 position-relative" id="address" style="border-left: 6px solid #c62828; box-shadow: 0 4px 16px rgba(198, 40, 40, 0.07);">
           <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #ffebee; color: #b71c1c;">
-            <span><i class="bi bi-geo-alt-fill me-2"></i> Address</span>
-            <button class="btn btn-link p-0 edit-btn" title="Edit Address" data-bs-toggle="modal" data-bs-target="#editAddressesModal"><i class="bi bi-pencil"></i></button>
+            <span class="d-flex align-items-center">
+              <i class="bi bi-geo-alt-fill me-2"></i> Address
+              <button class="btn btn-link p-0 edit-btn ms-2" title="Edit Address" data-bs-toggle="modal" data-bs-target="#editAddressesModal"><i class="bi bi-pencil"></i></button>
+            </span>
+            <span>
+              <span class="text-muted small me-3">Last Updated By: Jane Doe / 2023-01-01</span>
+              <button class="btn btn-outline-primary btn-sm me-2" id="exportAddressBtn"><i class="bi bi-download"></i> Export Section</button>
+            </span>
           </div>
           <div class="profile-row"><div class="profile-label">Address Line 1</div><div class="profile-value">123 Main Street</div></div>
           <div class="profile-row"><div class="profile-label">Address Line 2</div><div class="profile-value">Building 5</div></div>
@@ -239,66 +315,6 @@
           <div class="profile-row"><div class="profile-label">Post Code</div><div class="profile-value">SW1A 1AA</div></div>
           <div class="profile-row"><div class="profile-label">Country</div><div class="profile-value">UK</div></div>
         </div>
-        <!-- Bank Info Section -->
-        <!--
-        <div class="profile-section-card mb-3 position-relative" id="bank-info" style="border-left: 6px solid #1976d2; box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);">
-          <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #e3f2fd; color: #1976d2;">
-            <span><i class="bi bi-bank me-2"></i> Bank Info</span>
-            <button class="btn btn-link p-0 edit-btn" title="Edit Bank Info" data-bs-toggle="modal" data-bs-target="#editBankInfoModal"><i class="bi bi-pencil"></i></button>
-          </div>
-          <div class="profile-row">
-            <div class="profile-label">Bank Name</div>
-            <div class="profile-value">HSBC</div>
-          </div>
-          <div class="profile-row">
-            <div class="profile-label">Branch Name</div>
-            <div class="profile-value">London Main</div>
-          </div>
-          <div class="profile-row">
-            <div class="profile-label">Sort Code</div>
-            <div class="profile-value">12-34-56</div>
-          </div>
-          <div class="profile-row">
-            <div class="profile-label">Account Number</div>
-            <div class="profile-value">12345678</div>
-          </div>
-          <div class="profile-row">
-            <div class="profile-label">Building Society</div>
-            <div class="profile-value">ABC Society</div>
-          </div>
-          <div class="profile-row">
-            <div class="profile-label">Ref Number</div>
-            <div class="profile-value">REF123</div>
-          </div>
-        </div>
-        -->
-        <!-- Edit Bank Info Modal -->
-        <!--
-        <div class="modal fade" id="editBankInfoModal" tabindex="-1" aria-labelledby="editBankInfoModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header bg-secondary text-white">
-                <h5 class="modal-title" id="editBankInfoModalLabel">Edit Bank Info</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <form>
-                <div class="modal-body p-4">
-                  <div class="mb-3"><label class="form-label">Bank Name</label><input type="text" class="form-control" value="HSBC"></div>
-                  <div class="mb-3"><label class="form-label">Branch Name</label><input type="text" class="form-control" value="London Main"></div>
-                  <div class="mb-3"><label class="form-label">Sort Code</label><input type="text" class="form-control" value="12-34-56"></div>
-                  <div class="mb-3"><label class="form-label">Account Number</label><input type="text" class="form-control" value="12345678"></div>
-                  <div class="mb-3"><label class="form-label">Building Society</label><input type="text" class="form-control" value="ABC Society"></div>
-                  <div class="mb-3"><label class="form-label">Ref Number</label><input type="text" class="form-control" value="REF123"></div>
-                </div>
-                <div class="modal-footer border-0 pt-0">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button type="submit" class="btn btn-primary">Save Changes</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        -->
         <!-- Edit Personal Details Modal -->
         <div class="modal fade" id="editPersonalDetailsModal" tabindex="-1" aria-labelledby="editPersonalDetailsModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -309,12 +325,12 @@
               </div>
               <form>
                 <div class="modal-body p-4">
-                  <div class="mb-3"><label class="form-label">Full Name</label><input type="text" class="form-control" value="Jane Doe"></div>
+                  <div class="mb-3"><label class="form-label">Full Name <span class='text-danger'>*</span></label><input type="text" class="form-control" value="Jane Doe" required></div>
                   <div class="mb-3"><label class="form-label">Known As</label><input type="text" class="form-control" value="Janie"></div>
-                  <div class="mb-3"><label class="form-label">Gender</label><select class="form-select"><option>Female</option><option>Male</option><option>Other</option></select></div>
-                  <div class="mb-3"><label class="form-label">Date of Birth</label><input type="date" class="form-control" value="1990-05-15"></div>
-                  <div class="mb-3"><label class="form-label">Nationality</label><input type="text" class="form-control" value="British"></div>
-                  <div class="mb-3"><label class="form-label">National ID Type</label><select class="form-select">
+                  <div class="mb-3"><label class="form-label">Gender <span class='text-danger'>*</span></label><select class="form-select" required><option>Female</option><option>Male</option><option>Other</option></select></div>
+                  <div class="mb-3"><label class="form-label">Date of Birth <span class='text-danger'>*</span></label><input type="date" class="form-control" value="1990-05-15" required></div>
+                  <div class="mb-3"><label class="form-label">Nationality <span class='text-danger'>*</span></label><input type="text" class="form-control" value="British" required></div>
+                  <div class="mb-3"><label class="form-label">National ID Type <span class='text-danger'>*</span></label><select class="form-select" required>
                     <option>NI (UK)</option>
                     <option>NIN (National Identification Number)</option>
                     <option>NIF (Spain)</option>
@@ -328,7 +344,7 @@
                     <option>Social Security Number</option>
                     <option>Other</option>
                   </select></div>
-                  <div class="mb-3"><label class="form-label">National ID Number</label><input type="text" class="form-control" value="QQ123456C"></div>
+                  <div class="mb-3"><label class="form-label">National ID Number <span class='text-danger'>*</span></label><input type="text" class="form-control" value="QQ123456C" required></div>
                 </div>
                 <div class="modal-footer border-0 pt-0">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -348,8 +364,8 @@
               </div>
               <form>
                 <div class="modal-body p-4">
-                  <div class="mb-3"><label class="form-label">Work Email</label><input type="email" class="form-control" value="jane.doe@email.com"></div>
-                  <div class="mb-3"><label class="form-label">Primary Phone</label><input type="text" class="form-control" value="+44 1234 567890"></div>
+                  <div class="mb-3"><label class="form-label">Work Email <span class='text-danger'>*</span></label><input type="email" class="form-control" value="jane.doe@email.com" required></div>
+                  <div class="mb-3"><label class="form-label">Primary Phone <span class='text-danger'>*</span></label><input type="text" class="form-control" value="+44 1234 567890" required></div>
                   <div class="mb-3"><label class="form-label">Work Mobile</label><input type="text" class="form-control"></div>
                   <div class="mb-3"><label class="form-label">Work Phone</label><input type="text" class="form-control"></div>
                 </div>
@@ -372,20 +388,20 @@
               <form>
                 <div class="modal-body p-4">
                   <div class="mb-3">
-                    <label class="form-label">Type</label>
-                    <select class="form-select">
+                    <label class="form-label">Type <span class='text-danger'>*</span></label>
+                    <select class="form-select" required>
                       <option>Emergency</option>
                       <option>Secondary</option>
                       <option>Next of Kin</option>
                     </select>
                   </div>
                   <div class="mb-3">
-                    <label class="form-label">Full Name</label>
-                    <input type="text" class="form-control" value="John Doe">
+                    <label class="form-label">Full Name <span class='text-danger'>*</span></label>
+                    <input type="text" class="form-control" value="John Doe" required>
                   </div>
                   <div class="mb-3">
-                    <label class="form-label">Relationship</label>
-                    <select class="form-select">
+                    <label class="form-label">Relationship <span class='text-danger'>*</span></label>
+                    <select class="form-select" required>
                       <option>Brother</option>
                       <option>Friend</option>
                       <option>Spouse</option>
@@ -394,8 +410,8 @@
                     </select>
                   </div>
                   <div class="mb-3">
-                    <label class="form-label">Phone</label>
-                    <input type="text" class="form-control" value="+44 9876 543210">
+                    <label class="form-label">Phone <span class='text-danger'>*</span></label>
+                    <input type="text" class="form-control" value="+44 9876 543210" required>
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Email</label>
@@ -420,13 +436,13 @@
               </div>
               <form>
                 <div class="modal-body p-4">
-                  <div class="mb-3"><label class="form-label">Address Line 1</label><input type="text" class="form-control" value="123 Main Street"></div>
+                  <div class="mb-3"><label class="form-label">Address Line 1 <span class='text-danger'>*</span></label><input type="text" class="form-control" value="123 Main Street" required></div>
                   <div class="mb-3"><label class="form-label">Address Line 2</label><input type="text" class="form-control" value="Building 5"></div>
                   <div class="mb-3"><label class="form-label">Address Line 3</label><input type="text" class="form-control" value="Suite 12A"></div>
-                  <div class="mb-3"><label class="form-label">City</label><input type="text" class="form-control" value="London"></div>
+                  <div class="mb-3"><label class="form-label">City <span class='text-danger'>*</span></label><input type="text" class="form-control" value="London" required></div>
                   <div class="mb-3"><label class="form-label">County</label><input type="text" class="form-control" value="Greater London"></div>
-                  <div class="mb-3"><label class="form-label">Post Code</label><input type="text" class="form-control" value="SW1A 1AA"></div>
-                  <div class="mb-3"><label class="form-label">Country</label><input type="text" class="form-control" value="UK"></div>
+                  <div class="mb-3"><label class="form-label">Post Code <span class='text-danger'>*</span></label><input type="text" class="form-control" value="SW1A 1AA" required></div>
+                  <div class="mb-3"><label class="form-label">Country <span class='text-danger'>*</span></label><input type="text" class="form-control" value="UK" required></div>
                 </div>
                 <div class="modal-footer border-0 pt-0">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -475,6 +491,7 @@
                   <div class="mb-3"><label class="form-label">Probation Date</label><input type="date" class="form-control" value="2020-07-01"></div>
                   <div class="mb-3"><label class="form-label">Status</label><select class="form-select"><option>Active</option><option>Inactive</option></select></div>
                   <div class="mb-3"><label class="form-label">Last Working Date</label><input type="date" class="form-control"></div>
+                  <div class="mb-3"><label class="form-label">Contract Expiry Date</label><input type="date" class="form-control"></div>
                 </div>
                 <div class="modal-footer border-0 pt-0">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -487,9 +504,13 @@
         <!-- Employment Information Section -->
         <div class="profile-section-card mb-3 position-relative" id="employment-info" style="border-left: 6px solid #fbc02d; box-shadow: 0 4px 16px rgba(251, 192, 45, 0.07);">
           <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #fffde7; color: #f9a825;">
-            <span><i class="bi bi-briefcase me-2"></i> Employment Information</span>
+            <span class="d-flex align-items-center">
+              <i class="bi bi-briefcase me-2"></i> Employment Information
+              <button class="btn btn-outline-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#updateRoleModal">Update Role</button>
+            </span>
             <span>
-              <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#updateRoleModal">Update Role</button>
+              <span class="text-muted small me-3">Last Updated By: Jane Doe / 2023-01-01</span>
+              <button class="btn btn-outline-primary btn-sm me-2" id="exportEmploymentInfoBtn"><i class="bi bi-download"></i> Export Section</button>
             </span>
           </div>
           <div class="profile-row">
@@ -528,6 +549,10 @@
             <div class="profile-label">Last Working Date</div>
             <div class="profile-value">-</div>
           </div>
+          <div class="profile-row">
+            <div class="profile-label">Contract Expiry Date</div>
+            <div class="profile-value">-</div>
+          </div>
         </div>
         <!-- Update Role Modal -->
         <div class="modal fade" id="updateRoleModal" tabindex="-1" aria-labelledby="updateRoleModalLabel" aria-hidden="true">
@@ -554,8 +579,8 @@
                     <input type="text" class="form-control" id="oldJobInput" value="HR Assistant" disabled>
                   </div>
                   <div class="mb-3" id="newJobField">
-                    <label class="form-label">New Job</label>
-                    <select class="form-select" id="newJobSelect">
+                    <label class="form-label">New Job <span class='text-danger'>*</span></label>
+                    <select class="form-select" id="newJobSelect" required>
                       <option value="HR Manager">HR Manager</option>
                       <option value="HR Assistant">HR Assistant</option>
                       <option value="HR Officer">HR Officer</option>
@@ -563,12 +588,12 @@
                     </select>
                   </div>
                   <div class="mb-3">
-                    <label class="form-label">Effective Date</label>
-                    <input type="date" class="form-control" id="effectiveDateInput">
+                    <label class="form-label">Effective Date <span class='text-danger'>*</span></label>
+                    <input type="date" class="form-control" id="effectiveDateInput" required>
                   </div>
                   <div class="mb-3">
-                    <label class="form-label">Approved By</label>
-                    <select class="form-select" id="approvedBySelect">
+                    <label class="form-label">Approved By <span class='text-danger'>*</span></label>
+                    <select class="form-select" id="approvedBySelect" required>
                       <option value="mgr1">John Smith</option>
                       <option value="mgr2">Mary Johnson</option>
                       <!-- Populate with managers dynamically as needed -->
@@ -586,12 +611,17 @@
         <!-- Other / Remarks Section -->
         <div class="profile-section-card mb-3 position-relative" id="other-remarks" style="border-left: 6px solid #8e24aa; box-shadow: 0 4px 16px rgba(142, 36, 170, 0.07);">
           <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #f3e5f5; color: #6a1b9a;">
-            <span><i class="bi bi-chat-left-text me-2"></i> Other / Remarks</span>
-            <button class="btn btn-link p-0 edit-btn" title="Edit Other / Remarks" data-bs-toggle="modal" data-bs-target="#editOtherRemarksModal"><i class="bi bi-pencil"></i></button>
+            <span class="d-flex align-items-center">
+              <i class="bi bi-chat-left-text me-2"></i> Other / Remarks
+              <button class="btn btn-link p-0 edit-btn ms-2" title="Edit Other / Remarks" data-bs-toggle="modal" data-bs-target="#editOtherRemarksModal"><i class="bi bi-pencil"></i></button>
+            </span>
+            <span>
+              <span class="text-muted small me-3">Last Updated By: Jane Doe / 2023-01-01</span>
+              <button class="btn btn-outline-primary btn-sm me-2" id="exportOtherRemarksBtn"><i class="bi bi-download"></i> Export Section</button>
+            </span>
           </div>
-          <div class="profile-row">
-            <div class="profile-label">Remarks</div>
-            <div class="profile-value">-</div>
+          <div class="p-4" style="background:#f8f5fa; border-radius:6px; min-height:60px;">
+            <div class="mt-2" style="white-space:pre-line; color:#6a1b9a;">-</div>
           </div>
         </div>
       </div>

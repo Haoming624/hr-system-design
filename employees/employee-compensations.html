@@ -36,7 +36,10 @@
     </div>
     <!-- Salary Section -->
     <div class="card mb-3">
-      <div class="card-header bg-primary text-white fw-bold">Salary</div>
+      <div class="card-header bg-primary text-white fw-bold d-flex align-items-center justify-content-between">
+        <span>Salary</span>
+        <span class="small text-white-50 ms-auto">Last Updated By: Jane Doe / 2023-01-01</span>
+      </div>
       <div class="card-body p-0">
         <div class="alert alert-info rounded-0 mb-0" style="border-radius:0;">
           <strong>Note:</strong> Salary is updated only when an employee is promoted or after a salary review.
@@ -81,7 +84,10 @@
     </div>
     <!-- Allowances Section -->
     <div class="card mb-3">
-      <div class="card-header bg-success text-white fw-bold">Allowances</div>
+      <div class="card-header bg-success text-white fw-bold d-flex align-items-center justify-content-between">
+        <span>Allowances</span>
+        <span class="small text-white-50 ms-auto">Last Updated By: Jane Doe / 2023-01-01</span>
+      </div>
       <div class="card-body p-0">
         <div class="alert alert-info rounded-0 mb-0" style="border-radius:0;">
           <strong>Note:</strong> The only allowance offered is the <strong>Commute Allowance</strong> at £0.20 per mile round trip daily from your primary residence to your primary working location.
@@ -122,7 +128,15 @@
             <div class="modal-body p-4">
               <div class="mb-3"><label class="form-label">Pay Amount</label><input type="number" class="form-control"></div>
               <div class="mb-3"><label class="form-label">Currency</label><input type="text" class="form-control" value="GBP"></div>
-              <div class="mb-3"><label class="form-label">Pay Frequency</label><input type="text" class="form-control"></div>
+              <div class="mb-3"><label class="form-label">Pay Frequency</label>
+                <select class="form-select">
+                  <option value="Monthly">Monthly</option>
+                  <option value="Quarterly">Quarterly</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Hourly">Hourly</option>
+                  <option value="Contract">Contract</option>
+                </select>
+              </div>
               <div class="mb-3"><label class="form-label">Working Pattern</label><input type="text" class="form-control"></div>
               <div class="mb-3"><label class="form-label">Weekly Working Hours</label><input type="number" class="form-control"></div>
             </div>
