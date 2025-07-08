@@ -123,7 +123,7 @@
           <a class="list-group-item list-group-item-action directory-link" href="#contact-info">Contact Information</a>
           <a class="list-group-item list-group-item-action directory-link" href="#contacts">Contacts</a>
           <a class="list-group-item list-group-item-action directory-link" href="#addresses">Addresses</a>
-          <a class="list-group-item list-group-item-action directory-link" href="#bank-info">Bank Info</a>
+          <!-- <a class="list-group-item list-group-item-action directory-link" href="#bank-info">Bank Info</a> -->
           <a class="list-group-item list-group-item-action directory-link" href="#employment-info">Employment Information</a>
           <a class="list-group-item list-group-item-action directory-link" href="#other-remarks">Other / Remarks</a>
         </nav>
@@ -241,6 +241,7 @@
           <div class="profile-row"><div class="profile-label">Country</div><div class="profile-value">UK</div></div>
         </div>
         <!-- Bank Info Section -->
+        <!--
         <div class="profile-section-card mb-3 position-relative" id="bank-info" style="border-left: 6px solid #1976d2; box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);">
           <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #e3f2fd; color: #1976d2;">
             <span><i class="bi bi-bank me-2"></i> Bank Info</span>
@@ -271,7 +272,9 @@
             <div class="profile-value">REF123</div>
           </div>
         </div>
+        -->
         <!-- Edit Bank Info Modal -->
+        <!--
         <div class="modal fade" id="editBankInfoModal" tabindex="-1" aria-labelledby="editBankInfoModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -296,6 +299,7 @@
             </div>
           </div>
         </div>
+        -->
         <!-- Edit Personal Details Modal -->
         <div class="modal fade" id="editPersonalDetailsModal" tabindex="-1" aria-labelledby="editPersonalDetailsModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -619,7 +623,7 @@
         document.getElementById('contact-info'),
         document.getElementById('contacts'),
         document.getElementById('address'), // Changed from 'addresses' to 'address'
-        document.getElementById('bank-info'),
+        // document.getElementById('bank-info'), // Bank Info section hidden
         document.getElementById('employment-info'),
         document.getElementById('other-remarks')
       ];
