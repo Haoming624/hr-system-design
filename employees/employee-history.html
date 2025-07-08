@@ -43,7 +43,7 @@
       <div class="col-lg-10 col-md-12">
         <!-- History Section -->
         <div class="profile-section-card mb-5" id="history-section" style="border-left: 6px solid #1976d2; box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);">
-          <div class="profile-section-title d-flex align-items-center" style="background: #e3f2fd; color: #1976d2;">
+          <div class="profile-section-title d-flex align-items-center ps-3" style="background: #e3f2fd; color: #1976d2;">
             <i class="bi bi-clock-history me-2"></i> History
           </div>
           <div class="card mb-3 border-0 shadow-none">
@@ -58,7 +58,6 @@
                     <th>Effective Date</th>
                     <th>Status</th>
                     <th>Approved By</th>
-                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -70,9 +69,6 @@
                     <td>2022-01-01</td>
                     <td><span class="badge bg-warning text-dark">Pending</span></td>
                     <td>John Smith</td>
-                    <td>
-                      <button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#viewRoleChangeModal" data-role-change-id="1" title="View this role change details">Edit</button>
-                    </td>
                   </tr>
                   <!-- More rows as needed -->
                 </tbody>
@@ -82,7 +78,7 @@
         </div>
         <!-- Salary History Section -->
         <div class="profile-section-card mb-5 d-none" id="salary-history-section" style="border-left: 6px solid #43a047; box-shadow: 0 4px 16px rgba(67, 160, 71, 0.07);">
-          <div class="profile-section-title d-flex align-items-center" style="background: #e8f5e9; color: #388e3c;">
+          <div class="profile-section-title d-flex align-items-center ps-3" style="background: #e8f5e9; color: #388e3c;">
             <i class="bi bi-cash-coin me-2"></i> Salary History
           </div>
           <div class="card mb-3 border-0 shadow-none">
@@ -94,8 +90,8 @@
                     <th>Pay Amount</th>
                     <th>Currency</th>
                     <th>Pay Frequency</th>
-                    <th>Allowance Amount</th>
-                    <th>Allowance Type</th>
+                    <th>Commute Allowance (Daily Miles)</th>
+                    <th>Commute Allowance (£0.20/mile)</th>
                     <th>Working Pattern</th>
                     <th>Weekly Working Hours</th>
                     <th>Status</th>
@@ -107,8 +103,8 @@
                     <td>£3,000.00</td>
                     <td>GBP</td>
                     <td>Monthly</td>
-                    <td>£200.00</td>
-                    <td>Housing</td>
+                    <td>30</td>
+                    <td>£6.00</td>
                     <td>Standard</td>
                     <td>40</td>
                     <td><span class="badge bg-success">Active</span></td>

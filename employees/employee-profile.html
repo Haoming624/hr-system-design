@@ -156,8 +156,12 @@
             <div class="profile-value">British</div>
           </div>
           <div class="profile-row">
-            <div class="profile-label">Marital Status</div>
-            <div class="profile-value">Single</div>
+            <div class="profile-label">National ID Type</div>
+            <div class="profile-value">NI</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">National ID Number</div>
+            <div class="profile-value">QQ123456C</div>
           </div>
         </div>
         <!-- Contact Information Section -->
@@ -167,27 +171,19 @@
             <button class="btn btn-link p-0 edit-btn" title="Edit Contact Information" data-bs-toggle="modal" data-bs-target="#editContactInfoModal"><i class="bi bi-pencil"></i></button>
           </div>
           <div class="profile-row">
-            <div class="profile-label">Email</div>
+            <div class="profile-label">Work Email</div>
             <div class="profile-value">jane.doe@email.com</div>
           </div>
           <div class="profile-row">
-            <div class="profile-label">Phone</div>
+            <div class="profile-label">Primary Phone</div>
             <div class="profile-value">+44 1234 567890</div>
-          </div>
-          <div class="profile-row">
-            <div class="profile-label">Home Telephone</div>
-            <div class="profile-value"></div>
-          </div>
-          <div class="profile-row">
-            <div class="profile-label">Personal Mobile</div>
-            <div class="profile-value"></div>
           </div>
           <div class="profile-row">
             <div class="profile-label">Work Mobile</div>
             <div class="profile-value"></div>
           </div>
           <div class="profile-row">
-            <div class="profile-label">Personal Email</div>
+            <div class="profile-label">Work Phone</div>
             <div class="profile-value"></div>
           </div>
         </div>
@@ -204,6 +200,7 @@
                   <th>Full Name</th>
                   <th>Relationship</th>
                   <th>Phone</th>
+                  <th>Email</th>
                   <th></th>
                 </tr>
               </thead>
@@ -213,6 +210,7 @@
                   <td>John Doe</td>
                   <td>Brother</td>
                   <td>+44 9876 543210</td>
+                  <td>john.doe@email.com</td>
                   <td class="contacts-edit-cell"><button class="btn btn-link p-0 edit-btn" title="Edit Contact" data-bs-toggle="modal" data-bs-target="#editContactsModal"><i class="bi bi-pencil"></i></button></td>
                 </tr>
                 <tr>
@@ -220,6 +218,7 @@
                   <td>Mary Smith</td>
                   <td>Friend</td>
                   <td>+44 5555 123456</td>
+                  <td>mary.smith@email.com</td>
                   <td class="contacts-edit-cell"><button class="btn btn-link p-0 edit-btn" title="Edit Contact" data-bs-toggle="modal" data-bs-target="#editContactsModal"><i class="bi bi-pencil"></i></button></td>
                 </tr>
               </tbody>
@@ -315,7 +314,21 @@
                   <div class="mb-3"><label class="form-label">Gender</label><select class="form-select"><option>Female</option><option>Male</option><option>Other</option></select></div>
                   <div class="mb-3"><label class="form-label">Date of Birth</label><input type="date" class="form-control" value="1990-05-15"></div>
                   <div class="mb-3"><label class="form-label">Nationality</label><input type="text" class="form-control" value="British"></div>
-                  <div class="mb-3"><label class="form-label">Marital Status</label><select class="form-select"><option>Single</option><option>Married</option><option>Divorced</option><option>Widowed</option></select></div>
+                  <div class="mb-3"><label class="form-label">National ID Type</label><select class="form-select">
+                    <option>NI (UK)</option>
+                    <option>NIN (National Identification Number)</option>
+                    <option>NIF (Spain)</option>
+                    <option>NIE (Spain, Foreigners)</option>
+                    <option>CNP (France)</option>
+                    <option>Codice Fiscale (Italy)</option>
+                    <option>PESEL (Poland)</option>
+                    <option>Personalnummer (Germany)</option>
+                    <option>Passport</option>
+                    <option>Driving License</option>
+                    <option>Social Security Number</option>
+                    <option>Other</option>
+                  </select></div>
+                  <div class="mb-3"><label class="form-label">National ID Number</label><input type="text" class="form-control" value="QQ123456C"></div>
                 </div>
                 <div class="modal-footer border-0 pt-0">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -335,12 +348,10 @@
               </div>
               <form>
                 <div class="modal-body p-4">
-                  <div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control" value="jane.doe@email.com"></div>
-                  <div class="mb-3"><label class="form-label">Phone</label><input type="text" class="form-control" value="+44 1234 567890"></div>
-                  <div class="mb-3"><label class="form-label">Home Telephone</label><input type="text" class="form-control"></div>
-                  <div class="mb-3"><label class="form-label">Personal Mobile</label><input type="text" class="form-control"></div>
+                  <div class="mb-3"><label class="form-label">Work Email</label><input type="email" class="form-control" value="jane.doe@email.com"></div>
+                  <div class="mb-3"><label class="form-label">Primary Phone</label><input type="text" class="form-control" value="+44 1234 567890"></div>
                   <div class="mb-3"><label class="form-label">Work Mobile</label><input type="text" class="form-control"></div>
-                  <div class="mb-3"><label class="form-label">Personal Email</label><input type="email" class="form-control"></div>
+                  <div class="mb-3"><label class="form-label">Work Phone</label><input type="text" class="form-control"></div>
                 </div>
                 <div class="modal-footer border-0 pt-0">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -385,6 +396,10 @@
                   <div class="mb-3">
                     <label class="form-label">Phone</label>
                     <input type="text" class="form-control" value="+44 9876 543210">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" value="john.doe@email.com">
                   </div>
                 </div>
                 <div class="modal-footer border-0 pt-0">
@@ -552,27 +567,17 @@
                     <input type="date" class="form-control" id="effectiveDateInput">
                   </div>
                   <div class="mb-3">
-                    <label class="form-label">Supporting Document (optional)</label>
-                    <input type="file" class="form-control" id="supportingDocInput">
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label">Send Request To</label>
-                    <select class="form-select" id="sendRequestToSelect">
-                      <option value="">Select Manager</option>
+                    <label class="form-label">Approved By</label>
+                    <select class="form-select" id="approvedBySelect">
                       <option value="mgr1">John Smith</option>
                       <option value="mgr2">Mary Johnson</option>
                       <!-- Populate with managers dynamically as needed -->
                     </select>
-                    <div class="form-text">Only managers are listed here.</div>
-                  </div>
-                  <div class="mb-1">
-                    <label class="form-label">HR Reason</label>
-                    <textarea class="form-control" id="hrReasonInput" rows="3" placeholder="Enter reason for this change..."></textarea>
                   </div>
                 </div>
                 <div class="modal-footer border-0 pt-0">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button type="submit" class="btn btn-primary">Submit Request</button>
+                  <button type="submit" class="btn btn-primary">Update</button>
                 </div>
               </form>
             </div>
