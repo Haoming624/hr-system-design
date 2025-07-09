@@ -513,6 +513,10 @@
             <div class="profile-value">HR Manager</div>
           </div>
           <div class="profile-row">
+            <div class="profile-label">Grading</div>
+            <div class="profile-value"><span class="badge bg-info">Grade A</span></div>
+          </div>
+          <div class="profile-row">
             <div class="profile-label">Department</div>
             <div class="profile-value">Human Resources</div>
           </div>
@@ -577,6 +581,7 @@
                       <label class="form-label">Department <span class="text-muted small">(Read Only)</span></label>
                       <input type="text" class="form-control" value="Human Resources" disabled>
                     </div>
+
                     <div class="col-md-6">
                       <label class="form-label">Work Type</label>
                       <select class="form-select">
@@ -689,6 +694,16 @@
                       <option value="hr-officer">HR Officer</option>
                       <option value="payroll-officer">Payroll Officer</option>
                       <option value="it-support">IT Support Specialist</option>
+                    </select>
+                  </div>
+                  <div class="mb-3" id="newGradingField">
+                    <label class="form-label">New Grading</label>
+                    <select class="form-select" id="newGradingSelect">
+                      <option value="">Select grading</option>
+                      <option value="A">Grade A</option>
+                      <option value="B">Grade B</option>
+                      <option value="C">Grade C</option>
+                      <option value="None">None</option>
                     </select>
                   </div>
                   <div class="mb-3">
@@ -863,21 +878,24 @@
         if (!found) links[0].classList.add('active');
       });
     });
-    // Add JS to toggle #newJobField based on #roleChangeTypeSelect value
+    // Add JS to toggle #newJobField and #newGradingField based on #roleChangeTypeSelect value
     document.addEventListener('DOMContentLoaded', function() {
       var typeSelect = document.getElementById('roleChangeTypeSelect');
       var newJobField = document.getElementById('newJobField');
-      function toggleNewJobField() {
+      var newGradingField = document.getElementById('newGradingField');
+      function toggleFields() {
         var v = typeSelect.value;
         if (v === 'Resignation' || v === 'End Assignment') {
           newJobField.style.display = 'none';
+          newGradingField.style.display = 'none';
         } else {
           newJobField.style.display = '';
+          newGradingField.style.display = '';
         }
       }
-      if(typeSelect && newJobField) {
-        typeSelect.addEventListener('change', toggleNewJobField);
-        toggleNewJobField();
+      if(typeSelect && newJobField && newGradingField) {
+        typeSelect.addEventListener('change', toggleFields);
+        toggleFields();
       }
     });
     // Collapse chevron toggle

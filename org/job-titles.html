@@ -37,16 +37,7 @@
             <option>Other</option>
           </select>
         </div>
-        <div class="col-md-2">
-          <label for="filterGrading" class="form-label mb-0">Grading</label>
-          <select class="form-select" id="filterGrading">
-            <option value="">All</option>
-            <option>Grade A</option>
-            <option>Grade B</option>
-            <option>Grade C</option>
-            <option>Other</option>
-          </select>
-        </div>
+
         <div class="col-md-2">
           <label for="filterInUse" class="form-label mb-0">In Use</label>
           <select class="form-select" id="filterInUse">
@@ -89,10 +80,10 @@
           <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Job Title</label></li>
           <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Department</label></li>
           <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Group</label></li>
-          <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Grading</label></li>
           <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> In Use</label></li>
           <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Actions</label></li>
-          <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Last Updated By / At</label></li>
+          <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Updated By</label></li>
+          <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Updated At</label></li>
         </ul>
       </div>
     </div>
@@ -105,9 +96,9 @@
               <th style="min-width: 150px;">Job Title</th>
               <th style="min-width: 120px;">Department</th>
               <th style="min-width: 120px;">Group</th>
-              <th style="min-width: 100px;">Grading</th>
               <th style="min-width: 80px;">In Use</th>
-              <th style="min-width: 120px;">Last Updated By / At</th>
+              <th style="min-width: 100px;">Updated By</th>
+              <th style="min-width: 100px;">Updated At</th>
               <th style="min-width: 80px;">Actions</th>
             </tr>
           </thead>
@@ -116,9 +107,9 @@
               <td><strong>HR Manager</strong></td>
               <td><small>Human Resources</small></td>
               <td><small>Recruitment Team</small></td>
-              <td><span class="badge bg-info">Grade A</span></td>
               <td><span class="badge bg-success">Yes</span></td>
-              <td><small>Jane Doe / 2023-01-01 09:00</small></td>
+              <td><small>Jane Doe</small></td>
+              <td><small>2023-01-01 09:00</small></td>
               <td>
                 <div class="d-flex gap-1">
                   <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editJobTitleModal"><i class="bi bi-pencil"></i></button>
@@ -130,9 +121,9 @@
               <td><strong>Finance Officer</strong></td>
               <td><small>Finance</small></td>
               <td><small>Payroll Team</small></td>
-              <td><span class="badge bg-warning">Grade B</span></td>
               <td><span class="badge bg-success">Yes</span></td>
-              <td><small>Jane Doe / 2023-01-01 09:00</small></td>
+              <td><small>Jane Doe</small></td>
+              <td><small>2023-01-01 09:00</small></td>
               <td>
                 <div class="d-flex gap-1">
                   <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editJobTitleModal"><i class="bi bi-pencil"></i></button>
@@ -144,9 +135,9 @@
               <td><strong>IT Support</strong></td>
               <td><small>IT</small></td>
               <td><small>IT Support</small></td>
-              <td><span class="badge bg-secondary">Grade C</span></td>
               <td><span class="badge bg-danger">No</span></td>
-              <td><small>Jane Doe / 2023-01-01 09:00</small></td>
+              <td><small>Jane Doe</small></td>
+              <td><small>2023-01-01 09:00</small></td>
               <td>
                 <div class="d-flex gap-1">
                   <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editJobTitleModal"><i class="bi bi-pencil"></i></button>
@@ -172,11 +163,12 @@
             <div class="mb-3"><label class="form-label">Job Title <span class='text-danger'>*</span></label><input type="text" class="form-control" required></div>
             <div class="mb-3"><label class="form-label">Department <span class='text-danger'>*</span></label><select class="form-select" required><option>Human Resources</option><option>Finance</option><option>IT</option><option>Other</option></select></div>
             <div class="mb-3"><label class="form-label">Group <span class='text-danger'>*</span></label><select class="form-select" required><option>Payroll Team</option><option>Recruitment Team</option><option>IT Support</option><option>Other</option></select></div>
-            <div class="mb-3"><label class="form-label">Grading <span class='text-danger'>*</span></label><select class="form-select" required><option>Grade A</option><option>Grade B</option><option>Grade C</option><option>Other</option></select></div>
             <div class="mb-3"><label class="form-label">In Use <span class='text-danger'>*</span></label>
               <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="addJobTitleInUseSwitch" checked required>
-                <label class="form-check-label" for="addJobTitleInUseSwitch">Active</label>
+                <label class="form-check-label" for="addJobTitleInUseSwitch">
+                  <span class="badge bg-success">Active</span>
+                </label>
               </div>
             </div>
           </div>
@@ -201,11 +193,12 @@
             <div class="mb-3"><label class="form-label">Job Title</label><input type="text" class="form-control" value="HR Manager"></div>
             <div class="mb-3"><label class="form-label">Department</label><input type="text" class="form-control" value="Human Resources"></div>
             <div class="mb-3"><label class="form-label">Group</label><input type="text" class="form-control" value="Recruitment Team"></div>
-            <div class="mb-3"><label class="form-label">Grading</label><select class="form-select"><option>Grade A</option><option>Grade B</option><option>Grade C</option><option>Other</option></select></div>
             <div class="mb-3"><label class="form-label">In Use</label>
               <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="editJobTitleInUseSwitch" checked>
-                <label class="form-check-label" for="editJobTitleInUseSwitch">Active</label>
+                <label class="form-check-label" for="editJobTitleInUseSwitch">
+                  <span class="badge bg-success">Active</span>
+                </label>
               </div>
             </div>
           </div>
@@ -241,6 +234,43 @@
     fetch('../includes/sidebar.html').then(r => r.text()).then(html => {
       document.getElementById('sidebar').outerHTML = html;
       highlightSidebarLink();
+    });
+
+    // Dynamic "In Use" badge functionality
+    function updateInUseBadge(checkboxId, badgeElement) {
+      const checkbox = document.getElementById(checkboxId);
+      const badge = badgeElement.querySelector('.badge');
+      
+      if (checkbox.checked) {
+        badge.className = 'badge bg-success';
+        badge.textContent = 'Active';
+      } else {
+        badge.className = 'badge bg-danger';
+        badge.textContent = 'Inactive';
+      }
+    }
+
+    // Add event listeners for all "In Use" checkboxes
+    document.addEventListener('DOMContentLoaded', function() {
+      const inUseCheckboxes = [
+        { checkboxId: 'addJobTitleInUseSwitch', labelId: 'addJobTitleInUseSwitch' },
+        { checkboxId: 'editJobTitleInUseSwitch', labelId: 'editJobTitleInUseSwitch' }
+      ];
+
+      inUseCheckboxes.forEach(item => {
+        const checkbox = document.getElementById(item.checkboxId);
+        const label = document.querySelector(`label[for="${item.labelId}"]`);
+        
+        if (checkbox && label) {
+          // Initial state
+          updateInUseBadge(item.checkboxId, label);
+          
+          // Event listener for changes
+          checkbox.addEventListener('change', function() {
+            updateInUseBadge(item.checkboxId, label);
+          });
+        }
+      });
     });
   </script>
   <script src="../ui-highlighting.js"></script>

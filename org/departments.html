@@ -84,7 +84,8 @@
               <th style="min-width: 200px;">Description</th>
               <th style="min-width: 80px;">In Use</th>
               <th style="min-width: 100px;">Groups</th>
-              <th style="min-width: 120px;">Last Updated By / At</th>
+              <th style="min-width: 100px;">Updated By</th>
+              <th style="min-width: 100px;">Updated At</th>
               <th style="min-width: 80px;">Actions</th>
             </tr>
           </thead>
@@ -94,7 +95,8 @@
               <td><small>Handles HR, payroll, and recruitment</small></td>
               <td><span class="badge bg-success">Yes</span></td>
               <td><button class="btn btn-sm btn-info py-1 px-2" data-bs-toggle="modal" data-bs-target="#manageGroupsModal"><i class="bi bi-people"></i></button></td>
-              <td><small>Jane Doe / 2023-01-01 09:00</small></td>
+              <td><small>Jane Doe</small></td>
+              <td><small>2023-01-01 09:00</small></td>
               <td>
                 <div class="d-flex gap-1">
                   <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editDepartmentModal"><i class="bi bi-pencil"></i></button>
@@ -107,7 +109,8 @@
               <td><small>Manages company finances</small></td>
               <td><span class="badge bg-success">Yes</span></td>
               <td><button class="btn btn-sm btn-info py-1 px-2" data-bs-toggle="modal" data-bs-target="#manageGroupsModal"><i class="bi bi-people"></i></button></td>
-              <td><small>Jane Doe / 2023-01-01 09:00</small></td>
+              <td><small>Jane Doe</small></td>
+              <td><small>2023-01-01 09:00</small></td>
               <td>
                 <div class="d-flex gap-1">
                   <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editDepartmentModal"><i class="bi bi-pencil"></i></button>
@@ -120,7 +123,8 @@
               <td><small>IT support and infrastructure</small></td>
               <td><span class="badge bg-danger">No</span></td>
               <td><button class="btn btn-sm btn-info py-1 px-2" data-bs-toggle="modal" data-bs-target="#manageGroupsModal"><i class="bi bi-people"></i></button></td>
-              <td><small>Jane Doe / 2023-01-01 09:00</small></td>
+              <td><small>Jane Doe</small></td>
+              <td><small>2023-01-01 09:00</small></td>
               <td>
                 <div class="d-flex gap-1">
                   <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editDepartmentModal"><i class="bi bi-pencil"></i></button>
@@ -150,7 +154,9 @@
               <label class="form-label">In Use <span class='text-danger'>*</span></label>
               <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="addDeptInUseSwitch" checked required>
-                <label class="form-check-label" for="addDeptInUseSwitch">Active</label>
+                <label class="form-check-label" for="addDeptInUseSwitch">
+                  <span class="badge bg-success">Active</span>
+                </label>
               </div>
             </div>
           </div>
@@ -178,7 +184,9 @@
               <label class="form-label">In Use</label>
               <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="editDeptInUseSwitch" checked>
-                <label class="form-check-label" for="editDeptInUseSwitch">Active</label>
+                <label class="form-check-label" for="editDeptInUseSwitch">
+                  <span class="badge bg-success">Active</span>
+                </label>
               </div>
             </div>
           </div>
@@ -268,7 +276,9 @@
               <label class="form-label">In Use <span class='text-danger'>*</span></label>
               <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="addGroupInUseSwitch" checked required>
-                <label class="form-check-label" for="addGroupInUseSwitch">Active</label>
+                <label class="form-check-label" for="addGroupInUseSwitch">
+                  <span class="badge bg-success">Active</span>
+                </label>
               </div>
             </div>
           </div>
@@ -296,7 +306,9 @@
               <label class="form-label">In Use</label>
               <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="editGroupInUseSwitch" checked>
-                <label class="form-check-label" for="editGroupInUseSwitch">Active</label>
+                <label class="form-check-label" for="editGroupInUseSwitch">
+                  <span class="badge bg-success">Active</span>
+                </label>
               </div>
             </div>
           </div>
@@ -332,6 +344,45 @@
     fetch('../includes/sidebar.html').then(r => r.text()).then(html => {
       document.getElementById('sidebar').outerHTML = html;
       highlightSidebarLink();
+    });
+
+    // Dynamic "In Use" badge functionality
+    function updateInUseBadge(checkboxId, badgeElement) {
+      const checkbox = document.getElementById(checkboxId);
+      const badge = badgeElement.querySelector('.badge');
+      
+      if (checkbox.checked) {
+        badge.className = 'badge bg-success';
+        badge.textContent = 'Active';
+      } else {
+        badge.className = 'badge bg-danger';
+        badge.textContent = 'Inactive';
+      }
+    }
+
+    // Add event listeners for all "In Use" checkboxes
+    document.addEventListener('DOMContentLoaded', function() {
+      const inUseCheckboxes = [
+        { checkboxId: 'addDeptInUseSwitch', labelId: 'addDeptInUseSwitch' },
+        { checkboxId: 'editDeptInUseSwitch', labelId: 'editDeptInUseSwitch' },
+        { checkboxId: 'addGroupInUseSwitch', labelId: 'addGroupInUseSwitch' },
+        { checkboxId: 'editGroupInUseSwitch', labelId: 'editGroupInUseSwitch' }
+      ];
+
+      inUseCheckboxes.forEach(item => {
+        const checkbox = document.getElementById(item.checkboxId);
+        const label = document.querySelector(`label[for="${item.labelId}"]`);
+        
+        if (checkbox && label) {
+          // Initial state
+          updateInUseBadge(item.checkboxId, label);
+          
+          // Event listener for changes
+          checkbox.addEventListener('change', function() {
+            updateInUseBadge(item.checkboxId, label);
+          });
+        }
+      });
     });
   </script>
   <script src="../ui-highlighting.js"></script>
