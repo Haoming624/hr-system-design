@@ -80,18 +80,20 @@
         <div class="d-flex align-items-center gap-3">
           <div class="dropdown">
             <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="settingsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-gear"></i> Columns
+              <i class="bi bi-gear"></i>
             </button>
             <ul class="dropdown-menu p-3" aria-labelledby="settingsDropdown" style="min-width: 200px;">
+              <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Select</label></li>
+              <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> #</label></li>
               <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Name</label></li>
               <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Job Title</label></li>
               <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Department</label></li>
+              <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Staff ID</label></li>
               <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Email</label></li>
               <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Status</label></li>
-              <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Actions</label></li>
+              <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Updated</label></li>
             </ul>
           </div>
-          <span class="small text-muted">Last Updated: 2023-01-01 09:00</span>
         </div>
       </div>
       <div class="card-body p-0">
@@ -128,138 +130,145 @@
           <table class="table table-hover mb-0">
             <thead class="table-light">
               <tr>
-                <th style="width: 18%;">Name</th>
-                <th style="width: 20%;">Job Title</th>
-                <th style="width: 15%;">Department</th>
-                <th style="width: 15%;">Payroll No</th>
-                <th style="width: 20%;">Email</th>
-                <th style="width: 10%;">Status</th>
-                <th style="width: 13%;">Actions</th>
+                <th style="width: 5%;">
+                  <input type="checkbox" class="form-check-input" id="selectAll">
+                </th>
+                <th style="width: 5%;">#</th>
+                <th style="width: 10%;">Staff ID</th>
+                <th style="width: 15%;">Name</th>
+                <th style="width: 18%;">Job Title</th>
+                <th style="width: 12%;">Department</th>
+                <th style="width: 18%;">Email</th>
+                <th style="width: 8%;">Status</th>
+                <th style="width: 9%;">Updated</th>
               </tr>
             </thead>
             <tbody>
               <tr>
+                <td>
+                  <input type="checkbox" class="form-check-input" name="selectedEmployees" value="1">
+                </td>
+                <td>1</td>
+                <td><a href="employee-profile.html" class="text-decoration-none">EMP00123</a></td>
                 <td>Jane Doe</td>
                 <td>HR Manager</td>
                 <td>Human Resources</td>
-                <td>1001</td>
                 <td>jane.doe@company.com</td>
                 <td><span class="badge bg-success">Active</span></td>
-                <td>
-                  <div class="btn-group btn-group-sm">
-                    <a href="employee-profile.html" class="btn btn-outline-primary d-inline-flex align-items-center" title="View Profile">
-                      <i class="bi bi-person"></i>&nbsp;View
-                    </a>
-                  </div>
-                </td>
+                <td><small>2023-01-01 09:00</small></td>
               </tr>
               <tr class="table-warning">
+                <td>
+                  <input type="checkbox" class="form-check-input" name="selectedEmployees" value="2">
+                </td>
+                <td>2</td>
+                <td><a href="employee-profile.html" class="text-decoration-none">EMP00124</a></td>
                 <td>John Smith</td>
                 <td>Finance Director</td>
                 <td>Finance</td>
-                <td>1002</td>
                 <td>john.smith@company.com</td>
                 <td><span class="badge bg-warning text-dark">On Leave</span></td>
-                <td>
-                  <div class="btn-group btn-group-sm">
-                    <a href="employee-profile.html" class="btn btn-outline-primary d-inline-flex align-items-center" title="View Profile">
-                      <i class="bi bi-person"></i>&nbsp;View
-                    </a>
-                  </div>
-                </td>
+                <td><small>2023-01-02 14:30</small></td>
               </tr>
               <tr>
+                <td>
+                  <input type="checkbox" class="form-check-input" name="selectedEmployees" value="3">
+                </td>
+                <td>3</td>
+                <td><a href="employee-profile.html" class="text-decoration-none">EMP00125</a></td>
                 <td>Sarah Johnson</td>
                 <td>IT Support Specialist</td>
                 <td>IT</td>
-                <td>1003</td>
                 <td>sarah.johnson@company.com</td>
                 <td><span class="badge bg-success">Active</span></td>
-                <td>
-                  <div class="btn-group btn-group-sm">
-                    <a href="employee-profile.html" class="btn btn-outline-primary d-inline-flex align-items-center" title="View Profile">
-                      <i class="bi bi-person"></i>&nbsp;View
-                    </a>
-                  </div>
-                </td>
+                <td><small>2023-01-03 11:15</small></td>
               </tr>
               <tr>
+                <td>
+                  <input type="checkbox" class="form-check-input" name="selectedEmployees" value="4">
+                </td>
+                <td>4</td>
+                <td><a href="employee-profile.html" class="text-decoration-none">EMP00126</a></td>
                 <td>Mike Wilson</td>
                 <td>Operations Manager</td>
                 <td>Operations</td>
-                <td>1004</td>
                 <td>mike.wilson@company.com</td>
                 <td><span class="badge bg-success">Active</span></td>
-                <td>
-                  <div class="btn-group btn-group-sm">
-                    <a href="employee-profile.html" class="btn btn-outline-primary d-inline-flex align-items-center" title="View Profile">
-                      <i class="bi bi-person"></i>&nbsp;View
-                    </a>
-                  </div>
-                </td>
+                <td><small>2023-01-04 16:45</small></td>
               </tr>
               <tr class="table-warning">
+                <td>
+                  <input type="checkbox" class="form-check-input" name="selectedEmployees" value="5">
+                </td>
+                <td>5</td>
+                <td><a href="employee-profile.html" class="text-decoration-none">EMP00127</a></td>
                 <td>Lisa Brown</td>
                 <td>Marketing Specialist</td>
                 <td>Marketing</td>
-                <td>1005</td>
                 <td>lisa.brown@company.com</td>
                 <td><span class="badge bg-warning text-dark">On Leave</span></td>
-                <td>
-                  <div class="btn-group btn-group-sm">
-                    <a href="employee-profile.html" class="btn btn-outline-primary d-inline-flex align-items-center" title="View Profile">
-                      <i class="bi bi-person"></i>&nbsp;View
-                    </a>
-                  </div>
-                </td>
+                <td><small>2023-01-05 10:20</small></td>
               </tr>
               <tr class="table-secondary">
+                <td>
+                  <input type="checkbox" class="form-check-input" name="selectedEmployees" value="6">
+                </td>
+                <td>6</td>
+                <td><a href="employee-profile.html" class="text-decoration-none">EMP00128</a></td>
                 <td>David Lee</td>
                 <td>Former Employee</td>
                 <td>Former</td>
-                <td>1006</td>
                 <td>david.lee@company.com</td>
                 <td><span class="badge bg-secondary">Inactive</span></td>
-                <td>
-                  <div class="btn-group btn-group-sm">
-                    <a href="employee-profile.html" class="btn btn-outline-primary d-inline-flex align-items-center" title="View Profile">
-                      <i class="bi bi-person"></i>&nbsp;View
-                    </a>
-                  </div>
-                </td>
+                <td><small>2023-01-06 13:10</small></td>
               </tr>
               <tr>
+                <td>
+                  <input type="checkbox" class="form-check-input" name="selectedEmployees" value="7">
+                </td>
+                <td>7</td>
+                <td><a href="employee-profile.html" class="text-decoration-none">EMP00129</a></td>
                 <td>Emma Davis</td>
                 <td>Payroll Officer</td>
                 <td>Finance</td>
-                <td>1007</td>
                 <td>emma.davis@company.com</td>
                 <td><span class="badge bg-success">Active</span></td>
-                <td>
-                  <div class="btn-group btn-group-sm">
-                    <a href="employee-profile.html" class="btn btn-outline-primary d-inline-flex align-items-center" title="View Profile">
-                      <i class="bi bi-person"></i>&nbsp;View
-                    </a>
-                  </div>
-                </td>
+                <td><small>2023-01-07 09:30</small></td>
               </tr>
               <tr class="table-warning">
+                <td>
+                  <input type="checkbox" class="form-check-input" name="selectedEmployees" value="8">
+                </td>
+                <td>8</td>
+                <td><a href="employee-profile.html" class="text-decoration-none">EMP00130</a></td>
                 <td>Tom Anderson</td>
                 <td>Sales Manager</td>
                 <td>Sales</td>
-                <td>1008</td>
                 <td>tom.anderson@company.com</td>
                 <td><span class="badge bg-warning text-dark">On Leave</span></td>
-                <td>
-                  <div class="btn-group btn-group-sm">
-                    <a href="employee-profile.html" class="btn btn-outline-primary d-inline-flex align-items-center" title="View Profile">
-                      <i class="bi bi-person"></i>&nbsp;View
-                    </a>
-                  </div>
-                </td>
+                <td><small>2023-01-08 15:45</small></td>
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mass Actions -->
+    <div class="card shadow-lg border-0 position-fixed bottom-0" id="massActionsCard" style="display: none; z-index: 1050; left: 50%; transform: translateX(-50%); margin-bottom: 1rem; min-width: 400px;">
+      <div class="card-body py-3">
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
+            <span class="text-muted">Selected: <span id="selectedCount">0</span> employees</span>
+          </div>
+          <div class="d-flex gap-2 ms-4">
+            <button class="btn btn-outline-primary btn-sm" id="exportSelected">
+              <i class="bi bi-download"></i> Export Selected
+            </button>
+            <button class="btn btn-outline-danger btn-sm" id="bulkDelete">
+              <i class="bi bi-trash"></i> Delete Selected
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -346,6 +355,55 @@
       document.getElementById('sidebar').outerHTML = html;
       highlightSidebarLink();
     });
+    
+    // Select All functionality
+    document.getElementById('selectAll').addEventListener('change', function() {
+      const checkboxes = document.querySelectorAll('input[name="selectedEmployees"]');
+      checkboxes.forEach(checkbox => {
+        checkbox.checked = this.checked;
+      });
+      updateMassActions();
+    });
+    
+    // Individual checkbox change
+    document.querySelectorAll('input[name="selectedEmployees"]').forEach(checkbox => {
+      checkbox.addEventListener('change', updateMassActions);
+    });
+    
+    function updateMassActions() {
+      const selectedCheckboxes = document.querySelectorAll('input[name="selectedEmployees"]:checked');
+      const massActionsCard = document.getElementById('massActionsCard');
+      const selectedCount = document.getElementById('selectedCount');
+      
+      if (selectedCheckboxes.length > 0) {
+        massActionsCard.style.display = 'block';
+        selectedCount.textContent = selectedCheckboxes.length;
+      } else {
+        massActionsCard.style.display = 'none';
+      }
+    }
+    
+    // Mass action handlers
+    document.getElementById('exportSelected').addEventListener('click', function() {
+      const selectedEmployees = Array.from(document.querySelectorAll('input[name="selectedEmployees"]:checked'))
+        .map(checkbox => checkbox.value);
+      alert(`Exporting ${selectedEmployees.length} employees: ${selectedEmployees.join(', ')}`);
+    });
+    
+    document.getElementById('bulkUpdate').addEventListener('click', function() {
+      const selectedEmployees = Array.from(document.querySelectorAll('input[name="selectedEmployees"]:checked'))
+        .map(checkbox => checkbox.value);
+      alert(`Bulk update for ${selectedEmployees.length} employees: ${selectedEmployees.join(', ')}`);
+    });
+    
+    document.getElementById('bulkDelete').addEventListener('click', function() {
+      const selectedEmployees = Array.from(document.querySelectorAll('input[name="selectedEmployees"]:checked'))
+        .map(checkbox => checkbox.value);
+      if (confirm(`Are you sure you want to delete ${selectedEmployees.length} employees?`)) {
+        alert(`Deleting ${selectedEmployees.length} employees: ${selectedEmployees.join(', ')}`);
+      }
+    });
+    
     // Redirect to profile page after creating new employee (draft)
     document.getElementById('addEmployeeForm').addEventListener('submit', function(e) {
       e.preventDefault();

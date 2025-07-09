@@ -160,6 +160,7 @@
           <a class="list-group-item list-group-item-action directory-link" href="#addresses">Addresses</a>
           <!-- <a class="list-group-item list-group-item-action directory-link" href="#bank-info">Bank Info</a> -->
           <a class="list-group-item list-group-item-action directory-link" href="#employment-info">Employment Information</a>
+          <a class="list-group-item list-group-item-action directory-link" href="#job-details">Job Details</a>
           <a class="list-group-item list-group-item-action directory-link" href="#other-remarks">Other / Remarks</a>
         </nav>
       </div>
@@ -499,7 +500,6 @@
             <span class="d-flex align-items-center">
               <i class="bi bi-briefcase me-2"></i> Employment Information
               <button class="btn btn-link p-0 edit-btn ms-2" title="Edit Employment Information" data-bs-toggle="modal" data-bs-target="#editEmploymentInfoModal"><i class="bi bi-pencil"></i></button>
-              <button class="btn btn-outline-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#updateRoleModal">Update Role</button>
             </span>
             <span class="d-flex align-items-center">
               <span class="text-muted small me-3">Last Updated By: Jane Doe / 2023-01-01 09:00</span>
@@ -509,16 +509,53 @@
           </div>
           <div id="collapseEmploymentInfo" class="collapse show">
           <div class="profile-row">
+            <div class="profile-label">Department</div>
+            <div class="profile-value">Human Resources</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Team / Group</div>
+            <div class="profile-value">Recruitment Team</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Status</div>
+            <div class="profile-value"><span class="badge bg-success">Active</span></div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Join Date</div>
+            <div class="profile-value">2020-01-01</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Probation End Date</div>
+            <div class="profile-value">2020-07-01</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Manager</div>
+            <div class="profile-value">John Smith</div>
+          </div>
+          </div>
+        </div>
+        <!-- Job Details Section -->
+        <div class="profile-section-card mb-3 position-relative" id="job-details" style="border-left: 6px solid #ff9800; box-shadow: 0 4px 16px rgba(255, 152, 0, 0.07);">
+          <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #fff3e0; color: #f57c00; cursor:pointer;" data-bs-toggle="collapse" data-bs-target="#collapseJobDetails" aria-expanded="true" aria-controls="collapseJobDetails">
+            <span class="d-flex align-items-center">
+              <i class="bi bi-person-badge me-2"></i> Job Details
+              <button class="btn btn-link p-0 edit-btn ms-2" title="Edit Job Details" data-bs-toggle="modal" data-bs-target="#editJobDetailsModal"><i class="bi bi-pencil"></i></button>
+              <button class="btn btn-outline-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#updateRoleModal">Update Role</button>
+            </span>
+            <span class="d-flex align-items-center">
+              <span class="text-muted small me-3">Last Updated By: Jane Doe / 2023-01-01 09:00</span>
+              <button class="btn btn-outline-primary btn-sm me-2" id="exportJobDetailsBtn"><i class="bi bi-download"></i> Export Section</button>
+              <i class="bi bi-chevron-down ms-2 collapse-chevron" id="chevronJobDetails"></i>
+            </span>
+          </div>
+          <div id="collapseJobDetails" class="collapse show">
+          <div class="profile-row">
             <div class="profile-label">Job Title</div>
             <div class="profile-value">HR Manager</div>
           </div>
           <div class="profile-row">
             <div class="profile-label">Grading</div>
             <div class="profile-value"><span class="badge bg-info">Grade A</span></div>
-          </div>
-          <div class="profile-row">
-            <div class="profile-label">Department</div>
-            <div class="profile-value">Human Resources</div>
           </div>
           <div class="profile-row">
             <div class="profile-label">Work Type</div>
@@ -541,22 +578,6 @@
             <div class="profile-value">-</div>
           </div>
           <div class="profile-row">
-            <div class="profile-label">Manager</div>
-            <div class="profile-value">John Smith</div>
-          </div>
-          <div class="profile-row">
-            <div class="profile-label">Join Date</div>
-            <div class="profile-value">2020-01-01</div>
-          </div>
-          <div class="profile-row">
-            <div class="profile-label">Probation End Date</div>
-            <div class="profile-value">2020-07-01</div>
-          </div>
-          <div class="profile-row">
-            <div class="profile-label">Status</div>
-            <div class="profile-value"><span class="badge bg-success">Active</span></div>
-          </div>
-          <div class="profile-row">
             <div class="profile-label">Last Working Date</div>
             <div class="profile-value">-</div>
           </div>
@@ -574,14 +595,89 @@
                 <div class="modal-body p-4">
                   <div class="alert alert-info mb-4">
                     <i class="bi bi-info-circle me-2"></i>
-                    <strong>Current Employment Details:</strong> This form is for editing employment information like work type, location, and dates. Department is read-only and linked to job titles. For job title changes, use the "Update Role" option.
+                    <strong>Employment Information:</strong> This form is for editing basic employment details like department, team, status, and dates. For job title and role changes, use the "Update Role" option in the Job Details section.
                   </div>
                   <div class="row g-3">
                     <div class="col-md-6">
                       <label class="form-label">Department <span class="text-muted small">(Read Only)</span></label>
                       <input type="text" class="form-control" value="Human Resources" disabled>
                     </div>
-
+                    <div class="col-md-6">
+                      <label class="form-label">Team / Group</label>
+                      <select class="form-select">
+                        <option value="">Select team/group</option>
+                        <option value="payroll">Payroll Team</option>
+                        <option value="recruitment">Recruitment Team</option>
+                        <option value="it-support">IT Support</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Status</label>
+                      <select class="form-select">
+                        <option value="active" selected>Active</option>
+                        <option value="on-leave">On Leave</option>
+                        <option value="suspended">Suspended</option>
+                        <option value="terminated">Terminated</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Join Date</label>
+                      <input type="date" class="form-control" value="2020-01-01">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Probation End Date</label>
+                      <input type="date" class="form-control" value="2020-07-01">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Manager</label>
+                      <select class="form-select">
+                        <option value="">Select manager</option>
+                        <option value="john-smith" selected>John Smith</option>
+                        <option value="sarah-johnson">Sarah Johnson</option>
+                        <option value="mike-wilson">Mike Wilson</option>
+                        <option value="lisa-brown">Lisa Brown</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Edit Job Details Modal -->
+        <div class="modal fade" id="editJobDetailsModal" tabindex="-1" aria-labelledby="editJobDetailsModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header" style="background: #ff9800; color: #fff;">
+                <h5 class="modal-title" id="editJobDetailsModalLabel">Edit Job Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form>
+                <div class="modal-body p-4">
+                  <div class="alert alert-info mb-4">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <strong>Job Details:</strong> This form is for editing job-specific information like work type, location, and dates. For role changes and promotions, use the "Update Role" option.
+                  </div>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label">Job Title <span class="text-muted small">(Read Only)</span></label>
+                      <input type="text" class="form-control" value="HR Manager" disabled>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Grading</label>
+                      <select class="form-select">
+                        <option value="">Select grading</option>
+                        <option value="A" selected>Grade A</option>
+                        <option value="B">Grade B</option>
+                        <option value="C">Grade C</option>
+                        <option value="None">None</option>
+                      </select>
+                    </div>
                     <div class="col-md-6">
                       <label class="form-label">Work Type</label>
                       <select class="form-select">
@@ -617,35 +713,8 @@
                       <input type="date" class="form-control" placeholder="For fixed-term contracts">
                     </div>
                     <div class="col-md-6">
-                      <label class="form-label">Status</label>
-                      <select class="form-select">
-                        <option value="active" selected>Active</option>
-                        <option value="on-leave">On Leave</option>
-                        <option value="suspended">Suspended</option>
-                        <option value="terminated">Terminated</option>
-                      </select>
-                    </div>
-                    <div class="col-md-6">
-                      <label class="form-label">Join Date</label>
-                      <input type="date" class="form-control" value="2020-01-01">
-                    </div>
-                    <div class="col-md-6">
-                      <label class="form-label">Probation End Date</label>
-                      <input type="date" class="form-control" value="2020-07-01">
-                    </div>
-                    <div class="col-md-6">
                       <label class="form-label">Last Working Date</label>
                       <input type="date" class="form-control" placeholder="For terminated employees">
-                    </div>
-                    <div class="col-md-6">
-                      <label class="form-label">Manager</label>
-                      <select class="form-select">
-                        <option value="">Select manager</option>
-                        <option value="john-smith" selected>John Smith</option>
-                        <option value="sarah-johnson">Sarah Johnson</option>
-                        <option value="mike-wilson">Mike Wilson</option>
-                        <option value="lisa-brown">Lisa Brown</option>
-                      </select>
                     </div>
                   </div>
                 </div>
@@ -856,6 +925,7 @@
         document.getElementById('address'), // Changed from 'addresses' to 'address'
         // document.getElementById('bank-info'), // Bank Info section hidden
         document.getElementById('employment-info'),
+        document.getElementById('job-details'),
         document.getElementById('other-remarks')
       ];
       links.forEach((link, idx) => {
@@ -906,6 +976,7 @@
         {header: 'contacts', collapse: 'collapseContacts', chevron: 'chevronContacts'},
         {header: 'address', collapse: 'collapseAddress', chevron: 'chevronAddress'},
         {header: 'employment-info', collapse: 'collapseEmploymentInfo', chevron: 'chevronEmploymentInfo'},
+        {header: 'job-details', collapse: 'collapseJobDetails', chevron: 'chevronJobDetails'},
         {header: 'other-remarks', collapse: 'collapseOtherRemarks', chevron: 'chevronOtherRemarks'}
       ];
       sections.forEach(({header, collapse, chevron}) => {

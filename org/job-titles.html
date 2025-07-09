@@ -28,17 +28,6 @@
           <input type="text" class="form-control" id="filterDepartment" placeholder="e.g. Finance">
         </div>
         <div class="col-md-2">
-          <label for="filterGroup" class="form-label mb-0">Group</label>
-          <select class="form-select" id="filterGroup">
-            <option value="">All</option>
-            <option>Payroll Team</option>
-            <option>Recruitment Team</option>
-            <option>IT Support</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div class="col-md-2">
           <label for="filterInUse" class="form-label mb-0">In Use</label>
           <select class="form-select" id="filterInUse">
             <option value="">All</option>
@@ -79,7 +68,6 @@
         <ul class="dropdown-menu p-3" aria-labelledby="settingsDropdown" style="min-width: 200px;">
           <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Job Title</label></li>
           <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Department</label></li>
-          <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Group</label></li>
           <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> In Use</label></li>
           <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Actions</label></li>
           <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Updated By</label></li>
@@ -95,7 +83,6 @@
             <tr>
               <th style="min-width: 150px;">Job Title</th>
               <th style="min-width: 120px;">Department</th>
-              <th style="min-width: 120px;">Group</th>
               <th style="min-width: 80px;">In Use</th>
               <th style="min-width: 100px;">Updated By</th>
               <th style="min-width: 100px;">Updated At</th>
@@ -106,42 +93,39 @@
             <tr>
               <td><strong>HR Manager</strong></td>
               <td><small>Human Resources</small></td>
-              <td><small>Recruitment Team</small></td>
               <td><span class="badge bg-success">Yes</span></td>
               <td><small>Jane Doe</small></td>
               <td><small>2023-01-01 09:00</small></td>
               <td>
                 <div class="d-flex gap-1">
-                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editJobTitleModal"><i class="bi bi-pencil"></i></button>
-                  <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteJobTitleModal"><i class="bi bi-trash"></i></button>
+                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editJobTitleModal"><i class="bi bi-pencil"></i> Edit</button>
+                  <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteJobTitleModal"><i class="bi bi-trash"></i> Delete</button>
                 </div>
               </td>
             </tr>
             <tr>
               <td><strong>Finance Officer</strong></td>
               <td><small>Finance</small></td>
-              <td><small>Payroll Team</small></td>
               <td><span class="badge bg-success">Yes</span></td>
               <td><small>Jane Doe</small></td>
               <td><small>2023-01-01 09:00</small></td>
               <td>
                 <div class="d-flex gap-1">
-                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editJobTitleModal"><i class="bi bi-pencil"></i></button>
-                  <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteJobTitleModal"><i class="bi bi-trash"></i></button>
+                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editJobTitleModal"><i class="bi bi-pencil"></i> Edit</button>
+                  <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteJobTitleModal"><i class="bi bi-trash"></i> Delete</button>
                 </div>
               </td>
             </tr>
             <tr class="table-danger">
               <td><strong>IT Support</strong></td>
               <td><small>IT</small></td>
-              <td><small>IT Support</small></td>
               <td><span class="badge bg-danger">No</span></td>
               <td><small>Jane Doe</small></td>
               <td><small>2023-01-01 09:00</small></td>
               <td>
                 <div class="d-flex gap-1">
-                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editJobTitleModal"><i class="bi bi-pencil"></i></button>
-                  <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteJobTitleModal"><i class="bi bi-trash"></i></button>
+                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editJobTitleModal"><i class="bi bi-pencil"></i> Edit</button>
+                  <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteJobTitleModal"><i class="bi bi-trash"></i> Delete</button>
                 </div>
               </td>
             </tr>
@@ -162,7 +146,6 @@
           <div class="modal-body">
             <div class="mb-3"><label class="form-label">Job Title <span class='text-danger'>*</span></label><input type="text" class="form-control" required></div>
             <div class="mb-3"><label class="form-label">Department <span class='text-danger'>*</span></label><select class="form-select" required><option>Human Resources</option><option>Finance</option><option>IT</option><option>Other</option></select></div>
-            <div class="mb-3"><label class="form-label">Group <span class='text-danger'>*</span></label><select class="form-select" required><option>Payroll Team</option><option>Recruitment Team</option><option>IT Support</option><option>Other</option></select></div>
             <div class="mb-3"><label class="form-label">In Use <span class='text-danger'>*</span></label>
               <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="addJobTitleInUseSwitch" checked required>
@@ -192,7 +175,6 @@
           <div class="modal-body">
             <div class="mb-3"><label class="form-label">Job Title</label><input type="text" class="form-control" value="HR Manager"></div>
             <div class="mb-3"><label class="form-label">Department</label><input type="text" class="form-control" value="Human Resources"></div>
-            <div class="mb-3"><label class="form-label">Group</label><input type="text" class="form-control" value="Recruitment Team"></div>
             <div class="mb-3"><label class="form-label">In Use</label>
               <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="editJobTitleInUseSwitch" checked>
