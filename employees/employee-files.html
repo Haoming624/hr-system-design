@@ -62,8 +62,8 @@
             </select>
           </div>
           <div class="col-md-3 d-flex gap-2">
-            <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Search</button>
-            <button type="reset" class="btn btn-secondary"><i class="bi bi-arrow-counterclockwise"></i> Reset</button>
+            <button type="submit" class="btn btn-primary btn-sm py-1 px-2"><i class="bi bi-search"></i></button>
+            <button type="reset" class="btn btn-secondary btn-sm py-1 px-2"><i class="bi bi-arrow-counterclockwise"></i></button>
           </div>
         </form>
       </div>
@@ -72,60 +72,93 @@
     <div class="card mb-4">
       <div class="card-header bg-primary text-white fw-bold d-flex align-items-center justify-content-between">
         <span>Employee Files</span>
-        <span class="small text-white-50 ms-auto">Last Updated By: Jane Doe / 2023-01-01 09:00</span>
+        <div class="d-flex align-items-center ms-auto gap-3">
+          <span class="small text-white-50">Last Updated By: Jane Doe / 2023-01-01 09:00</span>
+          <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#addFileModal"><i class="bi bi-plus"></i> Add File</button>
+        </div>
       </div>
       <div class="card-body p-0">
         <table class="table table-striped align-middle mb-0">
           <thead>
             <tr>
-              <th>File Type</th>
-              <th>File Name</th>
-              <th>Uploaded</th>
-              <th>Expiry Date</th>
-              <th>Status</th>
-              <th>Actions</th>
+              <th style="min-width: 100px;">File Type</th>
+              <th style="min-width: 200px;">File Name</th>
+              <th style="min-width: 100px;">Uploaded</th>
+              <th style="min-width: 100px;">Expiry Date</th>
+              <th style="min-width: 100px;">Status</th>
+              <th style="min-width: 80px;">Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Contract</td>
-              <td>Employment Contract.pdf</td>
-              <td>2023-01-10</td>
-              <td>-</td>
+              <td><span class="badge bg-info">Contract</span></td>
+              <td><strong>Employment Contract.pdf</strong></td>
+              <td><small>2023-01-10</small></td>
+              <td><small>-</small></td>
               <td><span class="badge bg-success">Valid</span></td>
-              <td><button class="btn btn-sm btn-secondary">View</button></td>
+              <td>
+                <div class="d-flex gap-1">
+                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#viewFileModal"><i class="bi bi-eye"></i></button>
+                  <button class="btn btn-sm btn-primary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteFileModal"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
             </tr>
-            <tr>
-              <td>Certificate</td>
-              <td>First Aid Certificate.pdf</td>
-              <td>2022-06-01</td>
-              <td>2024-07-01</td>
+            <tr class="table-warning">
+              <td><span class="badge bg-warning">Certificate</span></td>
+              <td><strong>First Aid Certificate.pdf</strong></td>
+              <td><small>2022-06-01</small></td>
+              <td><small>2024-07-01</small></td>
               <td><span class="badge bg-warning text-dark">Expiring Soon</span></td>
-              <td><button class="btn btn-sm btn-secondary">View</button></td>
+              <td>
+                <div class="d-flex gap-1">
+                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#viewFileModal"><i class="bi bi-eye"></i></button>
+                  <button class="btn btn-sm btn-primary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteFileModal"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
             </tr>
-            <tr>
-              <td>License</td>
-              <td>Old License.pdf</td>
-              <td>2021-05-01</td>
-              <td>2023-05-01</td>
+            <tr class="table-danger">
+              <td><span class="badge bg-secondary">License</span></td>
+              <td><strong>Old License.pdf</strong></td>
+              <td><small>2021-05-01</small></td>
+              <td><small>2023-05-01</small></td>
               <td><span class="badge bg-danger">Expired</span></td>
-              <td><button class="btn btn-sm btn-secondary">View</button></td>
+              <td>
+                <div class="d-flex gap-1">
+                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#viewFileModal"><i class="bi bi-eye"></i></button>
+                  <button class="btn btn-sm btn-primary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteFileModal"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
             </tr>
             <tr>
-              <td>License</td>
-              <td>Driver License.pdf</td>
-              <td>2022-01-15</td>
-              <td>2025-01-15</td>
+              <td><span class="badge bg-secondary">License</span></td>
+              <td><strong>Driver License.pdf</strong></td>
+              <td><small>2022-01-15</small></td>
+              <td><small>2025-01-15</small></td>
               <td><span class="badge bg-success">Valid</span></td>
-              <td><button class="btn btn-sm btn-secondary">View</button></td>
+              <td>
+                <div class="d-flex gap-1">
+                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#viewFileModal"><i class="bi bi-eye"></i></button>
+                  <button class="btn btn-sm btn-primary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteFileModal"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
             </tr>
-            <tr>
-              <td>License</td>
-              <td>Forklift License.pdf</td>
-              <td>2021-09-10</td>
-              <td>2024-06-10</td>
+            <tr class="table-warning">
+              <td><span class="badge bg-secondary">License</span></td>
+              <td><strong>Forklift License.pdf</strong></td>
+              <td><small>2021-09-10</small></td>
+              <td><small>2024-06-10</small></td>
               <td><span class="badge bg-warning text-dark">Expiring Soon</span></td>
-              <td><button class="btn btn-sm btn-secondary">View</button></td>
+              <td>
+                <div class="d-flex gap-1">
+                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#viewFileModal"><i class="bi bi-eye"></i></button>
+                  <button class="btn btn-sm btn-primary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteFileModal"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -204,6 +237,195 @@
       </div>
     </div>
   </div>
+
+  <!-- Add File Modal -->
+  <div class="modal fade" id="addFileModal" tabindex="-1" aria-labelledby="addFileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="addFileModalLabel">Add New File</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="addFileForm">
+          <div class="modal-body p-4">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">File Type</label>
+                <select class="form-select" required>
+                  <option value="">Select file type</option>
+                  <option value="contract">Contract</option>
+                  <option value="license">License</option>
+                  <option value="certificate">Certificate</option>
+                  <option value="policy">Policy</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">File Name</label>
+                <input type="text" class="form-control" placeholder="Enter file name" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">File Upload</label>
+                <input type="file" class="form-control" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required>
+                <div class="form-text">Supported formats: PDF, DOC, DOCX, JPG, PNG</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Expiry Date</label>
+                <input type="date" class="form-control">
+                <div class="form-text">Leave empty if no expiry date</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" rows="3" placeholder="Enter file description"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer border-0 pt-0">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Upload File</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit File Modal -->
+  <div class="modal fade" id="editFileModal" tabindex="-1" aria-labelledby="editFileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="editFileModalLabel">Edit File</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="editFileForm">
+          <div class="modal-body p-4">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">File Type</label>
+                <select class="form-select" required>
+                  <option value="">Select file type</option>
+                  <option value="contract" selected>Contract</option>
+                  <option value="license">License</option>
+                  <option value="certificate">Certificate</option>
+                  <option value="policy">Policy</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">File Name</label>
+                <input type="text" class="form-control" value="Employment Contract.pdf" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Replace File</label>
+                <input type="file" class="form-control" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                <div class="form-text">Upload new file to replace existing one</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Expiry Date</label>
+                <input type="date" class="form-control">
+                <div class="form-text">Leave empty if no expiry date</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" rows="3" placeholder="Enter file description">Employment contract for Jane Doe</textarea>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer border-0 pt-0">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Update File</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete File Modal -->
+  <div class="modal fade" id="deleteFileModal" tabindex="-1" aria-labelledby="deleteFileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="deleteFileModalLabel">Delete File</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="text-center mb-3">
+            <i class="bi bi-exclamation-triangle text-danger" style="font-size: 3rem;"></i>
+          </div>
+          <h6 class="text-center mb-3">Are you sure you want to delete this file?</h6>
+          <div class="alert alert-warning">
+            <strong>File:</strong> Employment Contract.pdf<br>
+            <strong>Type:</strong> Contract<br>
+            <strong>Uploaded:</strong> 2023-01-10
+          </div>
+          <p class="text-muted text-center mb-0">
+            This action cannot be undone. The file will be permanently removed from the system.
+          </p>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" id="confirmDeleteFile">Delete File</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- View File Modal -->
+  <div class="modal fade" id="viewFileModal" tabindex="-1" aria-labelledby="viewFileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="viewFileModalLabel">View File</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-bold">File Name</label>
+              <p class="mb-0">Employment Contract.pdf</p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">File Type</label>
+              <p class="mb-0"><span class="badge bg-info">Contract</span></p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Uploaded</label>
+              <p class="mb-0">2023-01-10</p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Expiry Date</label>
+              <p class="mb-0">-</p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Status</label>
+              <p class="mb-0"><span class="badge bg-success">Valid</span></p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">File Size</label>
+              <p class="mb-0">2.4 MB</p>
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-bold">Description</label>
+              <p class="mb-0">Employment contract for Jane Doe</p>
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-bold">File Preview</label>
+              <div class="border rounded p-3 bg-light text-center">
+                <i class="bi bi-file-pdf text-danger" style="font-size: 3rem;"></i>
+                <p class="mb-0 mt-2">PDF Document</p>
+                <button class="btn btn-primary btn-sm mt-2"><i class="bi bi-download"></i> Download</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editFileModal" data-bs-dismiss="modal">Edit File</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     fetch('../includes/topbar.html').then(r => r.text()).then(html => document.getElementById('topbar').outerHTML = html);
     fetch('../includes/sidebar.html').then(r => r.text()).then(html => document.getElementById('sidebar').outerHTML = html);
@@ -216,6 +438,29 @@
     document.getElementById('addEmployeeForm').addEventListener('submit', function(e) {
       e.preventDefault();
       window.location.href = 'employee-profile.html';
+    });
+
+    // Add File Form Handler
+    document.getElementById('addFileForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Here you would typically send the form data to the server
+      alert('File uploaded successfully!');
+      bootstrap.Modal.getInstance(document.getElementById('addFileModal')).hide();
+    });
+
+    // Edit File Form Handler
+    document.getElementById('editFileForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Here you would typically send the form data to the server
+      alert('File updated successfully!');
+      bootstrap.Modal.getInstance(document.getElementById('editFileModal')).hide();
+    });
+
+    // Delete File Confirmation Handler
+    document.getElementById('confirmDeleteFile').addEventListener('click', function() {
+      // Here you would typically send a delete request to the server
+      alert('File deleted successfully!');
+      bootstrap.Modal.getInstance(document.getElementById('deleteFileModal')).hide();
     });
   </script>
   <script src="../ui-highlighting.js"></script>

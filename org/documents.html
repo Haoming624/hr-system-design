@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Organization Files</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/shared.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body>
+  <div id="topbar"></div>
+  <div id="sidebar"></div>
+  <div class="main-content">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="mb-0">Organization Documents</h2>
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addFileModal">Add Document</button>
+    </div>
+    <!-- Filter/Search Section -->
+    <form class="card p-3 mb-3">
+      <div class="row g-2 align-items-end">
+        <div class="col-md-3">
+          <label for="filterFileName" class="form-label mb-0">Document Name</label>
+          <input type="text" class="form-control" id="filterFileName" placeholder="e.g. Onboarding Checklist">
+        </div>
+        <div class="col-md-3">
+          <label for="filterFileType" class="form-label mb-0">Document Type</label>
+          <select class="form-select" id="filterFileType">
+            <option value="">All</option>
+            <option>Onboarding</option>
+            <option>Policy</option>
+            <option>Handbook</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="filterDepartment" class="form-label mb-0">Department</label>
+          <select class="form-select" id="filterDepartment">
+            <option value="">All</option>
+            <option>Human Resources</option>
+            <option>Finance</option>
+            <option>IT</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="filterGroup" class="form-label mb-0">Group</label>
+          <select class="form-select" id="filterGroup">
+            <option value="">All</option>
+            <option>Payroll Team</option>
+            <option>Recruitment Team</option>
+            <option>IT Support</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="filterStatus" class="form-label mb-0">Status</label>
+          <select class="form-select" id="filterStatus">
+            <option value="">All</option>
+            <option>Valid</option>
+            <option>Expiring Soon</option>
+            <option>Expired</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label for="filterInUse" class="form-label mb-0">In Use</label>
+          <select class="form-select" id="filterInUse">
+            <option value="">All</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <div class="col-md-1 d-flex gap-1">
+          <button type="submit" class="btn btn-primary btn-sm py-1 px-2"><i class="bi bi-search"></i></button>
+          <button type="reset" class="btn btn-secondary btn-sm py-1 px-2"><i class="bi bi-arrow-counterclockwise"></i></button>
+        </div>
+      </div>
+    </form>
+    <!-- Pagination and Settings UI -->
+    <div class="d-flex align-items-center mb-2">
+      <nav aria-label="Page navigation" class="me-3">
+        <ul class="pagination pagination-sm mb-0">
+          <li class="page-item disabled"><a class="page-link" href="#">&lt;</a></li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item disabled"><a class="page-link" href="#">&gt;</a></li>
+        </ul>
+      </nav>
+      <div class="me-2">
+        <select class="form-select form-select-sm" style="width:auto;display:inline-block;">
+          <option>50/page</option>
+          <option>20/page</option>
+          <option>100/page</option>
+        </select>
+      </div>
+      <span class="me-2">Go to <input type="number" min="1" value="1" class="form-control form-control-sm d-inline-block" style="width:60px;display:inline-block;"> </span>
+      <span class="me-2">Total: 3 documents</span>
+      <span class="me-2 badge bg-success">Valid: 1</span>
+      <span class="me-2 badge bg-warning text-dark">Expiring: 1</span>
+      <span class="me-2 badge bg-danger">Expired: 1</span>
+      <div class="dropdown ms-auto">
+        <button class="btn btn-light btn-sm border dropdown-toggle" type="button" id="settingsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-gear"></i>
+        </button>
+        <ul class="dropdown-menu p-3" aria-labelledby="settingsDropdown" style="min-width: 200px;">
+          <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Document Name</label></li>
+          <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Document Type</label></li>
+          <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Assigned Departments</label></li>
+          <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Assigned Groups</label></li>
+          <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> In Use</label></li>
+          <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Uploaded</label></li>
+          <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Expiry Date</label></li>
+          <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Status</label></li>
+          <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Actions</label></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="card-header bg-info text-white fw-bold">Files List</div>
+      <div class="card-body p-0">
+        <table class="table table-striped table-hover align-middle mb-0">
+          <thead>
+            <tr>
+              <th style="min-width: 200px;">Document Name</th>
+              <th style="min-width: 150px;">Description</th>
+              <th style="min-width: 100px;">Type</th>
+              <th style="min-width: 120px;">Departments</th>
+              <th style="min-width: 120px;">Groups</th>
+              <th style="min-width: 80px;">In Use</th>
+              <th style="min-width: 100px;">Status</th>
+              <th style="min-width: 100px;">Expiry</th>
+              <th style="min-width: 120px;">Created By</th>
+              <th style="min-width: 100px;">Created At</th>
+              <th style="min-width: 80px;">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Onboarding Checklist.pdf</strong></td>
+              <td><small>Checklist for new hires</small></td>
+              <td><span class="badge bg-info">Onboarding</span></td>
+              <td><small>HR, IT</small></td>
+              <td><small>Recruitment Team</small></td>
+              <td><span class="badge bg-success">Yes</span></td>
+              <td><span class="badge bg-success">Valid</span></td>
+              <td><small>-</small></td>
+              <td><small>John Smith</small></td>
+              <td><small>2023-02-01</small></td>
+              <td>
+                <div class="d-flex gap-1">
+                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteFileModal"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
+            </tr>
+            <tr class="table-warning">
+              <td><strong>Health & Safety Policy.pdf</strong></td>
+              <td><small>Health and safety policy for the organization</small></td>
+              <td><span class="badge bg-warning">Policy</span></td>
+              <td><small>All</small></td>
+              <td><small>-</small></td>
+              <td><span class="badge bg-success">Yes</span></td>
+              <td><span class="badge bg-warning text-dark">Expiring Soon</span></td>
+              <td><small>2024-06-01</small></td>
+              <td><small>Jane Doe</small></td>
+              <td><small>2022-05-10</small></td>
+              <td>
+                <div class="d-flex gap-1">
+                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteFileModal"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
+            </tr>
+            <tr class="table-danger">
+              <td><strong>Old Handbook.pdf</strong></td>
+              <td><small>Old handbook for the organization</small></td>
+              <td><span class="badge bg-secondary">Handbook</span></td>
+              <td><small>Finance</small></td>
+              <td><small>Payroll Team</small></td>
+              <td><span class="badge bg-danger">No</span></td>
+              <td><span class="badge bg-danger">Expired</span></td>
+              <td><small>2023-03-15</small></td>
+              <td><small>Mike Johnson</small></td>
+              <td><small>2021-03-15</small></td>
+              <td>
+                <div class="d-flex gap-1">
+                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteFileModal"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- Add File Modal -->
+  <div class="modal fade" id="addFileModal" tabindex="-1" aria-labelledby="addFileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="addFileModalLabel">Add Document</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form>
+          <div class="modal-body">
+            <div class="mb-3"><label class="form-label">Document Name <span class='text-danger'>*</span></label><input type="text" class="form-control" required></div>
+            <div class="mb-3"><label class="form-label">Document Description</label><input type="text" class="form-control"></div>
+            <div class="mb-3"><label class="form-label">Document Type <span class='text-danger'>*</span></label><select class="form-select" required><option>Onboarding</option><option>Policy</option><option>Handbook</option><option>Other</option></select></div>
+            <div class="mb-3"><label class="form-label">Upload Document <span class='text-danger'>*</span></label><input type="file" class="form-control" required></div>
+            <div class="mb-3"><label class="form-label">In Use <span class='text-danger'>*</span></label>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="addDocumentInUseSwitch" checked required>
+                <label class="form-check-label" for="addDocumentInUseSwitch">Active</label>
+              </div>
+            </div>
+            <!-- Nested checkbox list for department/group assignment -->
+            <div class="mb-3">
+              <label class="form-label">Assign to Departments & Groups</label>
+              <div class="border rounded p-3">
+                <!-- All checkbox -->
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" id="addallAssignments">
+                  <label class="form-check-label fw-bold text-primary" for="addallAssignments">All Departments & Groups</label>
+                </div>
+                <hr class="my-3">
+                <!-- Department checkboxes -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="checkbox" id="adddeptHR">
+                      <label class="form-check-label fw-bold" for="adddeptHR">Human Resources</label>
+                    </div>
+                    <div class="ms-4">
+                      <div class="form-check mb-1">
+                        <input class="form-check-input" type="checkbox" id="addgroupPayroll">
+                        <label class="form-check-label small" for="addgroupPayroll">Payroll Team</label>
+                      </div>
+                      <div class="form-check mb-1">
+                        <input class="form-check-input" type="checkbox" id="addgroupRecruitment">
+                        <label class="form-check-label small" for="addgroupRecruitment">Recruitment Team</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="checkbox" id="adddeptFinance">
+                      <label class="form-check-label fw-bold" for="adddeptFinance">Finance</label>
+                    </div>
+                    <div class="ms-4">
+                      <div class="form-check mb-1">
+                        <input class="form-check-input" type="checkbox" id="addgroupITSupport">
+                        <label class="form-check-label small" for="addgroupITSupport">IT Support</label>
+                      </div>
+                    </div>
+                    <div class="form-check mb-2 mt-3">
+                      <input class="form-check-input" type="checkbox" id="adddeptIT">
+                      <label class="form-check-label fw-bold" for="adddeptIT">IT</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3"><label class="form-label">Expiry Date</label><input type="date" class="form-control"></div>
+            <!-- Remove Status dropdown from Add/Edit File modals -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Edit File Modal -->
+  <div class="modal fade" id="editFileModal" tabindex="-1" aria-labelledby="editFileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-secondary text-white">
+          <h5 class="modal-title" id="editFileModalLabel">Edit Document</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form>
+          <div class="modal-body">
+            <div class="mb-3"><label class="form-label">Document Name</label><input type="text" class="form-control" value="Onboarding Checklist.pdf"></div>
+            <div class="mb-3"><label class="form-label">Document Description</label><input type="text" class="form-control" value="Checklist for new hires"></div>
+            <div class="mb-3"><label class="form-label">Document Type</label><select class="form-select"><option>Onboarding</option><option>Policy</option><option>Handbook</option><option>Other</option></select></div>
+            <div class="mb-3"><label class="form-label">Replace Document</label><input type="file" class="form-control"></div>
+            <div class="mb-3"><label class="form-label">In Use</label>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="editDocumentInUseSwitch" checked>
+                <label class="form-check-label" for="editDocumentInUseSwitch">Active</label>
+              </div>
+            </div>
+            <!-- Nested checkbox list for department/group assignment -->
+            <div class="mb-3">
+              <label class="form-label">Assign to Departments & Groups</label>
+              <div class="border rounded p-3">
+                <!-- All checkbox -->
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" id="editallAssignments">
+                  <label class="form-check-label fw-bold text-primary" for="editallAssignments">All Departments & Groups</label>
+                </div>
+                <hr class="my-3">
+                <!-- Department checkboxes -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="checkbox" id="editdeptHR">
+                      <label class="form-check-label fw-bold" for="editdeptHR">Human Resources</label>
+                    </div>
+                    <div class="ms-4">
+                      <div class="form-check mb-1">
+                        <input class="form-check-input" type="checkbox" id="editgroupPayroll">
+                        <label class="form-check-label small" for="editgroupPayroll">Payroll Team</label>
+                      </div>
+                      <div class="form-check mb-1">
+                        <input class="form-check-input" type="checkbox" id="editgroupRecruitment">
+                        <label class="form-check-label small" for="editgroupRecruitment">Recruitment Team</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="checkbox" id="editdeptFinance">
+                      <label class="form-check-label fw-bold" for="editdeptFinance">Finance</label>
+                    </div>
+                    <div class="ms-4">
+                      <div class="form-check mb-1">
+                        <input class="form-check-input" type="checkbox" id="editgroupITSupport">
+                        <label class="form-check-label small" for="editgroupITSupport">IT Support</label>
+                      </div>
+                    </div>
+                    <div class="form-check mb-2 mt-3">
+                      <input class="form-check-input" type="checkbox" id="editdeptIT">
+                      <label class="form-check-label fw-bold" for="editdeptIT">IT</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3"><label class="form-label">Expiry Date</label><input type="date" class="form-control"></div>
+            <!-- Remove Status dropdown from Add/Edit File modals -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Delete File Modal -->
+  <div class="modal fade" id="deleteFileModal" tabindex="-1" aria-labelledby="deleteFileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="deleteFileModalLabel">Delete Document</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this document?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    fetch('../includes/topbar.html').then(r => r.text()).then(html => document.getElementById('topbar').outerHTML = html);
+    fetch('../includes/sidebar.html').then(r => r.text()).then(html => {
+      document.getElementById('sidebar').outerHTML = html;
+      highlightSidebarLink();
+    });
+
+    // Nested checkbox logic for department/group assignment
+    function updateParentCheckbox(parentId, childIds) {
+      const parent = document.getElementById(parentId);
+      const checkedCount = childIds.filter(id => document.getElementById(id).checked).length;
+      if (checkedCount === 0) {
+        parent.checked = false;
+        parent.indeterminate = false;
+      } else if (checkedCount === childIds.length) {
+        parent.checked = true;
+        parent.indeterminate = false;
+      } else {
+        parent.checked = false;
+        parent.indeterminate = true;
+      }
+    }
+
+    function updateChildCheckboxes(parentId, childIds) {
+      const parent = document.getElementById(parentId);
+      childIds.forEach(id => {
+        document.getElementById(id).checked = parent.checked;
+      });
+      // Remove indeterminate state when parent is toggled
+      parent.indeterminate = false;
+    }
+
+    // Department to group mapping (for both Add and Edit modals)
+    const modalPrefixes = ['add', 'edit']; // 'add' for Add, 'edit' for Edit modal
+    modalPrefixes.forEach(prefix => {
+      const deptGroupMap = {
+        [`${prefix}deptHR`]: [`${prefix}groupPayroll`, `${prefix}groupRecruitment`],
+        [`${prefix}deptFinance`]: [`${prefix}groupITSupport`],
+        [`${prefix}deptIT`]: []
+      };
+      const allCheckboxId = `${prefix}allAssignments`;
+      const allCheckboxes = [allCheckboxId];
+      
+      // Get all individual checkboxes
+      const individualCheckboxes = [];
+      Object.keys(deptGroupMap).forEach(parentId => {
+        individualCheckboxes.push(parentId);
+        deptGroupMap[parentId].forEach(childId => {
+          individualCheckboxes.push(childId);
+        });
+      });
+      
+      // All checkbox logic
+      const allCheckbox = document.getElementById(allCheckboxId);
+      if (allCheckbox) {
+        allCheckbox.addEventListener('change', function() {
+          individualCheckboxes.forEach(id => {
+            const checkbox = document.getElementById(id);
+            if (checkbox) {
+              checkbox.checked = allCheckbox.checked;
+              checkbox.indeterminate = false;
+            }
+          });
+        });
+      }
+      
+      // Individual checkbox logic
+      individualCheckboxes.forEach(checkboxId => {
+        const checkbox = document.getElementById(checkboxId);
+        if (checkbox) {
+          checkbox.addEventListener('change', function() {
+            updateAllCheckbox(allCheckboxId, individualCheckboxes);
+          });
+        }
+      });
+      
+      Object.keys(deptGroupMap).forEach(parentId => {
+        const parent = document.getElementById(parentId);
+        if (parent) {
+          parent.addEventListener('change', function() {
+            updateChildCheckboxes(parentId, deptGroupMap[parentId]);
+            updateAllCheckbox(allCheckboxId, individualCheckboxes);
+          });
+        }
+        deptGroupMap[parentId].forEach(childId => {
+          const child = document.getElementById(childId);
+          if (child) {
+            child.addEventListener('change', function() {
+              updateParentCheckbox(parentId, deptGroupMap[parentId]);
+              updateAllCheckbox(allCheckboxId, individualCheckboxes);
+            });
+          }
+        });
+      });
+    });
+    
+    function updateAllCheckbox(allCheckboxId, individualCheckboxes) {
+      const allCheckbox = document.getElementById(allCheckboxId);
+      if (!allCheckbox) return;
+      
+      const checkedCount = individualCheckboxes.filter(id => {
+        const checkbox = document.getElementById(id);
+        return checkbox && checkbox.checked;
+      }).length;
+      
+      if (checkedCount === 0) {
+        allCheckbox.checked = false;
+        allCheckbox.indeterminate = false;
+      } else if (checkedCount === individualCheckboxes.length) {
+        allCheckbox.checked = true;
+        allCheckbox.indeterminate = false;
+      } else {
+        allCheckbox.checked = false;
+        allCheckbox.indeterminate = true;
+      }
+    }
+  </script>
+  <script src="../ui-highlighting.js"></script>
+</body>
+</html> 
