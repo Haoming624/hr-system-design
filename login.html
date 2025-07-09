@@ -14,7 +14,7 @@
         <div class="card shadow">
           <div class="card-body">
             <h3 class="card-title text-center mb-4">DCG HR System Login</h3>
-            <form>
+            <form id="loginForm">
               <div class="mb-3">
                 <label for="country" class="form-label">Country</label>
                 <select class="form-select" id="country" required>
@@ -34,16 +34,208 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" required>
               </div>
-              <button type="submit" class="btn btn-primary w-100">Login</button>
+              <button type="submit" class="btn btn-primary w-100 mb-3">Login</button>
+              <div class="text-center">
+                <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">
+                  <i class="bi bi-question-circle me-1"></i>Forgot Password?
+                </a>
+              </div>
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Forgot Password Modal -->
+  <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="forgotPasswordModalLabel">
+            <i class="bi bi-key me-2"></i>Forgot Password
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="step1" class="forgot-step">
+            <div class="alert alert-info">
+              <i class="bi bi-info-circle me-2"></i>
+              Enter your username and we'll send a password reset link to your registered email address.
+            </div>
+            <form id="forgotPasswordForm">
+              <div class="mb-3">
+                <label for="forgotCountry" class="form-label">Country</label>
+                <select class="form-select" id="forgotCountry" required>
+                  <option value="">Select Country</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="US">United States</option>
+                  <option value="CN">China</option>
+                  <option value="AU">Australia</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="forgotUsername" class="form-label">Username</label>
+                <input type="text" class="form-control" id="forgotUsername" required>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary">
+                  <i class="bi bi-envelope me-2"></i>Send Reset Link
+                </button>
+              </div>
+            </form>
+          </div>
+          
+          <div id="step2" class="forgot-step" style="display: none;">
+            <div class="alert alert-success">
+              <i class="bi bi-check-circle me-2"></i>
+              <strong>Reset link sent!</strong><br>
+              We've sent a password reset link to your registered email address. Please check your inbox and follow the instructions.
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reset Password Modal -->
+  <div class="modal fade" id="resetPasswordModal" tabindex="-1" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="resetPasswordModalLabel">
+            <i class="bi bi-shield-lock me-2"></i>Reset Password
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="resetPasswordForm">
+            <div class="mb-3">
+              <label for="newPassword" class="form-label">New Password</label>
+              <div class="input-group">
+                <input type="password" class="form-control" id="newPassword" required>
+                <button class="btn btn-outline-secondary" type="button" id="toggleNewPassword">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </div>
+              <div class="form-text">
+                <small>Password must be at least 8 characters long and contain uppercase, lowercase, number, and special character.</small>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirm New Password</label>
+              <div class="input-group">
+                <input type="password" class="form-control" id="confirmPassword" required>
+                <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-success">
+                <i class="bi bi-check-lg me-2"></i>Reset Password
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    fetch('includes/topbar.html').then(r => r.text()).then(html => document.getElementById('topbar').outerHTML = html);
-    fetch('includes/sidebar.html').then(r => r.text()).then(html => document.getElementById('sidebar').outerHTML = html);
+    // Handle forgot password form submission
+    document.getElementById('forgotPasswordForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const country = document.getElementById('forgotCountry').value;
+      const username = document.getElementById('forgotUsername').value;
+      
+      if (!country || !username) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+      
+      // Simulate API call to send reset email
+      console.log('Sending reset email to:', username, 'in country:', country);
+      
+      // Show success message
+      document.getElementById('step1').style.display = 'none';
+      document.getElementById('step2').style.display = 'block';
+    });
+
+    // Handle password reset form submission
+    document.getElementById('resetPasswordForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const newPassword = document.getElementById('newPassword').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      
+      if (newPassword !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+      }
+      
+      if (newPassword.length < 8) {
+        alert('Password must be at least 8 characters long.');
+        return;
+      }
+      
+      // Simulate API call to reset password
+      console.log('Resetting password...');
+      
+      // Show success and close modal
+      alert('Password reset successfully! You can now login with your new password.');
+      document.getElementById('resetPasswordModal').querySelector('.btn-close').click();
+    });
+
+    // Toggle password visibility
+    document.getElementById('toggleNewPassword').addEventListener('click', function() {
+      const input = document.getElementById('newPassword');
+      const icon = this.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'bi bi-eye-slash';
+      } else {
+        input.type = 'password';
+        icon.className = 'bi bi-eye';
+      }
+    });
+
+    document.getElementById('toggleConfirmPassword').addEventListener('click', function() {
+      const input = document.getElementById('confirmPassword');
+      const icon = this.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'bi bi-eye-slash';
+      } else {
+        input.type = 'password';
+        icon.className = 'bi bi-eye';
+      }
+    });
+
+    // Handle login form submission
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const country = document.getElementById('country').value;
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      if (!country || !username || !password) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+      
+      // Simulate login API call
+      console.log('Logging in:', username, 'in country:', country);
+      
+      // Redirect to dashboard (in real implementation)
+      window.location.href = 'org/dashboard.html';
+    });
   </script>
 </body>
 </html>

@@ -170,6 +170,12 @@
       tbody.innerHTML = '';
       assets.forEach((asset, idx) => {
         const tr = document.createElement('tr');
+        // Add row highlighting based on status
+        if (asset.status === 'Pending Return') {
+          tr.className = 'table-warning';
+        } else if (asset.status === 'Returned') {
+          tr.className = 'table-secondary';
+        }
         tr.innerHTML = `
           <td>${asset.type}</td>
           <td>${asset.description}</td>

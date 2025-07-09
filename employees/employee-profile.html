@@ -493,40 +493,12 @@
             </div>
           </div>
         </div>
-        <!-- Edit Employment Info Modal -->
-        <div class="modal fade" id="editEmploymentInfoModal" tabindex="-1" aria-labelledby="editEmploymentInfoModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header bg-warning text-dark">
-                <h5 class="modal-title" id="editEmploymentInfoModalLabel">Edit Employment Information</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <form>
-                <div class="modal-body p-4">
-                  <div class="mb-3"><label class="form-label">Job Title</label><input type="text" class="form-control" value="HR Manager"></div>
-                  <div class="mb-3"><label class="form-label">Department</label><input type="text" class="form-control" value="HR"></div>
-                  <div class="mb-3"><label class="form-label">Manager</label><input type="text" class="form-control" value="John Smith"></div>
-                  <div class="mb-3"><label class="form-label">Employment Type</label><input type="text" class="form-control" value="Full-time"></div>
-                  <div class="mb-3"><label class="form-label">Work Location</label><input type="text" class="form-control" value="London Office"></div>
-                  <div class="mb-3"><label class="form-label">Join Date</label><input type="date" class="form-control" value="2020-01-01"></div>
-                  <div class="mb-3"><label class="form-label">Probation Date</label><input type="date" class="form-control" value="2020-07-01"></div>
-                  <div class="mb-3"><label class="form-label">Status</label><select class="form-select"><option>Active</option><option>Inactive</option></select></div>
-                  <div class="mb-3"><label class="form-label">Last Working Date</label><input type="date" class="form-control"></div>
-                  <div class="mb-3"><label class="form-label">Contract Expiry Date</label><input type="date" class="form-control"></div>
-                </div>
-                <div class="modal-footer border-0 pt-0">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button type="submit" class="btn btn-primary">Save Changes</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
         <!-- Employment Information Section -->
         <div class="profile-section-card mb-3 position-relative" id="employment-info" style="border-left: 6px solid #fbc02d; box-shadow: 0 4px 16px rgba(251, 192, 45, 0.07);">
           <div class="profile-section-title d-flex align-items-center justify-content-between" style="background: #fffde7; color: #f9a825; cursor:pointer;" data-bs-toggle="collapse" data-bs-target="#collapseEmploymentInfo" aria-expanded="true" aria-controls="collapseEmploymentInfo">
             <span class="d-flex align-items-center">
               <i class="bi bi-briefcase me-2"></i> Employment Information
+              <button class="btn btn-link p-0 edit-btn ms-2" title="Edit Employment Information" data-bs-toggle="modal" data-bs-target="#editEmploymentInfoModal"><i class="bi bi-pencil"></i></button>
               <button class="btn btn-outline-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#updateRoleModal">Update Role</button>
             </span>
             <span class="d-flex align-items-center">
@@ -542,14 +514,10 @@
           </div>
           <div class="profile-row">
             <div class="profile-label">Department</div>
-            <div class="profile-value">HR</div>
+            <div class="profile-value">Human Resources</div>
           </div>
           <div class="profile-row">
-            <div class="profile-label">Manager</div>
-            <div class="profile-value">John Smith</div>
-          </div>
-          <div class="profile-row">
-            <div class="profile-label">Employment Type</div>
+            <div class="profile-label">Work Type</div>
             <div class="profile-value">Full-time</div>
           </div>
           <div class="profile-row">
@@ -557,11 +525,27 @@
             <div class="profile-value">London Office</div>
           </div>
           <div class="profile-row">
+            <div class="profile-label">Start Date</div>
+            <div class="profile-value">2020-01-01</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">End Date</div>
+            <div class="profile-value">-</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Contract Expiry Date</div>
+            <div class="profile-value">-</div>
+          </div>
+          <div class="profile-row">
+            <div class="profile-label">Manager</div>
+            <div class="profile-value">John Smith</div>
+          </div>
+          <div class="profile-row">
             <div class="profile-label">Join Date</div>
             <div class="profile-value">2020-01-01</div>
           </div>
           <div class="profile-row">
-            <div class="profile-label">Probation Date</div>
+            <div class="profile-label">Probation End Date</div>
             <div class="profile-value">2020-07-01</div>
           </div>
           <div class="profile-row">
@@ -572,10 +556,100 @@
             <div class="profile-label">Last Working Date</div>
             <div class="profile-value">-</div>
           </div>
-          <div class="profile-row">
-            <div class="profile-label">Contract Expiry Date</div>
-            <div class="profile-value">-</div>
           </div>
+        </div>
+        <!-- Edit Employment Info Modal -->
+        <div class="modal fade" id="editEmploymentInfoModal" tabindex="-1" aria-labelledby="editEmploymentInfoModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header bg-warning text-dark">
+                <h5 class="modal-title" id="editEmploymentInfoModalLabel">Edit Current Employment Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form>
+                <div class="modal-body p-4">
+                  <div class="alert alert-info mb-4">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <strong>Current Employment Details:</strong> This form is for editing employment information like work type, location, and dates. Department is read-only and linked to job titles. For job title changes, use the "Update Role" option.
+                  </div>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label">Department <span class="text-muted small">(Read Only)</span></label>
+                      <input type="text" class="form-control" value="Human Resources" disabled>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Work Type</label>
+                      <select class="form-select">
+                        <option value="">Select work type</option>
+                        <option value="full-time" selected>Full-time</option>
+                        <option value="part-time">Part-time</option>
+                        <option value="contract">Contract</option>
+                        <option value="temporary">Temporary</option>
+                        <option value="internship">Internship</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Work Location</label>
+                      <select class="form-select">
+                        <option value="">Select work location</option>
+                        <option value="london-office" selected>London Office</option>
+                        <option value="manchester-office">Manchester Office</option>
+                        <option value="birmingham-office">Birmingham Office</option>
+                        <option value="remote">Remote</option>
+                        <option value="hybrid">Hybrid</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Start Date</label>
+                      <input type="date" class="form-control" value="2020-01-01">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">End Date</label>
+                      <input type="date" class="form-control" placeholder="Leave empty if ongoing">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Contract Expiry Date</label>
+                      <input type="date" class="form-control" placeholder="For fixed-term contracts">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Status</label>
+                      <select class="form-select">
+                        <option value="active" selected>Active</option>
+                        <option value="on-leave">On Leave</option>
+                        <option value="suspended">Suspended</option>
+                        <option value="terminated">Terminated</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Join Date</label>
+                      <input type="date" class="form-control" value="2020-01-01">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Probation End Date</label>
+                      <input type="date" class="form-control" value="2020-07-01">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Last Working Date</label>
+                      <input type="date" class="form-control" placeholder="For terminated employees">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Manager</label>
+                      <select class="form-select">
+                        <option value="">Select manager</option>
+                        <option value="john-smith" selected>John Smith</option>
+                        <option value="sarah-johnson">Sarah Johnson</option>
+                        <option value="mike-wilson">Mike Wilson</option>
+                        <option value="lisa-brown">Lisa Brown</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
         <!-- Update Role Modal -->
@@ -583,11 +657,15 @@
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header" style="background: #f9a825; color: #fff;">
-                <h5 class="modal-title" id="updateRoleModalLabel">Update Role / Job Change Request</h5>
+                <h5 class="modal-title" id="updateRoleModalLabel">Update Role / Job Change</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <form>
                 <div class="modal-body p-4">
+                  <div class="alert alert-info mb-4">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <strong>Role Change:</strong> This form is for updating job titles and role changes. For editing other employment details like department, work type, or location, use the "Edit Employment Information" option.
+                  </div>
                   <div class="mb-3">
                     <label class="form-label">Change Type</label>
                     <select class="form-select" id="roleChangeTypeSelect">
@@ -599,16 +677,18 @@
                     </select>
                   </div>
                   <div class="mb-3">
-                    <label class="form-label">Old Job <span class="text-muted small">(Read Only)</span></label>
+                    <label class="form-label">Current Job <span class="text-muted small">(Read Only)</span></label>
                     <input type="text" class="form-control" id="oldJobInput" value="HR Assistant" disabled>
                   </div>
                   <div class="mb-3" id="newJobField">
-                    <label class="form-label">New Job <span class='text-danger'>*</span></label>
+                    <label class="form-label">New Job Title <span class='text-danger'>*</span></label>
                     <select class="form-select" id="newJobSelect" required>
-                      <option value="HR Manager">HR Manager</option>
-                      <option value="HR Assistant">HR Assistant</option>
-                      <option value="HR Officer">HR Officer</option>
-                      <!-- More job titles as needed -->
+                      <option value="">Select new job title</option>
+                      <option value="hr-manager">HR Manager</option>
+                      <option value="hr-assistant">HR Assistant</option>
+                      <option value="hr-officer">HR Officer</option>
+                      <option value="payroll-officer">Payroll Officer</option>
+                      <option value="it-support">IT Support Specialist</option>
                     </select>
                   </div>
                   <div class="mb-3">
@@ -618,15 +698,17 @@
                   <div class="mb-3">
                     <label class="form-label">Approved By <span class='text-danger'>*</span></label>
                     <select class="form-select" id="approvedBySelect" required>
+                      <option value="">Select approver</option>
                       <option value="mgr1">John Smith</option>
                       <option value="mgr2">Mary Johnson</option>
-                      <!-- Populate with managers dynamically as needed -->
+                      <option value="mgr3">Mike Wilson</option>
+                      <option value="mgr4">Lisa Brown</option>
                     </select>
                   </div>
                 </div>
                 <div class="modal-footer border-0 pt-0">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button type="submit" class="btn btn-primary">Update</button>
+                  <button type="submit" class="btn btn-primary">Update Role</button>
                 </div>
               </form>
             </div>
