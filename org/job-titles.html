@@ -66,6 +66,7 @@
           <i class="bi bi-gear"></i>
         </button>
         <ul class="dropdown-menu p-3" aria-labelledby="settingsDropdown" style="min-width: 200px;">
+          <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> #</label></li>
           <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Job Title</label></li>
           <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> Department</label></li>
           <li><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" checked> In Use</label></li>
@@ -81,6 +82,7 @@
         <table class="table table-striped table-hover align-middle mb-0">
           <thead>
             <tr>
+              <th style="min-width: 50px;">#</th>
               <th style="min-width: 150px;">Job Title</th>
               <th style="min-width: 120px;">Department</th>
               <th style="min-width: 80px;">In Use</th>
@@ -91,7 +93,8 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong>HR Manager</strong></td>
+              <td>1</td>
+              <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#viewJobTitleModal"><strong>HR Manager</strong></a></td>
               <td><small>Human Resources</small></td>
               <td><span class="badge bg-success">Yes</span></td>
               <td><small>Jane Doe</small></td>
@@ -104,7 +107,8 @@
               </td>
             </tr>
             <tr>
-              <td><strong>Finance Officer</strong></td>
+              <td>2</td>
+              <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#viewJobTitleModal"><strong>Finance Officer</strong></a></td>
               <td><small>Finance</small></td>
               <td><span class="badge bg-success">Yes</span></td>
               <td><small>Jane Doe</small></td>
@@ -117,7 +121,8 @@
               </td>
             </tr>
             <tr class="table-danger">
-              <td><strong>IT Support</strong></td>
+              <td>3</td>
+              <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#viewJobTitleModal"><strong>IT Support</strong></a></td>
               <td><small>IT</small></td>
               <td><span class="badge bg-danger">No</span></td>
               <td><small>Jane Doe</small></td>
@@ -206,6 +211,34 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
           <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- View Job Title Modal -->
+  <div class="modal fade" id="viewJobTitleModal" tabindex="-1" aria-labelledby="viewJobTitleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-info text-white">
+          <h5 class="modal-title" id="viewJobTitleModalLabel">View Job Title Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <p><strong>Job Title:</strong><br>HR Manager</p>
+              <p><strong>Department:</strong><br>Human Resources</p>
+              <p><strong>Status:</strong><br><span class="badge bg-success">Active</span></p>
+            </div>
+            <div class="col-md-6">
+              <p><strong>Updated By:</strong><br>Jane Doe</p>
+              <p><strong>Updated At:</strong><br>2023-01-01 09:00</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editJobTitleModal" data-bs-dismiss="modal">Edit</button>
         </div>
       </div>
     </div>
