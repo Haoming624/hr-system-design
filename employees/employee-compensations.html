@@ -130,56 +130,56 @@
           <form>
             <div class="modal-body p-4">
               <div class="mb-3">
-                <label class="form-label">Salary Type</label>
-                <select class="form-select" id="salaryTypeSelect" onchange="toggleSalaryFields()">
+                <label class="form-label">Salary Type <span class="text-danger">*</span></label>
+                <select class="form-select" id="salaryTypeSelect" onchange="toggleSalaryFields()" required>
                   <option value="annual">Annual</option>
                   <option value="hourly">Hourly</option>
                 </select>
               </div>
               <div id="annualFields">
-                <div class="mb-3"><label class="form-label">Amount</label><input type="number" class="form-control" value="40000"></div>
+                <div class="mb-3"><label class="form-label">Amount <span class="text-danger">*</span></label><input type="number" class="form-control" value="40000" required></div>
                 <div class="mb-3">
-                  <label class="form-label">Currency</label>
-                  <select class="form-select">
+                  <label class="form-label">Currency <span class="text-danger">*</span></label>
+                  <select class="form-select" required>
                     <option value="GBP">GBP</option>
                     <option value="EUR">EUR</option>
                     <option value="USD">USD</option>
                   </select>
                 </div>
                 <div class="mb-3">
-                  <label class="form-label">Working Pattern</label>
-                  <select class="form-select">
+                  <label class="form-label">Working Pattern <span class="text-danger">*</span></label>
+                  <select class="form-select" required>
                     <option value="Full-time">Full-time</option>
                     <option value="Part-time">Part-time</option>
                     <option value="Flexible">Flexible</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
-                <div class="mb-3"><label class="form-label">Weekly Working Hours</label><input type="number" class="form-control" value="37.5"></div>
+                <div class="mb-3"><label class="form-label">Weekly Working Hours <span class="text-danger">*</span></label><input type="number" class="form-control" value="37.5" required></div>
               </div>
               <div id="hourlyFields" style="display:none;">
-                <div class="mb-3"><label class="form-label">Hourly Rate</label><input type="number" class="form-control" value="20"></div>
+                <div class="mb-3"><label class="form-label">Hourly Rate <span class="text-danger">*</span></label><input type="number" class="form-control" value="20" required></div>
                 <div class="mb-3">
-                  <label class="form-label">Currency</label>
-                  <select class="form-select">
+                  <label class="form-label">Currency <span class="text-danger">*</span></label>
+                  <select class="form-select" required>
                     <option value="GBP">GBP</option>
                     <option value="EUR">EUR</option>
                     <option value="USD">USD</option>
                   </select>
                 </div>
                 <div class="mb-3">
-                  <label class="form-label">Working Pattern</label>
-                  <select class="form-select">
+                  <label class="form-label">Working Pattern <span class="text-danger">*</span></label>
+                  <select class="form-select" required>
                     <option value="Full-time">Full-time</option>
                     <option value="Part-time">Part-time</option>
                     <option value="Flexible">Flexible</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
-                <div class="mb-3"><label class="form-label">Weekly Working Hours</label><input type="number" class="form-control" value="20"></div>
+                <div class="mb-3"><label class="form-label">Weekly Working Hours <span class="text-danger">*</span></label><input type="number" class="form-control" value="20" required></div>
               </div>
               <div class="mb-3">
-                <label class="form-label">Approved By</label>
+                <label class="form-label">Approved By <span class="text-danger">*</span></label>
                 <select class="form-select" required>
                   <option value="">Select a manager</option>
                   <option value="john-smith">John Smith - HR Director</option>
@@ -215,7 +215,7 @@
           </div>
           <form>
             <div class="modal-body p-4">
-              <div class="mb-3"><label class="form-label">Daily Miles</label><input type="number" class="form-control" value="30"></div>
+              <div class="mb-3"><label class="form-label">Daily Miles <span class="text-danger">*</span></label><input type="number" class="form-control" value="30" required></div>
               <div class="mb-3"><label class="form-label">Amount (£0.20/mile)</label><input type="text" class="form-control" value="£6.00" disabled></div>
               <div class="mb-3"><label class="form-label">Frequency</label><input type="text" class="form-control" value="Daily" disabled></div>
               <div class="mb-3"><label class="form-label">Currency</label><input type="text" class="form-control" value="GBP" disabled></div>
@@ -259,20 +259,20 @@
           <div class="modal-body p-4">
             <div class="row g-3">
               <div class="col-md-4">
-                <label class="form-label">First Name</label>
-                <input type="text" class="form-control" placeholder="Enter first name">
+                <label class="form-label">First Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter first name" required>
               </div>
               <div class="col-md-4">
                 <label class="form-label">Middle Name</label>
                 <input type="text" class="form-control" placeholder="Enter middle name">
               </div>
               <div class="col-md-4">
-                <label class="form-label">Surname</label>
-                <input type="text" class="form-control" placeholder="Enter surname">
+                <label class="form-label">Surname <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter surname" required>
               </div>
               <div class="col-md-4">
-                <label class="form-label">Job Title</label>
-                <select class="form-select">
+                <label class="form-label">Job Title <span class="text-danger">*</span></label>
+                <select class="form-select" required>
                   <option value="">Select job title</option>
                   <option>HR Manager</option>
                   <option>Payroll Officer</option>
@@ -280,8 +280,8 @@
                 </select>
               </div>
               <div class="col-md-4">
-                <label class="form-label">Department</label>
-                <select class="form-select">
+                <label class="form-label">Department <span class="text-danger">*</span></label>
+                <select class="form-select" required>
                   <option value="">Select department</option>
                   <option>Human Resources</option>
                   <option>Finance</option>
@@ -298,12 +298,12 @@
                 </select>
               </div>
               <div class="col-md-4">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control" placeholder="Enter email">
+                <label class="form-label">Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" placeholder="Enter email" required>
               </div>
               <div class="col-md-4">
-                <label class="form-label">Status</label>
-                <select class="form-select">
+                <label class="form-label">Status <span class="text-danger">*</span></label>
+                <select class="form-select" required>
                   <option>Active</option>
                   <option>On Leave</option>
                   <option>Inactive</option>

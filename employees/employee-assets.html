@@ -74,11 +74,11 @@
               </div>
               <form id="addAssetForm">
                 <div class="modal-body">
-                  <div class="mb-3"><label class="form-label">Asset Type</label><input type="text" class="form-control" name="type" required></div>
-                  <div class="mb-3"><label class="form-label">Description</label><input type="text" class="form-control" name="description" required></div>
-                  <div class="mb-3"><label class="form-label">Asset ID/Number</label><input type="text" class="form-control" name="id" required></div>
-                  <div class="mb-3"><label class="form-label">Issued Date</label><input type="date" class="form-control" name="issued" required></div>
-                  <div class="mb-3"><label class="form-label">Status</label>
+                  <div class="mb-3"><label class="form-label">Asset Type <span class="text-danger">*</span></label><input type="text" class="form-control" name="type" required></div>
+                  <div class="mb-3"><label class="form-label">Description <span class="text-danger">*</span></label><input type="text" class="form-control" name="description" required></div>
+                  <div class="mb-3"><label class="form-label">Asset ID/Number <span class="text-danger">*</span></label><input type="text" class="form-control" name="id" required></div>
+                  <div class="mb-3"><label class="form-label">Issued Date <span class="text-danger">*</span></label><input type="date" class="form-control" name="issued" required></div>
+                  <div class="mb-3"><label class="form-label">Status <span class="text-danger">*</span></label>
                     <select class="form-select" name="status" required>
                       <option value="Active">Active</option>
                       <option value="Pending Return">Pending Return</option>
@@ -104,11 +104,11 @@
               </div>
               <form id="editAssetForm">
                 <div class="modal-body">
-                  <div class="mb-3"><label class="form-label">Asset Type</label><input type="text" class="form-control" name="type" required></div>
-                  <div class="mb-3"><label class="form-label">Description</label><input type="text" class="form-control" name="description" required></div>
-                  <div class="mb-3"><label class="form-label">Asset ID/Number</label><input type="text" class="form-control" name="id" required></div>
-                  <div class="mb-3"><label class="form-label">Issued Date</label><input type="date" class="form-control" name="issued" required></div>
-                  <div class="mb-3"><label class="form-label">Status</label>
+                  <div class="mb-3"><label class="form-label">Asset Type <span class="text-danger">*</span></label><input type="text" class="form-control" name="type" required></div>
+                  <div class="mb-3"><label class="form-label">Description <span class="text-danger">*</span></label><input type="text" class="form-control" name="description" required></div>
+                  <div class="mb-3"><label class="form-label">Asset ID/Number <span class="text-danger">*</span></label><input type="text" class="form-control" name="id" required></div>
+                  <div class="mb-3"><label class="form-label">Issued Date <span class="text-danger">*</span></label><input type="date" class="form-control" name="issued" required></div>
+                  <div class="mb-3"><label class="form-label">Status <span class="text-danger">*</span></label>
                     <select class="form-select" name="status" required>
                       <option value="Active">Active</option>
                       <option value="Pending Return">Pending Return</option>
@@ -263,20 +263,20 @@
           <div class="modal-body p-4">
             <div class="row g-3">
               <div class="col-md-4">
-                <label class="form-label">First Name</label>
-                <input type="text" class="form-control" placeholder="Enter first name">
+                <label class="form-label">First Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter first name" required>
               </div>
               <div class="col-md-4">
                 <label class="form-label">Middle Name</label>
                 <input type="text" class="form-control" placeholder="Enter middle name">
               </div>
               <div class="col-md-4">
-                <label class="form-label">Surname</label>
-                <input type="text" class="form-control" placeholder="Enter surname">
+                <label class="form-label">Surname <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter surname" required>
               </div>
               <div class="col-md-4">
-                <label class="form-label">Job Title</label>
-                <select class="form-select">
+                <label class="form-label">Job Title <span class="text-danger">*</span></label>
+                <select class="form-select" required>
                   <option value="">Select job title</option>
                   <option>HR Manager</option>
                   <option>Payroll Officer</option>
@@ -284,8 +284,8 @@
                 </select>
               </div>
               <div class="col-md-4">
-                <label class="form-label">Department</label>
-                <select class="form-select">
+                <label class="form-label">Department <span class="text-danger">*</span></label>
+                <select class="form-select" required>
                   <option value="">Select department</option>
                   <option>Human Resources</option>
                   <option>Finance</option>
@@ -302,12 +302,12 @@
                 </select>
               </div>
               <div class="col-md-4">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control" placeholder="Enter email">
+                <label class="form-label">Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" placeholder="Enter email" required>
               </div>
               <div class="col-md-4">
-                <label class="form-label">Status</label>
-                <select class="form-select">
+                <label class="form-label">Status <span class="text-danger">*</span></label>
+                <select class="form-select" required>
                   <option>Active</option>
                   <option>On Leave</option>
                   <option>Inactive</option>
