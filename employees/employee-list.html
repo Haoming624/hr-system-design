@@ -342,20 +342,8 @@
                 <label class="form-label">Job Title & Grade <span class="text-danger">*</span></label>
                 <div class="row g-2">
                   <div class="col-6">
-                    <select class="form-select" id="jobTitleSelect" required>
+                    <select class="form-select" id="jobTitleSelect" required disabled>
                       <option value="">Select Job Title</option>
-                      <option value="hr-manager">HR Manager</option>
-                      <option value="hr-officer">HR Officer</option>
-                      <option value="finance-director">Finance Director</option>
-                      <option value="finance-officer">Finance Officer</option>
-                      <option value="it-specialist">IT Support Specialist</option>
-                      <option value="it-manager">IT Manager</option>
-                      <option value="operations-manager">Operations Manager</option>
-                      <option value="operations-specialist">Operations Specialist</option>
-                      <option value="marketing-specialist">Marketing Specialist</option>
-                      <option value="marketing-manager">Marketing Manager</option>
-                      <option value="sales-manager">Sales Manager</option>
-                      <option value="sales-representative">Sales Representative</option>
                     </select>
                   </div>
                   <div class="col-6">
@@ -392,7 +380,7 @@
           <div class="modal-footer border-0 pt-0">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
             <button type="submit" class="btn btn-primary">
-              <i class="bi bi-plus-circle me-2"></i>Create Employee
+              Create Employee
             </button>
           </div>
         </form>
@@ -464,18 +452,12 @@
     };
 
     const jobTitleData = {
-      'hr-manager': ['A', 'B', 'C', 'None'],
-      'hr-officer': ['A', 'B', 'C', 'None'],
-      'finance-director': ['A', 'B', 'C', 'None'],
-      'finance-officer': ['A', 'B', 'C', 'None'],
-      'it-specialist': ['A', 'B', 'C', 'None'],
-      'it-manager': ['A', 'B', 'C', 'None'],
-      'operations-manager': ['A', 'B', 'C', 'None'],
-      'operations-specialist': ['A', 'B', 'C', 'None'],
-      'marketing-specialist': ['A', 'B', 'C', 'None'],
-      'marketing-manager': ['A', 'B', 'C', 'None'],
-      'sales-manager': ['A', 'B', 'C', 'None'],
-      'sales-representative': ['A', 'B', 'C', 'None']
+      'hr': ['HR Manager', 'HR Officer', 'HR Assistant', 'Recruitment Specialist', 'Payroll Officer'],
+      'finance': ['Finance Director', 'Finance Officer', 'Accountant', 'Financial Analyst', 'Payroll Manager'],
+      'it': ['IT Manager', 'IT Support Specialist', 'Software Developer', 'System Administrator', 'Network Engineer'],
+      'operations': ['Operations Manager', 'Operations Specialist', 'Logistics Coordinator', 'Quality Assurance'],
+      'marketing': ['Marketing Manager', 'Marketing Specialist', 'Digital Marketing Specialist', 'Content Creator'],
+      'sales': ['Sales Manager', 'Sales Representative', 'Account Manager', 'Business Development']
     };
 
     // Department-Group nested dropdown
@@ -498,6 +480,26 @@
       }
     });
 
+    // Department-Job Title nested dropdown
+    document.getElementById('departmentSelect').addEventListener('change', function() {
+      const jobTitleSelect = document.getElementById('jobTitleSelect');
+      const selectedDepartment = this.value;
+      
+      // Reset job title dropdown
+      jobTitleSelect.innerHTML = '<option value="">Select Job Title</option>';
+      jobTitleSelect.disabled = true;
+      
+      if (selectedDepartment && jobTitleData[selectedDepartment]) {
+        jobTitleData[selectedDepartment].forEach(jobTitle => {
+          const option = document.createElement('option');
+          option.value = jobTitle.toLowerCase().replace(/\s+/g, '-');
+          option.textContent = jobTitle;
+          jobTitleSelect.appendChild(option);
+        });
+        jobTitleSelect.disabled = false;
+      }
+    });
+
     // Job Title-Grade nested dropdown
     document.getElementById('jobTitleSelect').addEventListener('change', function() {
       const gradeSelect = document.getElementById('gradeSelect');
@@ -507,15 +509,15 @@
       gradeSelect.innerHTML = '<option value="">Select Grade</option>';
       gradeSelect.disabled = true;
       
-      if (selectedJobTitle && jobTitleData[selectedJobTitle]) {
-        jobTitleData[selectedJobTitle].forEach(grade => {
-          const option = document.createElement('option');
-          option.value = grade.toLowerCase();
-          option.textContent = grade;
-          gradeSelect.appendChild(option);
-        });
-        gradeSelect.disabled = false;
-      }
+      // Standard grades for all job titles
+      const grades = ['A', 'B', 'C', 'None'];
+      grades.forEach(grade => {
+        const option = document.createElement('option');
+        option.value = grade.toLowerCase();
+        option.textContent = grade;
+        gradeSelect.appendChild(option);
+      });
+      gradeSelect.disabled = false;
     });
 
     // Mass action handlers

@@ -13,8 +13,8 @@
   <div id="sidebar"></div>
   <div class="main-content">
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <a href="employee-list.html" class="btn btn-outline-secondary"><i class="bi bi-arrow-left"></i> Back to List</a>
-      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeModal"><i class="bi bi-plus"></i> Add New Employee</button>
+      <a href="employee-list.html" class="btn btn-outline-secondary"><i class="bi bi-arrow-left"></i> Back to Employees</a>
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeModal"><i class="bi bi-plus"></i> Add New File</button>
     </div>
     <!-- Profile Header Card: always visible above all main tabs -->
     <div class="card mb-4 shadow-sm border-0" style="background: linear-gradient(90deg, #e3f2fd 0%, #fff 100%);">
@@ -81,8 +81,8 @@
         <table class="table table-striped align-middle mb-0">
           <thead>
             <tr>
-              <th style="min-width: 100px;">File Type</th>
               <th style="min-width: 200px;">File Name</th>
+              <th style="min-width: 100px;">File Type</th>
               <th style="min-width: 100px;">Uploaded</th>
               <th style="min-width: 100px;">Expiry Date</th>
               <th style="min-width: 100px;">Status</th>
@@ -91,71 +91,66 @@
           </thead>
           <tbody>
             <tr>
+              <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#viewFileModal"><strong>Employment Contract.pdf</strong></a></td>
               <td>Contract</td>
-              <td><strong>Employment Contract.pdf</strong></td>
               <td><small>2023-01-10</small></td>
               <td><small>-</small></td>
               <td><span class="badge bg-success">Valid</span></td>
               <td>
                 <div class="d-flex gap-1">
-                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#viewFileModal"><i class="bi bi-eye"></i> View</button>
-                  <button class="btn btn-sm btn-primary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i> Edit</button>
+                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i> Edit</button>
                   <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteFileModal"><i class="bi bi-trash"></i> Delete</button>
                 </div>
               </td>
             </tr>
             <tr class="table-warning">
+              <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#viewFileModal"><strong>First Aid Certificate.pdf</strong></a></td>
               <td>Certificate</td>
-              <td><strong>First Aid Certificate.pdf</strong></td>
               <td><small>2022-06-01</small></td>
               <td><small>2024-07-01</small></td>
               <td><span class="badge bg-warning text-dark">Expiring Soon</span></td>
               <td>
                 <div class="d-flex gap-1">
-                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#viewFileModal"><i class="bi bi-eye"></i> View</button>
-                  <button class="btn btn-sm btn-primary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i> Edit</button>
+                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i> Edit</button>
                   <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteFileModal"><i class="bi bi-trash"></i> Delete</button>
                 </div>
               </td>
             </tr>
             <tr class="table-danger">
+              <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#viewFileModal"><strong>Old License.pdf</strong></a></td>
               <td>License</td>
-              <td><strong>Old License.pdf</strong></td>
               <td><small>2021-05-01</small></td>
               <td><small>2023-05-01</small></td>
               <td><span class="badge bg-danger">Expired</span></td>
               <td>
                 <div class="d-flex gap-1">
-                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#viewFileModal"><i class="bi bi-eye"></i> View</button>
-                  <button class="btn btn-sm btn-primary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i> Edit</button>
+                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i> Edit</button>
                   <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteFileModal"><i class="bi bi-trash"></i> Delete</button>
                 </div>
               </td>
             </tr>
             <tr>
+              <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#viewFileModal"><strong>Driver License.pdf</strong></a></td>
               <td>License</td>
-              <td><strong>Driver License.pdf</strong></td>
               <td><small>2022-01-15</small></td>
               <td><small>2025-01-15</small></td>
               <td><span class="badge bg-success">Valid</span></td>
               <td>
                 <div class="d-flex gap-1">
-                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#viewFileModal"><i class="bi bi-eye"></i> View</button>
-                  <button class="btn btn-sm btn-primary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i> Edit</button>
+                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i> Edit</button>
                   <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteFileModal"><i class="bi bi-trash"></i> Delete</button>
                 </div>
               </td>
             </tr>
             <tr class="table-warning">
+              <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#viewFileModal"><strong>Forklift License.pdf</strong></a></td>
               <td>License</td>
-              <td><strong>Forklift License.pdf</strong></td>
               <td><small>2021-09-10</small></td>
               <td><small>2024-06-10</small></td>
               <td><span class="badge bg-warning text-dark">Expiring Soon</span></td>
               <td>
                 <div class="d-flex gap-1">
-                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#viewFileModal"><i class="bi bi-eye"></i> View</button>
-                  <button class="btn btn-sm btn-primary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i> Edit</button>
+                  <button class="btn btn-sm btn-secondary py-1 px-2" data-bs-toggle="modal" data-bs-target="#editFileModal"><i class="bi bi-pencil"></i> Edit</button>
                   <button class="btn btn-sm btn-danger py-1 px-2" data-bs-toggle="modal" data-bs-target="#deleteFileModal"><i class="bi bi-trash"></i> Delete</button>
                 </div>
               </td>
@@ -165,78 +160,8 @@
       </div>
     </div>
   </div>
-  <!-- Add Employee Modal (copied from employee-list.html) -->
-  <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title" id="addEmployeeModalLabel">Add New Employee</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form id="addEmployeeForm">
-          <div class="modal-body p-4">
-            <div class="row g-3">
-              <div class="col-md-4">
-                <label class="form-label">First Name <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" placeholder="Enter first name" required>
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Middle Name</label>
-                <input type="text" class="form-control" placeholder="Enter middle name">
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Surname <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" placeholder="Enter surname" required>
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Job Title <span class="text-danger">*</span></label>
-                <select class="form-select" required>
-                  <option value="">Select job title</option>
-                  <option>HR Manager</option>
-                  <option>Payroll Officer</option>
-                  <option>IT Support Specialist</option>
-                </select>
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Department <span class="text-danger">*</span></label>
-                <select class="form-select" required>
-                  <option value="">Select department</option>
-                  <option>Human Resources</option>
-                  <option>Finance</option>
-                  <option>IT</option>
-                </select>
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Group</label>
-                <select class="form-select">
-                  <option value="">Select group</option>
-                  <option>Payroll Team</option>
-                  <option>Recruitment Team</option>
-                  <option>Support Team</option>
-                </select>
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Email <span class="text-danger">*</span></label>
-                <input type="email" class="form-control" placeholder="Enter email" required>
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Status <span class="text-danger">*</span></label>
-                <select class="form-select" required>
-                  <option>Active</option>
-                  <option>On Leave</option>
-                  <option>Inactive</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer border-0 pt-0">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary">Create Employee</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+  <!-- Add Employee Modal -->
+  <div id="addEmployeeModalContainer"></div>
 
   <!-- Add File Modal -->
   <div class="modal fade" id="addFileModal" tabindex="-1" aria-labelledby="addFileModalLabel" aria-hidden="true">
@@ -352,7 +277,7 @@
           <div class="text-center mb-3">
             <i class="bi bi-exclamation-triangle text-danger" style="font-size: 3rem;"></i>
           </div>
-          <h6 class="text-center mb-3">Are you sure you want to delete this personal file?</h6>
+          <h6 class="text-center mb-3">Are you sure you want to delete the personal file "{item name}"?</h6>
           <div class="alert alert-warning">
             <strong>File:</strong> Employment Contract.pdf<br>
             <strong>Type:</strong> Contract<br>
@@ -435,10 +360,12 @@
         document.getElementById('employeeTabsContainer').outerHTML = html;
         if (typeof highlightEmployeeTab === 'function') highlightEmployeeTab();
       });
-    document.getElementById('addEmployeeForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      window.location.href = 'employee-profile.html';
-    });
+    // Load shared add employee modal
+    fetch('../includes/add-employee-modal.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('addEmployeeModalContainer').outerHTML = html;
+      });
 
     // Add File Form Handler
     document.getElementById('addFileForm').addEventListener('submit', function(e) {

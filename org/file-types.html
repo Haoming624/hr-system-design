@@ -201,8 +201,8 @@
             <div class="mb-3">
               <label class="form-label">In Use <span class='text-danger'>*</span></label>
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="addFileTypeInUseSwitch" checked required>
-                <label class="form-check-label" for="addFileTypeInUseSwitch">
+                <input class="form-check-input" type="checkbox" id="addFileTypeInUseSwitch" checked required style="width: 3rem; height: 1.5rem;">
+                <label class="form-check-label ms-3" for="addFileTypeInUseSwitch">
                   <span class="badge bg-success">Active</span>
                 </label>
               </div>
@@ -237,8 +237,8 @@
             <div class="mb-3">
               <label class="form-label">In Use</label>
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="editFileTypeInUseSwitch" checked>
-                <label class="form-check-label" for="editFileTypeInUseSwitch">
+                <input class="form-check-input" type="checkbox" id="editFileTypeInUseSwitch" checked style="width: 3rem; height: 1.5rem;">
+                <label class="form-check-label ms-3" for="editFileTypeInUseSwitch">
                   <span class="badge bg-success">Active</span>
                 </label>
               </div>
@@ -312,7 +312,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p>Are you sure you want to delete the file type "<strong>Passport</strong>"?</p>
+                      <p>Are you sure you want to delete the file type "<strong>{item name}</strong>"?</p>
           <div class="alert alert-warning">
             <i class="bi bi-exclamation-triangle"></i>
             <strong>Warning:</strong> This action cannot be undone. Any files currently using this type will need to be reassigned.
