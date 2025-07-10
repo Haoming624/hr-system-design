@@ -616,9 +616,10 @@
                       <label class="form-label">Status</label>
                       <select class="form-select">
                         <option value="active" selected>Active</option>
-                        <option value="on-leave">On Leave</option>
-                        <option value="suspended">Suspended</option>
+                        <option value="resigned">Resigned</option>
                         <option value="terminated">Terminated</option>
+                        <option value="laid-off">Laid Off</option>
+                        <option value="retired">Retired</option>
                       </select>
                     </div>
                     <div class="col-md-6">
@@ -743,16 +744,21 @@
                   <div class="mb-3">
                     <label class="form-label">Change Type</label>
                     <select class="form-select" id="roleChangeTypeSelect">
+                      <option value="New Hire">New Hire</option>
                       <option value="Promotion">Promotion</option>
-                      <option value="Transfer">Transfer</option>
-                      <option value="Resignation">Resignation</option>
                       <option value="Demotion">Demotion</option>
-                      <option value="End Assignment">End Assignment</option>
+                      <option value="Transfer">Transfer</option>
+                      <option value="Restructure">Restructure</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Current Job <span class="text-muted small">(Read Only)</span></label>
                     <input type="text" class="form-control" id="oldJobInput" value="HR Assistant" disabled>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Current Grading <span class="text-muted small">(Read Only)</span></label>
+                    <input type="text" class="form-control" id="oldGradingInput" value="Grade A" disabled>
                   </div>
                   <div class="mb-3" id="newJobField">
                     <label class="form-label">New Job Title <span class='text-danger'>*</span></label>

@@ -95,15 +95,17 @@
         <form id="editBenefitForm">
           <div class="modal-body p-4">
             <div class="mb-3">
-              <label class="form-label">Benefit Name</label>
-              <input type="text" class="form-control" id="benefitName" readonly>
+              <label class="form-label">Benefit Name <span class="text-muted small">(Read Only)</span></label>
+              <input type="text" class="form-control" id="benefitName" disabled>
             </div>
             <div class="mb-3">
               <label class="form-label">Is Used <span class="text-danger">*</span></label>
-              <select class="form-select" id="isUsed" required>
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-              </select>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="isUsedToggle" checked>
+                <label class="form-check-label" for="isUsedToggle">
+                  <span class="badge bg-success">Active</span>
+                </label>
+              </div>
             </div>
             <div class="mb-3">
               <label class="form-label">Enrolment Date</label>
@@ -214,13 +216,11 @@
     document.getElementById('editBenefitForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
-      const benefitName = document.getElementById('benefitName').value;
-      const isUsed = document.getElementById('isUsed').value;
+      const isUsed = document.getElementById('isUsedToggle').checked;
       const enrolmentDate = document.getElementById('enrolmentDate').value;
       const terminationDate = document.getElementById('terminationDate').value;
       
       console.log('Updating benefit:', {
-        benefitName,
         isUsed,
         enrolmentDate,
         terminationDate
@@ -234,22 +234,60 @@
       modal.hide();
     });
 
-    // Populate modal with data when Update button is clicked
+    // Dynamic "Is Used" toggle functionality
+    function updateIsUsedBadge(checkboxId, labelElement) {
+      const checkbox = document.getElementById(checkboxId);
+      const badge = labelElement.querySelector('.badge');
+      
+      if (checkbox.checked) {
+        badge.className = 'badge bg-success';
+        badge.textContent = 'Active';
+      } else {
+        badge.className = 'badge bg-danger';
+        badge.textContent = 'Inactive';
+      }
+    }
+
+    // Add event listener for the toggle switch
+    document.addEventListener('DOMContentLoaded', function() {
+      const isUsedToggle = document.getElementById('isUsedToggle');
+      const isUsedLabel = document.querySelector('label[for="isUsedToggle"]');
+      
+      if (isUsedToggle && isUsedLabel) {
+        // Initial state
+        updateIsUsedBadge('isUsedToggle', isUsedLabel);
+        
+        // Event listener for changes
+        isUsedToggle.addEventListener('change', function() {
+          updateIsUsedBadge('isUsedToggle', isUsedLabel);
+        });
+      }
+    });
+
+    // Populate modal with data when Edit button is clicked
     document.addEventListener('click', function(e) {
-      if (e.target && e.target.textContent === 'Update' && e.target.closest('tr')) {
-        const row = e.target.closest('tr');
+      // Check if the clicked element is the edit button or its icon
+      const editButton = e.target.closest('button[data-bs-target="#editBenefitModal"]');
+      if (editButton) {
+        const row = editButton.closest('tr');
         const cells = row.querySelectorAll('td');
         
-        const benefitName = cells[0].textContent;
+        const benefitName = cells[0].textContent.trim();
         const isUsed = cells[1].querySelector('.badge').textContent === 'Yes';
         const enrolmentDate = cells[2].textContent !== '-' ? cells[2].textContent : '';
         const terminationDate = cells[3].textContent !== '-' ? cells[3].textContent : '';
         
         // Populate modal fields
         document.getElementById('benefitName').value = benefitName;
-        document.getElementById('isUsed').value = isUsed.toString();
+        document.getElementById('isUsedToggle').checked = isUsed;
         document.getElementById('enrolmentDate').value = enrolmentDate;
         document.getElementById('terminationDate').value = terminationDate;
+        
+        // Update the badge to reflect the current state
+        const isUsedLabel = document.querySelector('label[for="isUsedToggle"]');
+        if (isUsedLabel) {
+          updateIsUsedBadge('isUsedToggle', isUsedLabel);
+        }
       }
     });
   </script>

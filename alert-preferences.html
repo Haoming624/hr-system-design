@@ -15,11 +15,10 @@
   <div class="main-content">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h2>Alert Preferences</h2>
-      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAlertPreferenceModal">Add Alert Preference</button>
     </div>
-    <!-- Main Alert Preferences Table -->
+    <!-- Event Alert Preferences Table -->
     <div class="card mb-4">
-      <div class="card-header bg-primary text-white fw-bold">Alert Preferences</div>
+      <div class="card-header bg-primary text-white fw-bold">Event Alert Preferences (Preset)</div>
       <div class="card-body p-0">
         <table class="table table-striped align-middle mb-0">
           <thead>
@@ -39,11 +38,10 @@
               <td>7</td>
               <td>calendar</td>
               <td>Email</td>
-              <td>Happy Birthday!</td>
+              <td>Happy Birthday {Employee Name}!</td>
               <td><span class="badge bg-success">Yes</span></td>
               <td>
-                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editAlertPreferenceModal"><i class="bi bi-pencil"></i> Edit</button>
-                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAlertPreferenceModal"><i class="bi bi-trash"></i> Delete</button>
+                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editEventAlertModal"><i class="bi bi-pencil"></i> Edit</button>
               </td>
             </tr>
             <tr>
@@ -51,11 +49,10 @@
               <td>14</td>
               <td>working</td>
               <td>Lark</td>
-              <td>Probation ending soon</td>
+              <td>Probation ending soon for {Employee Name}</td>
               <td><span class="badge bg-success">Yes</span></td>
               <td>
-                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editAlertPreferenceModal"><i class="bi bi-pencil"></i> Edit</button>
-                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAlertPreferenceModal"><i class="bi bi-trash"></i> Delete</button>
+                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editEventAlertModal"><i class="bi bi-pencil"></i> Edit</button>
               </td>
             </tr>
             <tr>
@@ -63,11 +60,10 @@
               <td>14</td>
               <td>calendar</td>
               <td>Email</td>
-              <td>{Employee Name} contract will expire in 2 weeks. Please review.</td>
+              <td>{Employee Name} contract will expire in 2 weeks. Please review and renew if needed.</td>
               <td><span class="badge bg-success">Yes</span></td>
               <td>
-                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editAlertPreferenceModal"><i class="bi bi-pencil"></i> Edit</button>
-                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAlertPreferenceModal"><i class="bi bi-trash"></i> Delete</button>
+                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editEventAlertModal"><i class="bi bi-pencil"></i> Edit</button>
               </td>
             </tr>
             <tr>
@@ -75,11 +71,10 @@
               <td>7</td>
               <td>calendar</td>
               <td>Email</td>
-              <td>Happy Anniversary!</td>
+              <td>Happy Anniversary {Employee Name}!</td>
               <td><span class="badge bg-danger">No</span></td>
               <td>
-                <button class="btn btn-sm btn-secondary me-1"><i class="bi bi-pencil"></i> Edit</button>
-                <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete</button>
+                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editEventAlertModal"><i class="bi bi-pencil"></i> Edit</button>
               </td>
             </tr>
           </tbody>
@@ -89,7 +84,7 @@
 
     <!-- File Expiry Alert Preferences Table -->
     <div class="card mb-4">
-      <div class="card-header bg-warning text-dark fw-bold">File Expiry Alert Preferences</div>
+      <div class="card-header bg-warning text-dark fw-bold">File Expiry Alert Preferences (Generated per file type)</div>
       <div class="card-body p-0">
         <table class="table table-striped align-middle mb-0">
           <thead>
@@ -109,11 +104,10 @@
               <td>30</td>
               <td>calendar</td>
               <td>Email</td>
-              <td>{Employee Name} license will expire soon. Please renew.</td>
+              <td>{Employee Name} license will expire soon. Please renew if needed.</td>
               <td><span class="badge bg-success">Yes</span></td>
               <td>
-                <button class="btn btn-sm btn-secondary me-1"><i class="bi bi-pencil"></i> Edit</button>
-                <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete</button>
+                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editFileExpiryAlertModal"><i class="bi bi-pencil"></i> Edit</button>
               </td>
             </tr>
             <tr>
@@ -121,11 +115,10 @@
               <td>14</td>
               <td>calendar</td>
               <td>Lark</td>
-              <td>{Employee Name} certificate is expiring in 2 weeks.</td>
+              <td>{Employee Name} certificate is expiring in 2 weeks. Please review and renew if needed.</td>
               <td><span class="badge bg-success">Yes</span></td>
               <td>
-                <button class="btn btn-sm btn-secondary me-1"><i class="bi bi-pencil"></i> Edit</button>
-                <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete</button>
+                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editFileExpiryAlertModal"><i class="bi bi-pencil"></i> Edit</button>
               </td>
             </tr>
           </tbody>
@@ -134,57 +127,48 @@
     </div>
   </div>
 
-  <!-- Add Alert Preference Modal -->
-<div class="modal fade" id="addAlertPreferenceModal" tabindex="-1" aria-labelledby="addAlertPreferenceModalLabel" aria-hidden="true">
+  <!-- Edit Event Alert Preference Modal -->
+<div class="modal fade" id="editEventAlertModal" tabindex="-1" aria-labelledby="editEventAlertModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="addAlertPreferenceModalLabel">Add Alert Preference</h5>
+        <h5 class="modal-title" id="editEventAlertModalLabel">Edit Event Alert Preference</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form>
         <div class="modal-body">
-          <div class="mb-3"><label class="form-label">Event Type</label><input type="text" class="form-control"></div>
-          <div class="mb-3"><label class="form-label">Days Before</label><input type="number" class="form-control"></div>
-          <div class="mb-3"><label class="form-label">Days Type</label><select class="form-select"><option>calendar</option><option>working</option></select></div>
-          <div class="mb-3"><label class="form-label">Method</label><select class="form-select"><option>Email</option><option>Lark</option></select></div>
-          <div class="mb-3"><label class="form-label">Message</label><input type="text" class="form-control"></div>
-          <div class="mb-3"><label class="form-label">In Use</label>
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="addAlertInUseSwitch" checked>
-              <label class="form-check-label" for="addAlertInUseSwitch">
-                <span class="badge bg-success">Active</span>
-              </label>
-            </div>
+          <div class="mb-3">
+            <label class="form-label">Event Type <span class="text-muted small">(Read Only)</span></label>
+            <input type="text" class="form-control" value="Birthday" disabled>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Add</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-<!-- Edit Alert Preference Modal -->
-<div class="modal fade" id="editAlertPreferenceModal" tabindex="-1" aria-labelledby="editAlertPreferenceModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header bg-secondary text-white">
-        <h5 class="modal-title" id="editAlertPreferenceModalLabel">Edit Alert Preference</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form>
-        <div class="modal-body">
-          <div class="mb-3"><label class="form-label">Event Type</label><input type="text" class="form-control" value="Birthday"></div>
-          <div class="mb-3"><label class="form-label">Days Before</label><input type="number" class="form-control" value="7"></div>
-          <div class="mb-3"><label class="form-label">Days Type</label><select class="form-select"><option>calendar</option><option>working</option></select></div>
-          <div class="mb-3"><label class="form-label">Method</label><select class="form-select"><option>Email</option><option>Lark</option></select></div>
-          <div class="mb-3"><label class="form-label">Message</label><input type="text" class="form-control" value="Happy Birthday!"></div>
-          <div class="mb-3"><label class="form-label">In Use</label>
+          <div class="mb-3">
+            <label class="form-label">Days Before <span class='text-danger'>*</span></label>
+            <input type="number" class="form-control" value="7" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Days Type <span class='text-danger'>*</span></label>
+            <select class="form-select" required>
+              <option value="calendar" selected>Calendar Days</option>
+              <option value="working">Working Days</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Method <span class='text-danger'>*</span></label>
+            <select class="form-select" required>
+              <option value="email" selected>Email</option>
+              <option value="lark">Lark</option>
+              <option value="sms">SMS</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Message <span class='text-danger'>*</span></label>
+            <textarea class="form-control" rows="3" required>Happy Birthday!</textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">In Use</label>
             <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="editAlertInUseSwitch" checked>
-              <label class="form-check-label" for="editAlertInUseSwitch">
+              <input class="form-check-input" type="checkbox" id="editEventAlertInUseSwitch" checked>
+              <label class="form-check-label" for="editEventAlertInUseSwitch">
                 <span class="badge bg-success">Active</span>
               </label>
             </div>
@@ -198,21 +182,58 @@
     </div>
   </div>
 </div>
-<!-- Delete Alert Preference Modal -->
-<div class="modal fade" id="deleteAlertPreferenceModal" tabindex="-1" aria-labelledby="deleteAlertPreferenceModalLabel" aria-hidden="true">
+<!-- Edit File Expiry Alert Preference Modal -->
+<div class="modal fade" id="editFileExpiryAlertModal" tabindex="-1" aria-labelledby="editFileExpiryAlertModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header bg-danger text-white">
-        <h5 class="modal-title" id="deleteAlertPreferenceModalLabel">Delete Alert Preference</h5>
+      <div class="modal-header bg-warning text-dark">
+        <h5 class="modal-title" id="editFileExpiryAlertModalLabel">Edit File Expiry Alert Preference</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        Are you sure you want to delete this alert preference?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-danger">Delete</button>
-      </div>
+      <form>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">File Type <span class="text-muted small">(Read Only)</span></label>
+            <input type="text" class="form-control" value="License" disabled>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Days Before Expiry <span class='text-danger'>*</span></label>
+            <input type="number" class="form-control" value="30" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Days Type <span class='text-danger'>*</span></label>
+            <select class="form-select" required>
+              <option value="calendar" selected>Calendar Days</option>
+              <option value="working">Working Days</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Method <span class='text-danger'>*</span></label>
+            <select class="form-select" required>
+              <option value="email" selected>Email</option>
+              <option value="lark">Lark</option>
+              <option value="sms">SMS</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Message <span class='text-danger'>*</span></label>
+            <textarea class="form-control" rows="3" required>{Employee Name} license will expire soon. Please renew.</textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">In Use</label>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="editFileExpiryAlertInUseSwitch" checked>
+              <label class="form-check-label" for="editFileExpiryAlertInUseSwitch">
+                <span class="badge bg-success">Active</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -243,8 +264,8 @@
     // Add event listeners for all "In Use" checkboxes
     document.addEventListener('DOMContentLoaded', function() {
       const inUseCheckboxes = [
-        { checkboxId: 'addAlertInUseSwitch', labelId: 'addAlertInUseSwitch' },
-        { checkboxId: 'editAlertInUseSwitch', labelId: 'editAlertInUseSwitch' }
+        { checkboxId: 'editEventAlertInUseSwitch', labelId: 'editEventAlertInUseSwitch' },
+        { checkboxId: 'editFileExpiryAlertInUseSwitch', labelId: 'editFileExpiryAlertInUseSwitch' }
       ];
 
       inUseCheckboxes.forEach(item => {
