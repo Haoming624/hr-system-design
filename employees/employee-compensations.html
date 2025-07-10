@@ -40,85 +40,49 @@
     <!-- Salary Section -->
     <div class="card mb-3">
       <div class="card-header bg-primary text-white fw-bold d-flex align-items-center justify-content-between">
-        <span>Salary</span>
+        <span>Compensations</span>
         <span class="small text-white-50 ms-auto">Last Updated By: Jane Doe / 2023-01-01 09:00</span>
       </div>
       <div class="card-body p-0">
-        <div class="alert alert-info rounded-0 mb-0" style="border-radius:0;">
-          <strong>Note:</strong> Salary is updated only when an employee is promoted or after a salary review.
-        </div>
         <table class="table table-striped align-middle mb-0 mt-0">
           <thead>
             <tr>
               <th>Type</th>
-              <th>Amount</th>
-              <th>Frequency</th>
               <th>Currency</th>
+              <th>Amount</th>
+              <th>Pay Frequency</th>
               <th>Working Pattern</th>
               <th>Weekly Working Hours</th>
+              <th>Allowance Type</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Annual</td>
-              <td>£40,000</td>
-              <td>Annual</td>
+              <td>Salary</td>
               <td>GBP</td>
+              <td>£3,500</td>
+              <td>Monthly</td>
               <td>Full-time</td>
               <td>37.5</td>
+              <td>-</td>
               <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#editCompensationModal"><i class="bi bi-pencil"></i> Edit</button></td>
             </tr>
-            <!-- Only one salary type row should be shown at a time. If hourly, replace the above row with the following: -->
-            <!--
             <tr>
-              <td>Hourly</td>
-              <td>£20</td>
-              <td>Hourly</td>
+              <td>Allowance</td>
               <td>GBP</td>
-              <td>Part-time</td>
-              <td>20</td>
-              <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#editCompensationModal">Edit</button></td>
-            </tr>
-            -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <!-- Allowances Section -->
-    <div class="card mb-3">
-      <div class="card-header bg-success text-white fw-bold d-flex align-items-center justify-content-between">
-        <span>Allowances</span>
-        <span class="small text-white-50 ms-auto">Last Updated By: Jane Doe / 2023-01-01 09:00</span>
-      </div>
-      <div class="card-body p-0">
-        <div class="alert alert-info rounded-0 mb-0" style="border-radius:0;">
-          <strong>Note:</strong> The only allowance offered is the <strong>Commute Allowance</strong> at £0.20 per mile round trip daily from your primary residence to your primary working location.
-        </div>
-        <table class="table table-striped align-middle mb-0 mt-0">
-          <thead>
-            <tr>
-              <th>Allowance Type</th>
-              <th>Daily Miles</th>
-              <th>Amount (£0.20/mile)</th>
-              <th>Frequency</th>
-              <th>Currency</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Commute Allowance</td>
-              <td>30</td>
               <td>£6.00</td>
               <td>Daily</td>
-              <td>GBP</td>
+              <td>-</td>
+              <td>-</td>
+              <td>Transportation</td>
               <td><button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#editAllowanceModal"><i class="bi bi-pencil"></i> Edit</button></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
+
     <!-- Edit Compensation Modal -->
     <div class="modal fade" id="editCompensationModal" tabindex="-1" aria-labelledby="editCompensationModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -136,8 +100,18 @@
                   <option value="hourly">Hourly</option>
                 </select>
               </div>
-              <div id="annualFields">
-                <div class="mb-3"><label class="form-label">Amount <span class="text-danger">*</span></label><input type="number" class="form-control" value="40000" required></div>
+                              <div id="annualFields">
+                  <div class="mb-3"><label class="form-label">Amount <span class="text-danger">*</span></label><input type="number" class="form-control" value="3500" required></div>
+                <div class="mb-3">
+                  <label class="form-label">Pay Frequency <span class="text-danger">*</span></label>
+                  <select class="form-select" required>
+                    <option value="monthly">Monthly</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="quarterly">Quarterly</option>
+                    <option value="annually">Annually</option>
+                    <option value="contract">Contract</option>
+                  </select>
+                </div>
                 <div class="mb-3">
                   <label class="form-label">Currency <span class="text-danger">*</span></label>
                   <select class="form-select" required>
@@ -159,6 +133,14 @@
               </div>
               <div id="hourlyFields" style="display:none;">
                 <div class="mb-3"><label class="form-label">Hourly Rate <span class="text-danger">*</span></label><input type="number" class="form-control" value="20" required></div>
+                <div class="mb-3">
+                  <label class="form-label">Pay Frequency <span class="text-danger">*</span></label>
+                  <select class="form-select" required>
+                    <option value="hourly">Hourly</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                  </select>
+                </div>
                 <div class="mb-3">
                   <label class="form-label">Currency <span class="text-danger">*</span></label>
                   <select class="form-select" required>
@@ -215,10 +197,33 @@
           </div>
           <form>
             <div class="modal-body p-4">
-              <div class="mb-3"><label class="form-label">Daily Miles <span class="text-danger">*</span></label><input type="number" class="form-control" value="30" required></div>
-              <div class="mb-3"><label class="form-label">Amount (£0.20/mile)</label><input type="text" class="form-control" value="£6.00" disabled></div>
-              <div class="mb-3"><label class="form-label">Frequency</label><input type="text" class="form-control" value="Daily" disabled></div>
-              <div class="mb-3"><label class="form-label">Currency</label><input type="text" class="form-control" value="GBP" disabled></div>
+              <div class="mb-3">
+                <label class="form-label">Allowance Type <span class="text-danger">*</span></label>
+                <select class="form-select" required>
+                  <option value="housing">Housing</option>
+                  <option value="transportation" selected>Transportation</option>
+                  <option value="meal">Meal</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="mb-3"><label class="form-label">Allowance Amount <span class="text-danger">*</span></label><input type="number" class="form-control" value="6.00" required></div>
+              <div class="mb-3">
+                <label class="form-label">Pay Frequency <span class="text-danger">*</span></label>
+                <select class="form-select" required>
+                  <option value="daily" selected>Daily</option>
+                  <option value="weekly">Weekly</option>
+                  <option value="monthly">Monthly</option>
+                  <option value="annually">Annually</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Currency <span class="text-danger">*</span></label>
+                <select class="form-select" required>
+                  <option value="GBP" selected>GBP</option>
+                  <option value="EUR">EUR</option>
+                  <option value="USD">USD</option>
+                </select>
+              </div>
             </div>
             <div class="modal-footer border-0 pt-0">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

@@ -202,7 +202,7 @@
           <tbody>
             <tr>
               <td>1</td>
-              <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#viewDocumentModal"><strong>Onboarding Checklist.pdf</strong></a></td>
+              <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#filePreviewModal"><strong>Onboarding Checklist.pdf</strong></a></td>
               <td class="table-cell-fixed"><small class="text-truncate" title="Checklist for new hires">Checklist for new hires</small></td>
               <td>Onboarding</td>
               <td><small>HR, IT</small></td>
@@ -224,7 +224,7 @@
             </tr>
             <tr class="table-warning">
               <td>2</td>
-              <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#viewDocumentModal"><strong>Health & Safety Policy.pdf</strong></a></td>
+              <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#filePreviewModal"><strong>Health & Safety Policy.pdf</strong></a></td>
               <td class="table-cell-fixed"><small class="text-truncate" title="Health and safety policy for the organization">Health and safety policy for the organization</small></td>
               <td>Policy</td>
               <td><small>All</small></td>
@@ -246,7 +246,7 @@
             </tr>
             <tr class="table-danger">
               <td>3</td>
-              <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#viewDocumentModal"><strong>Old Handbook.pdf</strong></a></td>
+              <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#filePreviewModal"><strong>Old Handbook.pdf</strong></a></td>
               <td class="table-cell-fixed"><small class="text-truncate" title="Old handbook for the organization">Old handbook for the organization</small></td>
               <td>Handbook</td>
               <td><small>Finance</small></td>
@@ -454,38 +454,34 @@
       </div>
     </div>
   </div>
-  <!-- View Document Modal -->
-  <div class="modal fade" id="viewDocumentModal" tabindex="-1" aria-labelledby="viewDocumentModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+  <!-- File Preview Modal -->
+  <div class="modal fade" id="filePreviewModal" tabindex="-1" aria-labelledby="filePreviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
-        <div class="modal-header bg-info text-white">
-          <h5 class="modal-title" id="viewDocumentModalLabel">View Document Details</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="filePreviewModalLabel">File Preview {File name}</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-6">
-              <p><strong>Document Name:</strong><br>Onboarding Checklist.pdf</p>
-              <p><strong>Description:</strong><br>Checklist for new hires</p>
-              <p><strong>Type:</strong><br>Onboarding</p>
-              <p><strong>Status:</strong><br><span class="badge bg-success">Valid</span></p>
+        <div class="modal-body p-0">
+          <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+            <div>
+              <h6 class="mb-1">Onboarding Checklist.pdf</h6>
+              <small class="text-muted">Checklist for new hires</small>
             </div>
-            <div class="col-md-6">
-              <p><strong>Departments:</strong><br>HR, IT</p>
-              <p><strong>Groups:</strong><br>Recruitment Team</p>
-              <p><strong>In Use:</strong><br><span class="badge bg-success">Yes</span></p>
-              <p><strong>Expiry Date:</strong><br>-</p>
-              <p><strong>Updated By:</strong><br>John Smith</p>
-              <p><strong>Updated At:</strong><br>2023-02-01</p>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-info" title="Download">
+                <i class="bi bi-download me-1"></i>Download
+              </button>
+            </div>
+          </div>
+          <div class="p-3">
+            <div class="ratio ratio-16x9">
+              <iframe src="about:blank" title="File Preview" class="border rounded"></iframe>
             </div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-info" title="Download Document">
-            <i class="bi bi-download me-2"></i>Download
-          </button>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editFileModal" data-bs-dismiss="modal">Edit</button>
         </div>
       </div>
     </div>

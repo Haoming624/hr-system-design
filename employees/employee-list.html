@@ -315,32 +315,55 @@
               <div class="col-12">
                 <h6 class="text-primary mb-3 mt-4"><i class="bi bi-briefcase me-2"></i>Employment Details</h6>
               </div>
-              <div class="col-md-4">
-                <label class="form-label">Job Title <span class="text-danger">*</span></label>
-                <select class="form-select" required>
-                  <option value="">Select job title</option>
-                  <option>HR Manager</option>
-                  <option>Finance Director</option>
-                  <option>IT Support Specialist</option>
-                  <option>Operations Manager</option>
-                  <option>Marketing Specialist</option>
-                  <option>Payroll Officer</option>
-                  <option>Sales Manager</option>
-                </select>
+              <div class="col-md-6">
+                <label class="form-label">Department & Group <span class="text-danger">*</span></label>
+                <div class="row g-2">
+                  <div class="col-6">
+                    <select class="form-select" id="departmentSelect" required>
+                      <option value="">Select Department</option>
+                      <option value="hr">Human Resources</option>
+                      <option value="finance">Finance</option>
+                      <option value="it">IT</option>
+                      <option value="operations">Operations</option>
+                      <option value="marketing">Marketing</option>
+                      <option value="sales">Sales</option>
+                    </select>
+                  </div>
+                  <div class="col-6">
+                    <select class="form-select" id="groupSelect" required disabled>
+                      <option value="">Select Group</option>
+                    </select>
+                  </div>
+                </div>
               </div>
-              <div class="col-md-4">
-                <label class="form-label">Department <span class="text-danger">*</span></label>
-                <select class="form-select" required>
-                  <option value="">Select department</option>
-                  <option>Human Resources</option>
-                  <option>Finance</option>
-                  <option>IT</option>
-                  <option>Operations</option>
-                  <option>Marketing</option>
-                  <option>Sales</option>
-                </select>
+              <div class="col-md-6">
+                <label class="form-label">Job Title & Grade <span class="text-danger">*</span></label>
+                <div class="row g-2">
+                  <div class="col-6">
+                    <select class="form-select" id="jobTitleSelect" required>
+                      <option value="">Select Job Title</option>
+                      <option value="hr-manager">HR Manager</option>
+                      <option value="hr-officer">HR Officer</option>
+                      <option value="finance-director">Finance Director</option>
+                      <option value="finance-officer">Finance Officer</option>
+                      <option value="it-specialist">IT Support Specialist</option>
+                      <option value="it-manager">IT Manager</option>
+                      <option value="operations-manager">Operations Manager</option>
+                      <option value="operations-specialist">Operations Specialist</option>
+                      <option value="marketing-specialist">Marketing Specialist</option>
+                      <option value="marketing-manager">Marketing Manager</option>
+                      <option value="sales-manager">Sales Manager</option>
+                      <option value="sales-representative">Sales Representative</option>
+                    </select>
+                  </div>
+                  <div class="col-6">
+                    <select class="form-select" id="gradeSelect" required disabled>
+                      <option value="">Select Grade</option>
+                    </select>
+                  </div>
+                </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <label class="form-label">Employment Status <span class="text-danger">*</span></label>
                 <select class="form-select" required>
                   <option value="">Select status</option>
@@ -352,17 +375,6 @@
               <div class="col-md-6">
                 <label class="form-label">Start Date <span class="text-danger">*</span></label>
                 <input type="date" class="form-control" required>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label">Team/Group</label>
-                <select class="form-select">
-                  <option value="">Select team/group</option>
-                  <option>Payroll Team</option>
-                  <option>Recruitment Team</option>
-                  <option>Support Team</option>
-                  <option>Development Team</option>
-                  <option>Sales Team</option>
-                </select>
               </div>
               
               <div class="col-12">
@@ -437,6 +449,71 @@
       }
     }
     
+    // Nested dropdown functionality
+    const departmentData = {
+      'hr': ['Payroll Team', 'Recruitment Team', 'HR Admin Team'],
+      'finance': ['Accounting Team', 'Budget Team', 'Financial Planning Team'],
+      'it': ['Support Team', 'Development Team', 'Infrastructure Team'],
+      'operations': ['Logistics Team', 'Quality Team', 'Production Team'],
+      'marketing': ['Digital Marketing Team', 'Content Team', 'Brand Team'],
+      'sales': ['Sales Team', 'Account Management Team', 'Business Development Team']
+    };
+
+    const jobTitleData = {
+      'hr-manager': ['A', 'B', 'C', 'None'],
+      'hr-officer': ['A', 'B', 'C', 'None'],
+      'finance-director': ['A', 'B', 'C', 'None'],
+      'finance-officer': ['A', 'B', 'C', 'None'],
+      'it-specialist': ['A', 'B', 'C', 'None'],
+      'it-manager': ['A', 'B', 'C', 'None'],
+      'operations-manager': ['A', 'B', 'C', 'None'],
+      'operations-specialist': ['A', 'B', 'C', 'None'],
+      'marketing-specialist': ['A', 'B', 'C', 'None'],
+      'marketing-manager': ['A', 'B', 'C', 'None'],
+      'sales-manager': ['A', 'B', 'C', 'None'],
+      'sales-representative': ['A', 'B', 'C', 'None']
+    };
+
+    // Department-Group nested dropdown
+    document.getElementById('departmentSelect').addEventListener('change', function() {
+      const groupSelect = document.getElementById('groupSelect');
+      const selectedDepartment = this.value;
+      
+      // Reset group dropdown
+      groupSelect.innerHTML = '<option value="">Select Group</option>';
+      groupSelect.disabled = true;
+      
+      if (selectedDepartment && departmentData[selectedDepartment]) {
+        departmentData[selectedDepartment].forEach(group => {
+          const option = document.createElement('option');
+          option.value = group.toLowerCase().replace(/\s+/g, '-');
+          option.textContent = group;
+          groupSelect.appendChild(option);
+        });
+        groupSelect.disabled = false;
+      }
+    });
+
+    // Job Title-Grade nested dropdown
+    document.getElementById('jobTitleSelect').addEventListener('change', function() {
+      const gradeSelect = document.getElementById('gradeSelect');
+      const selectedJobTitle = this.value;
+      
+      // Reset grade dropdown
+      gradeSelect.innerHTML = '<option value="">Select Grade</option>';
+      gradeSelect.disabled = true;
+      
+      if (selectedJobTitle && jobTitleData[selectedJobTitle]) {
+        jobTitleData[selectedJobTitle].forEach(grade => {
+          const option = document.createElement('option');
+          option.value = grade.toLowerCase();
+          option.textContent = grade;
+          gradeSelect.appendChild(option);
+        });
+        gradeSelect.disabled = false;
+      }
+    });
+
     // Mass action handlers
     document.getElementById('exportSelected').addEventListener('click', function() {
       const selectedEmployees = Array.from(document.querySelectorAll('input[name="selectedEmployees"]:checked'))
@@ -444,7 +521,7 @@
       alert(`Exporting ${selectedEmployees.length} employees: ${selectedEmployees.join(', ')}`);
     });
     
-    document.getElementById('bulkUpdate').addEventListener('click', function() {
+    document.getElementById('bulkDelete').addEventListener('click', function() {
       const selectedEmployees = Array.from(document.querySelectorAll('input[name="selectedEmployees"]:checked'))
         .map(checkbox => checkbox.value);
       alert(`Bulk update for ${selectedEmployees.length} employees: ${selectedEmployees.join(', ')}`);
