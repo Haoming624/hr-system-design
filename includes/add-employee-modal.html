@@ -1,6 +1,6 @@
 <!-- Add Employee Modal -->
 <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header bg-primary text-white">
         <h5 class="modal-title" id="addEmployeeModalLabel">Add New Employee</h5>
@@ -13,25 +13,122 @@
             <div class="col-12">
               <h6 class="text-primary mb-3"><i class="bi bi-person me-2"></i>Basic Information</h6>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
+              <label class="form-label">Title</label>
+              <select class="form-select" name="title">
+                <option value="">Select Title</option>
+                <option value="mr">Mr</option>
+                <option value="mrs">Mrs</option>
+                <option value="ms">Ms</option>
+                <option value="dr">Dr</option>
+              </select>
+            </div>
+            <div class="col-md-3">
               <label class="form-label">First Name <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" placeholder="Enter first name" required>
+              <input type="text" class="form-control" name="first_name" placeholder="Enter first name" required>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <label class="form-label">Middle Name</label>
-              <input type="text" class="form-control" placeholder="Enter middle name">
+              <input type="text" class="form-control" name="middle_name" placeholder="Enter middle name">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Surname <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="surname" placeholder="Enter surname" required>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Known As</label>
+              <input type="text" class="form-control" name="known_as" placeholder="Preferred name">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Gender</label>
+              <select class="form-select" name="gender">
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Date of Birth</label>
+              <input type="date" class="form-control" name="date_of_birth">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Nationality</label>
+              <select class="form-select" name="nationality">
+                <option value="">Select Nationality</option>
+                <option value="uk">United Kingdom</option>
+                <option value="us">United States</option>
+                <option value="de">Germany</option>
+                <option value="fr">France</option>
+                <option value="it">Italy</option>
+                <option value="es">Spain</option>
+              </select>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="col-12">
+              <h6 class="text-primary mb-3 mt-4"><i class="bi bi-telephone me-2"></i>Contact Information</h6>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Work Email <span class="text-danger">*</span></label>
+              <input type="email" class="form-control" name="email_address" placeholder="Enter work email" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Personal Email</label>
+              <input type="email" class="form-control" name="personal_email" placeholder="Enter personal email">
             </div>
             <div class="col-md-4">
-              <label class="form-label">Surname <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" placeholder="Enter surname" required>
+              <label class="form-label">Home Telephone</label>
+              <input type="tel" class="form-control" name="home_telephone" placeholder="Enter home phone">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Personal Mobile</label>
+              <input type="tel" class="form-control" name="personal_mobile" placeholder="Enter personal mobile">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Work Mobile</label>
+              <input type="tel" class="form-control" name="work_mobile" placeholder="Enter work mobile">
+            </div>
+            
+            <!-- Address Information -->
+            <div class="col-12">
+              <h6 class="text-primary mb-3 mt-4"><i class="bi bi-geo-alt me-2"></i>Address Information</h6>
+            </div>
+            <div class="col-md-12">
+              <label class="form-label">Address Line 1</label>
+              <input type="text" class="form-control" name="address_line_1" placeholder="Enter address line 1">
             </div>
             <div class="col-md-6">
-              <label class="form-label">Email <span class="text-danger">*</span></label>
-              <input type="email" class="form-control" placeholder="Enter email address" required>
+              <label class="form-label">Address Line 2</label>
+              <input type="text" class="form-control" name="address_line_2" placeholder="Enter address line 2">
             </div>
             <div class="col-md-6">
-              <label class="form-label">Phone Number</label>
-              <input type="tel" class="form-control" placeholder="Enter phone number">
+              <label class="form-label">Address Line 3</label>
+              <input type="text" class="form-control" name="address_line_3" placeholder="Enter address line 3">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">City</label>
+              <input type="text" class="form-control" name="city" placeholder="Enter city">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">County</label>
+              <input type="text" class="form-control" name="county" placeholder="Enter county">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Post Code</label>
+              <input type="text" class="form-control" name="post_code" placeholder="Enter post code">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Country</label>
+              <select class="form-select" name="country">
+                <option value="">Select Country</option>
+                <option value="uk">United Kingdom</option>
+                <option value="us">United States</option>
+                <option value="de">Germany</option>
+                <option value="fr">France</option>
+                <option value="it">Italy</option>
+                <option value="es">Spain</option>
+              </select>
             </div>
             
             <!-- Employment Details -->
@@ -39,10 +136,33 @@
               <h6 class="text-primary mb-3 mt-4"><i class="bi bi-briefcase me-2"></i>Employment Details</h6>
             </div>
             <div class="col-md-6">
+              <label class="form-label">Staff ID</label>
+              <input type="text" class="form-control" name="staff_id" placeholder="Enter staff ID">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Company ID</label>
+              <input type="text" class="form-control" name="company_id" placeholder="Enter company ID">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Payroll Number</label>
+              <input type="number" class="form-control" name="payroll_no" placeholder="Enter payroll number">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Employment Status <span class="text-danger">*</span></label>
+              <select class="form-select" name="status" required>
+                <option value="">Select status</option>
+                <option value="active">Active</option>
+                <option value="resigned">Resigned</option>
+                <option value="terminated">Terminated</option>
+                <option value="laid_off">Laid Off</option>
+                <option value="retired">Retired</option>
+              </select>
+            </div>
+            <div class="col-md-6">
               <label class="form-label">Department & Group <span class="text-danger">*</span></label>
               <div class="row g-2">
                 <div class="col-6">
-                  <select class="form-select" id="departmentSelect" required>
+                  <select class="form-select" id="departmentSelect" name="department_id" required>
                     <option value="">Select Department</option>
                     <option value="hr">Human Resources</option>
                     <option value="finance">Finance</option>
@@ -53,7 +173,7 @@
                   </select>
                 </div>
                 <div class="col-6">
-                  <select class="form-select" id="groupSelect" required disabled>
+                  <select class="form-select" id="groupSelect" name="group_id" required disabled>
                     <option value="">Select Group</option>
                   </select>
                 </div>
@@ -63,31 +183,145 @@
               <label class="form-label">Job Title & Grade <span class="text-danger">*</span></label>
               <div class="row g-2">
                 <div class="col-6">
-                  <select class="form-select" id="jobTitleSelect" required disabled>
+                  <select class="form-select" id="jobTitleSelect" name="job_title_id" required disabled>
                     <option value="">Select Job Title</option>
                   </select>
                 </div>
                 <div class="col-6">
-                  <select class="form-select" id="gradeSelect" required disabled>
+                  <select class="form-select" id="gradeSelect" name="grading_id" required disabled>
                     <option value="">Select Grade</option>
                   </select>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <label class="form-label">Employment Status <span class="text-danger">*</span></label>
-              <select class="form-select" required>
-                <option value="">Select status</option>
-                <option>Active</option>
-                <option>Resigned</option>
-                <option>Terminated</option>
-                <option>Laid Off</option>
-                <option>Retired</option>
+            <div class="col-md-4">
+              <label class="form-label">Work Location</label>
+              <select class="form-select" name="work_location_id">
+                <option value="">Select Work Location</option>
+                <option value="london">London Office</option>
+                <option value="manchester">Manchester Office</option>
+                <option value="remote">Remote</option>
+                <option value="hybrid">Hybrid</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Work Type</label>
+              <select class="form-select" name="work_type_id">
+                <option value="">Select Work Type</option>
+                <option value="full_time">Full-time</option>
+                <option value="part_time">Part-time</option>
+                <option value="contract">Contract</option>
+                <option value="temporary">Temporary</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Join Date <span class="text-danger">*</span></label>
+              <input type="date" class="form-control" name="join_date" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Probation Date</label>
+              <input type="date" class="form-control" name="probation_date">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Contract Expiry Date</label>
+              <input type="date" class="form-control" name="contract_expiry_date">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Weekly Working Hours</label>
+              <input type="number" class="form-control" name="weekly_working_hours" step="0.5" placeholder="e.g., 37.5">
+            </div>
+            
+            <!-- Compensation Information -->
+            <div class="col-12">
+              <h6 class="text-primary mb-3 mt-4"><i class="bi bi-cash me-2"></i>Compensation Information</h6>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Salary Amount <span class="text-danger">*</span></label>
+              <input type="number" class="form-control" name="pay_amount" step="0.01" placeholder="Enter salary amount" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Currency</label>
+              <select class="form-select" name="currency">
+                <option value="gbp">GBP</option>
+                <option value="usd">USD</option>
+                <option value="eur">EUR</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Pay Frequency</label>
+              <select class="form-select" name="pay_frequency">
+                <option value="">Select Pay Frequency</option>
+                <option value="hourly">Hourly</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+                <option value="quarterly">Quarterly</option>
+                <option value="contract">Contract</option>
               </select>
             </div>
             <div class="col-md-6">
-              <label class="form-label">Start Date <span class="text-danger">*</span></label>
-              <input type="date" class="form-control" required>
+              <label class="form-label">Allowance Type</label>
+              <select class="form-select" name="allowance_type">
+                <option value="">Select Allowance Type</option>
+                <option value="housing">Housing</option>
+                <option value="transportation">Transportation</option>
+                <option value="meal">Meal</option>
+                <option value="education">Education</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Working Pattern</label>
+              <input type="text" class="form-control" name="working_pattern" placeholder="e.g., Monday-Friday 9-5">
+            </div>
+            
+            <!-- National ID Information -->
+            <div class="col-12">
+              <h6 class="text-primary mb-3 mt-4"><i class="bi bi-card-text me-2"></i>National ID Information</h6>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">National ID Type</label>
+              <select class="form-select" name="national_id_type">
+                <option value="">Select ID Type</option>
+                <option value="nino">NINO (UK)</option>
+                <option value="ssn">SSN (US)</option>
+                <option value="bsn">BSN (Netherlands)</option>
+                <option value="ppsn">PPSN (Ireland)</option>
+                <option value="passport">Passport</option>
+                <option value="driving_license">Driving License</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">National ID Number</label>
+              <input type="text" class="form-control" name="national_id_number" placeholder="Enter ID number">
+            </div>
+            
+            <!-- Emergency Contact -->
+            <div class="col-12">
+              <h6 class="text-primary mb-3 mt-4"><i class="bi bi-person-plus me-2"></i>Emergency Contact</h6>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Contact Name</label>
+              <input type="text" class="form-control" name="emergency_contact_name" placeholder="Enter contact name">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Relationship</label>
+              <select class="form-select" name="emergency_contact_relationship">
+                <option value="">Select Relationship</option>
+                <option value="spouse">Spouse</option>
+                <option value="parent">Parent</option>
+                <option value="sibling">Sibling</option>
+                <option value="friend">Friend</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Contact Phone</label>
+              <input type="tel" class="form-control" name="emergency_contact_phone" placeholder="Enter contact phone">
+            </div>
+            
+            <!-- Remarks -->
+            <div class="col-12">
+              <label class="form-label">Remarks</label>
+              <textarea class="form-control" name="remarks" rows="3" placeholder="Enter any additional remarks"></textarea>
             </div>
             
             <div class="col-12">
@@ -189,9 +423,45 @@ document.getElementById('jobTitleSelect').addEventListener('change', function() 
   gradeSelect.disabled = false;
 });
 
-// Redirect to profile page after creating new employee
+// Form submission with data collection
 document.getElementById('addEmployeeForm').addEventListener('submit', function(e) {
   e.preventDefault();
+  
+  // Collect form data
+  const formData = new FormData(this);
+  const employeeData = {};
+  
+  for (let [key, value] of formData.entries()) {
+    if (value) {
+      employeeData[key] = value;
+    }
+  }
+  
+  // Log the collected data (for debugging)
+  console.log('Employee Data:', employeeData);
+  
+  // Here you would typically send the data to your API
+  // For now, we'll just redirect to the profile page
   window.location.href = 'employee-profile.html';
+});
+
+// Auto-populate probation date (3 months from join date)
+document.querySelector('input[name="join_date"]').addEventListener('change', function() {
+  const joinDate = new Date(this.value);
+  const probationDate = new Date(joinDate);
+  probationDate.setMonth(probationDate.getMonth() + 3);
+  
+  const probationInput = document.querySelector('input[name="probation_date"]');
+  probationInput.value = probationDate.toISOString().split('T')[0];
+});
+
+// Auto-populate contract expiry date (1 year from join date)
+document.querySelector('input[name="join_date"]').addEventListener('change', function() {
+  const joinDate = new Date(this.value);
+  const expiryDate = new Date(joinDate);
+  expiryDate.setFullYear(expiryDate.getFullYear() + 1);
+  
+  const expiryInput = document.querySelector('input[name="contract_expiry_date"]');
+  expiryInput.value = expiryDate.toISOString().split('T')[0];
 });
 </script> 
