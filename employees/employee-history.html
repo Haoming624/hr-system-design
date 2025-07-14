@@ -56,54 +56,60 @@
               <table class="table mb-0">
                 <thead>
                   <tr>
+                    <th>Date</th>
                     <th>Change Type</th>
-                    <th>Old Job</th>
-                    <th>New Job</th>
-                    <th>Status</th>
+                    <th>Job Title</th>
+                    <th>Grading</th>
+                    <th>Location</th>
+                    <th>Work Type</th>
                     <th>Approved By</th>
-                    <th>Change/Eff. Datetime</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="table-warning">
+                  <tr class="table-success">
+                    <td><strong>2024-01-01</strong><br><small class="text-muted">09:00</small></td>
                     <td>Promotion</td>
-                    <td>HR Assistant</td>
-                    <td>HR Manager</td>
-                    <td><span class="badge bg-warning text-dark">Pending</span></td>
+                    <td><span class="text-muted">HR Assistant</span> → <strong>HR Manager</strong></td>
+                    <td><span class="text-muted">B</span> → <strong>A</strong></td>
+                    <td>London Office</td>
+                    <td>Full-time</td>
                     <td>John Smith</td>
-                    <td>2022-01-01 09:00</td>
                   </tr>
-                  <tr>
+                  <tr class="text-muted">
+                    <td>2023-06-15<br><small class="text-muted">14:30</small></td>
                     <td>Transfer</td>
                     <td>HR Assistant</td>
-                    <td>HR Assistant</td>
-                    <td><span class="badge bg-success">Approved</span></td>
+                    <td>B</td>
+                    <td><span class="text-muted">London</span> → <strong>Manchester</strong></td>
+                    <td>Full-time</td>
                     <td>Sarah Johnson</td>
-                    <td>2021-06-15 14:30</td>
                   </tr>
-                  <tr class="table-secondary">
+                  <tr class="text-muted">
+                    <td>2022-03-01<br><small class="text-muted">10:00</small></td>
                     <td>New Hire</td>
-                    <td>-</td>
-                    <td>HR Assistant</td>
-                    <td><span class="badge bg-secondary">Completed</span></td>
+                    <td><strong>HR Assistant</strong></td>
+                    <td><strong>B</strong></td>
+                    <td><strong>London Office</strong></td>
+                    <td><strong>Full-time</strong></td>
                     <td>Mike Wilson</td>
-                    <td>2020-03-01 10:00</td>
                   </tr>
-                  <tr class="table-info">
+                  <tr class="text-muted">
+                    <td>2023-09-15<br><small class="text-muted">11:00</small></td>
                     <td>Restructure</td>
                     <td>HR Manager</td>
-                    <td>HR Manager</td>
-                    <td><span class="badge bg-info text-dark">Approved</span></td>
+                    <td>A</td>
+                    <td>London Office</td>
+                    <td><span class="text-muted">Full-time</span> → <strong>Part-time</strong></td>
                     <td>Sarah Johnson</td>
-                    <td>2021-09-15 11:00</td>
                   </tr>
-                  <tr class="table-danger">
+                  <tr class="text-muted">
+                    <td>2023-12-01<br><small class="text-muted">16:00</small></td>
                     <td>Demotion</td>
-                    <td>HR Manager</td>
-                    <td>HR Assistant</td>
-                    <td><span class="badge bg-danger">Approved</span></td>
+                    <td><span class="text-muted">HR Manager</span> → <strong>HR Assistant</strong></td>
+                    <td><span class="text-muted">A</span> → <strong>B</strong></td>
+                    <td>London Office</td>
+                    <td>Full-time</td>
                     <td>John Smith</td>
-                    <td>2021-12-01 16:00</td>
                   </tr>
                   <!-- More rows as needed -->
                 </tbody>
@@ -121,50 +127,46 @@
               <table class="table mb-0">
                 <thead>
                   <tr>
-                    <th>Type</th>
-                    <th>Currency</th>
+                    <th>Date</th>
+                    <th>Change Type</th>
                     <th>Amount</th>
+                    <th>Currency</th>
                     <th>Pay Frequency</th>
-                    <th>Working Pattern</th>
-                    <th>Weekly Working Hours</th>
-                    <th>Effective Date</th>
-                    <th>Status</th>
                     <th>Approved By</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="table-warning">
-                    <td>Salary</td>
+                  <tr class="table-success">
+                    <td><strong>2024-01-01</strong><br><small class="text-muted">09:00</small></td>
+                    <td>Salary Increase</td>
+                    <td><span class="text-muted">£3,200</span> → <strong>£3,500</strong></td>
                     <td>GBP</td>
-                    <td>£3,500</td>
                     <td>Monthly</td>
-                    <td>Full-time</td>
-                    <td>37.5</td>
-                    <td>2024-01-01</td>
-                    <td><span class="badge bg-warning text-dark">Pending</span></td>
                     <td>Sarah Johnson</td>
                   </tr>
-                  <tr>
-                    <td>Salary</td>
+                  <tr class="text-muted">
+                    <td>2023-01-01<br><small class="text-muted">10:00</small></td>
+                    <td>Salary Increase</td>
+                    <td><span class="text-muted">£2,800</span> → <strong>£3,200</strong></td>
                     <td>GBP</td>
-                    <td>£3,200</td>
                     <td>Monthly</td>
-                    <td>Full-time</td>
-                    <td>37.5</td>
-                    <td>2023-01-01</td>
-                    <td><span class="badge bg-success">Active</span></td>
                     <td>John Smith</td>
                   </tr>
-                  <tr class="table-secondary">
-                    <td>Salary</td>
-                    <td>GBP</td>
-                    <td>£2,800</td>
-                    <td>Monthly</td>
-                    <td>Full-time</td>
-                    <td>37.5</td>
-                    <td>2022-01-01</td>
-                    <td><span class="badge bg-secondary">Inactive</span></td>
+                  <tr class="text-muted">
+                    <td>2022-01-01<br><small class="text-muted">10:00</small></td>
+                    <td>New Hire</td>
+                    <td><strong>£2,800</strong></td>
+                    <td><strong>GBP</strong></td>
+                    <td><strong>Monthly</strong></td>
                     <td>Mike Wilson</td>
+                  </tr>
+                  <tr class="text-muted">
+                    <td>2022-06-01<br><small class="text-muted">14:30</small></td>
+                    <td>Currency Change</td>
+                    <td><span class="text-muted">€3,000</span> → <strong>£2,800</strong></td>
+                    <td><span class="text-muted">EUR</span> → <strong>GBP</strong></td>
+                    <td>Monthly</td>
+                    <td>Lisa Brown</td>
                   </tr>
                   <!-- More rows as needed -->
                 </tbody>
@@ -182,59 +184,53 @@
               <table class="table mb-0">
                 <thead>
                   <tr>
-                    <th>Type</th>
-                    <th>Currency</th>
+                    <th>Date</th>
+                    <th>Change Type</th>
                     <th>Amount</th>
+                    <th>Currency</th>
                     <th>Pay Frequency</th>
-                    <th>Effective Date</th>
-                    <th>Status</th>
                     <th>Approved By</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="table-warning">
-                    <td>Transportation</td>
+                  <tr class="table-success">
+                    <td><strong>2024-01-01</strong><br><small class="text-muted">09:00</small></td>
+                    <td>Transportation Increase</td>
+                    <td><span class="text-muted">£5.00</span> → <strong>£6.00</strong></td>
                     <td>GBP</td>
-                    <td>£6.00</td>
                     <td>Daily</td>
-                    <td>2024-01-01</td>
-                    <td><span class="badge bg-warning text-dark">Pending</span></td>
                     <td>Sarah Johnson</td>
                   </tr>
-                  <tr>
-                    <td>Transportation</td>
+                  <tr class="text-muted">
+                    <td>2023-01-01<br><small class="text-muted">10:00</small></td>
+                    <td>Transportation Increase</td>
+                    <td><span class="text-muted">£4.00</span> → <strong>£5.00</strong></td>
                     <td>GBP</td>
-                    <td>£5.00</td>
                     <td>Daily</td>
-                    <td>2023-01-01</td>
-                    <td><span class="badge bg-success">Active</span></td>
                     <td>John Smith</td>
                   </tr>
-                  <tr>
-                    <td>Housing</td>
-                    <td>GBP</td>
-                    <td>£500.00</td>
-                    <td>Monthly</td>
-                    <td>2023-06-01</td>
-                    <td><span class="badge bg-success">Active</span></td>
+                  <tr class="text-muted">
+                    <td>2023-06-01<br><small class="text-muted">14:30</small></td>
+                    <td>Housing Allowance Added</td>
+                    <td><strong>£500.00</strong></td>
+                    <td><strong>GBP</strong></td>
+                    <td><strong>Monthly</strong></td>
                     <td>Lisa Brown</td>
                   </tr>
-                  <tr class="table-danger">
-                    <td>Meal</td>
+                  <tr class="text-muted">
+                    <td>2023-09-01<br><small class="text-muted">16:00</small></td>
+                    <td>Meal Allowance Removed</td>
+                    <td><span class="text-muted">£8.00</span> → <strong>Removed</strong></td>
                     <td>GBP</td>
-                    <td>£8.00</td>
                     <td>Daily</td>
-                    <td>2023-09-01</td>
-                    <td><span class="badge bg-danger">Rejected</span></td>
                     <td>David Lee</td>
                   </tr>
-                  <tr class="table-secondary">
-                    <td>Transportation</td>
-                    <td>GBP</td>
-                    <td>£4.00</td>
-                    <td>Daily</td>
-                    <td>2022-01-01</td>
-                    <td><span class="badge bg-secondary">Inactive</span></td>
+                  <tr class="text-muted">
+                    <td>2022-01-01<br><small class="text-muted">10:00</small></td>
+                    <td>Transportation Added</td>
+                    <td><strong>£4.00</strong></td>
+                    <td><strong>GBP</strong></td>
+                    <td><strong>Daily</strong></td>
                     <td>Mike Wilson</td>
                   </tr>
                   <!-- More rows as needed -->
