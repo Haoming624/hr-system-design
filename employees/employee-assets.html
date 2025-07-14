@@ -52,8 +52,12 @@
                     <th>Asset Type</th>
                     <th>Description</th>
                     <th>Asset ID/Number</th>
+                    <th>Quantity</th>
                     <th>Issued Date</th>
+                    <th>Issued By</th>
                     <th>Status</th>
+                    <th>Returned To</th>
+                    <th>Return Date</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -77,7 +81,9 @@
                   <div class="mb-3"><label class="form-label">Asset Type <span class="text-danger">*</span></label><input type="text" class="form-control" name="type" required></div>
                   <div class="mb-3"><label class="form-label">Description <span class="text-danger">*</span></label><input type="text" class="form-control" name="description" required></div>
                   <div class="mb-3"><label class="form-label">Asset ID/Number <span class="text-danger">*</span></label><input type="text" class="form-control" name="id" required></div>
+                  <div class="mb-3"><label class="form-label">Quantity <span class="text-danger">*</span></label><input type="number" class="form-control" name="quantity" value="1" min="1" required></div>
                   <div class="mb-3"><label class="form-label">Issued Date <span class="text-danger">*</span></label><input type="date" class="form-control" name="issued" required></div>
+                  <div class="mb-3"><label class="form-label">Issued By <span class="text-danger">*</span></label><input type="text" class="form-control" name="issuedBy" required></div>
                   <div class="mb-3"><label class="form-label">Status <span class="text-danger">*</span></label>
                     <select class="form-select" name="status" required>
                       <option value="Active">Active</option>
@@ -85,6 +91,8 @@
                       <option value="Returned">Returned</option>
                     </select>
                   </div>
+                  <div class="mb-3"><label class="form-label">Returned To</label><input type="text" class="form-control" name="returnedTo" placeholder="Person or department returned to"></div>
+                  <div class="mb-3"><label class="form-label">Return Date</label><input type="date" class="form-control" name="returnDate" placeholder="Date when returned"></div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -107,7 +115,9 @@
                   <div class="mb-3"><label class="form-label">Asset Type <span class="text-danger">*</span></label><input type="text" class="form-control" name="type" required></div>
                   <div class="mb-3"><label class="form-label">Description <span class="text-danger">*</span></label><input type="text" class="form-control" name="description" required></div>
                   <div class="mb-3"><label class="form-label">Asset ID/Number <span class="text-danger">*</span></label><input type="text" class="form-control" name="id" required></div>
+                  <div class="mb-3"><label class="form-label">Quantity <span class="text-danger">*</span></label><input type="number" class="form-control" name="quantity" value="1" min="1" required></div>
                   <div class="mb-3"><label class="form-label">Issued Date <span class="text-danger">*</span></label><input type="date" class="form-control" name="issued" required></div>
+                  <div class="mb-3"><label class="form-label">Issued By <span class="text-danger">*</span></label><input type="text" class="form-control" name="issuedBy" required></div>
                   <div class="mb-3"><label class="form-label">Status <span class="text-danger">*</span></label>
                     <select class="form-select" name="status" required>
                       <option value="Active">Active</option>
@@ -115,6 +125,8 @@
                       <option value="Returned">Returned</option>
                     </select>
                   </div>
+                  <div class="mb-3"><label class="form-label">Returned To</label><input type="text" class="form-control" name="returnedTo" placeholder="Person or department returned to"></div>
+                  <div class="mb-3"><label class="form-label">Return Date</label><input type="date" class="form-control" name="returnDate" placeholder="Date when returned"></div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -159,8 +171,8 @@
 
     // In-memory asset data for demo
     let assets = [
-      { type: 'FOB', description: 'Building Access FOB', id: 'FOB-00123', issued: '2023-01-10', status: 'Active' },
-      { type: 'Laptop', description: 'Dell Latitude 5420', id: 'LT-45678', issued: '2022-09-01', status: 'Pending Return' }
+      { type: 'FOB', description: 'Building Access FOB', id: 'FOB-00123', quantity: 1, issued: '2023-01-10', issuedBy: 'John Smith', status: 'Active', returnedTo: '', returnDate: '' },
+      { type: 'Laptop', description: 'Dell Latitude 5420', id: 'LT-45678', quantity: 1, issued: '2022-09-01', issuedBy: 'Sarah Johnson', status: 'Pending Return', returnedTo: '', returnDate: '' }
     ];
     let editIndex = null;
     let deleteIndex = null;
@@ -180,8 +192,12 @@
           <td>${asset.type}</td>
           <td>${asset.description}</td>
           <td>${asset.id}</td>
+          <td>${asset.quantity || 1}</td>
           <td>${asset.issued}</td>
+          <td>${asset.issuedBy || '-'}</td>
           <td><span class="badge ${asset.status === 'Active' ? 'bg-success' : asset.status === 'Pending Return' ? 'bg-warning text-dark' : 'bg-secondary'}">${asset.status}</span></td>
+          <td>${asset.returnedTo || '-'}</td>
+          <td>${asset.returnDate || '-'}</td>
           <td>
             <button class="btn btn-sm btn-secondary me-1" onclick="openEditAsset(${idx})"><i class='bi bi-pencil'></i> Edit</button>
             <button class="btn btn-sm btn-danger" onclick="openDeleteAsset(${idx})"><i class='bi bi-trash'></i> Delete</button>
@@ -199,8 +215,12 @@
         type: form.type.value,
         description: form.description.value,
         id: form.id.value,
+        quantity: parseInt(form.quantity.value) || 1,
         issued: form.issued.value,
-        status: form.status.value
+        issuedBy: form.issuedBy.value,
+        status: form.status.value,
+        returnedTo: form.returnedTo.value,
+        returnDate: form.returnDate.value
       });
       form.reset();
       renderAssets();
@@ -215,8 +235,12 @@
       form.type.value = asset.type;
       form.description.value = asset.description;
       form.id.value = asset.id;
+      form.quantity.value = asset.quantity || 1;
       form.issued.value = asset.issued;
+      form.issuedBy.value = asset.issuedBy || '';
       form.status.value = asset.status;
+      form.returnedTo.value = asset.returnedTo || '';
+      form.returnDate.value = asset.returnDate || '';
       bootstrap.Modal.getOrCreateInstance(document.getElementById('editAssetModal')).show();
     };
     document.getElementById('editAssetForm').onsubmit = function(e) {
@@ -227,8 +251,12 @@
           type: form.type.value,
           description: form.description.value,
           id: form.id.value,
+          quantity: parseInt(form.quantity.value) || 1,
           issued: form.issued.value,
-          status: form.status.value
+          issuedBy: form.issuedBy.value,
+          status: form.status.value,
+          returnedTo: form.returnedTo.value,
+          returnDate: form.returnDate.value
         };
         renderAssets();
         bootstrap.Modal.getInstance(document.getElementById('editAssetModal')).hide();
