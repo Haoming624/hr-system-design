@@ -68,9 +68,76 @@
             </div>
           </div>
         </div>
+        <!-- View Asset Modal -->
+        <div class="modal fade" id="viewAssetModal" tabindex="-1" aria-labelledby="viewAssetModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header bg-info text-white">
+                <h5 class="modal-title" id="viewAssetModalLabel">View Asset Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label class="form-label fw-bold">Asset Type</label>
+                      <p class="form-control-plaintext" id="viewAssetType"></p>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label fw-bold">Asset ID/Number</label>
+                      <p class="form-control-plaintext" id="viewAssetId"></p>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label fw-bold">Quantity</label>
+                      <p class="form-control-plaintext" id="viewAssetQuantity"></p>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label fw-bold">Issued Date</label>
+                      <p class="form-control-plaintext" id="viewAssetIssued"></p>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label fw-bold">Issued By</label>
+                      <p class="form-control-plaintext" id="viewAssetIssuedBy"></p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label class="form-label fw-bold">Status</label>
+                      <p class="form-control-plaintext" id="viewAssetStatus"></p>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label fw-bold">Returned To</label>
+                      <p class="form-control-plaintext" id="viewAssetReturnedTo"></p>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label fw-bold">Return Date</label>
+                      <p class="form-control-plaintext" id="viewAssetReturnDate"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="mb-3">
+                      <label class="form-label fw-bold">Description</label>
+                      <div class="border rounded p-3 bg-light" id="viewAssetDescription"></div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label fw-bold">Remarks</label>
+                      <div class="border rounded p-3 bg-light" id="viewAssetRemarks"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="editFromViewBtn">Edit Asset</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- Add Asset Modal -->
         <div class="modal fade" id="addAssetModal" tabindex="-1" aria-labelledby="addAssetModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header bg-success text-white">
                 <h5 class="modal-title" id="addAssetModalLabel">Add Asset</h5>
@@ -78,21 +145,32 @@
               </div>
               <form id="addAssetForm">
                 <div class="modal-body">
-                  <div class="mb-3"><label class="form-label">Asset Type <span class="text-danger">*</span></label><input type="text" class="form-control" name="type" required></div>
-                  <div class="mb-3"><label class="form-label">Description <span class="text-danger">*</span></label><input type="text" class="form-control" name="description" required></div>
-                  <div class="mb-3"><label class="form-label">Asset ID/Number <span class="text-danger">*</span></label><input type="text" class="form-control" name="id" required></div>
-                  <div class="mb-3"><label class="form-label">Quantity <span class="text-danger">*</span></label><input type="number" class="form-control" name="quantity" value="1" min="1" required></div>
-                  <div class="mb-3"><label class="form-label">Issued Date <span class="text-danger">*</span></label><input type="date" class="form-control" name="issued" required></div>
-                  <div class="mb-3"><label class="form-label">Issued By <span class="text-danger">*</span></label><input type="text" class="form-control" name="issuedBy" required></div>
-                  <div class="mb-3"><label class="form-label">Status <span class="text-danger">*</span></label>
-                    <select class="form-select" name="status" required>
-                      <option value="Active">Active</option>
-                      <option value="Pending Return">Pending Return</option>
-                      <option value="Returned">Returned</option>
-                    </select>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3"><label class="form-label">Asset Type <span class="text-danger">*</span></label><input type="text" class="form-control" name="type" required></div>
+                      <div class="mb-3"><label class="form-label">Asset ID/Number <span class="text-danger">*</span></label><input type="text" class="form-control" name="id" required></div>
+                      <div class="mb-3"><label class="form-label">Quantity <span class="text-danger">*</span></label><input type="number" class="form-control" name="quantity" value="1" min="1" required></div>
+                      <div class="mb-3"><label class="form-label">Issued Date <span class="text-danger">*</span></label><input type="date" class="form-control" name="issued" required></div>
+                      <div class="mb-3"><label class="form-label">Issued By <span class="text-danger">*</span></label><input type="text" class="form-control" name="issuedBy" required></div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3"><label class="form-label">Status <span class="text-danger">*</span></label>
+                        <select class="form-select" name="status" required>
+                          <option value="Active">Active</option>
+                          <option value="Pending Return">Pending Return</option>
+                          <option value="Returned">Returned</option>
+                        </select>
+                      </div>
+                      <div class="mb-3"><label class="form-label">Returned To</label><input type="text" class="form-control" name="returnedTo" placeholder="Person or department returned to"></div>
+                      <div class="mb-3"><label class="form-label">Return Date</label><input type="date" class="form-control" name="returnDate" placeholder="Date when returned"></div>
+                    </div>
                   </div>
-                  <div class="mb-3"><label class="form-label">Returned To</label><input type="text" class="form-control" name="returnedTo" placeholder="Person or department returned to"></div>
-                  <div class="mb-3"><label class="form-label">Return Date</label><input type="date" class="form-control" name="returnDate" placeholder="Date when returned"></div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="mb-3"><label class="form-label">Description <span class="text-danger">*</span></label><textarea class="form-control" name="description" rows="3" required placeholder="Detailed description of the asset"></textarea></div>
+                      <div class="mb-3"><label class="form-label">Remarks</label><textarea class="form-control" name="remarks" rows="3" placeholder="Additional notes or comments"></textarea></div>
+                    </div>
+                  </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -104,7 +182,7 @@
         </div>
         <!-- Edit Asset Modal -->
         <div class="modal fade" id="editAssetModal" tabindex="-1" aria-labelledby="editAssetModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header bg-secondary text-white">
                 <h5 class="modal-title" id="editAssetModalLabel">Edit Asset</h5>
@@ -112,21 +190,32 @@
               </div>
               <form id="editAssetForm">
                 <div class="modal-body">
-                  <div class="mb-3"><label class="form-label">Asset Type <span class="text-danger">*</span></label><input type="text" class="form-control" name="type" required></div>
-                  <div class="mb-3"><label class="form-label">Description <span class="text-danger">*</span></label><input type="text" class="form-control" name="description" required></div>
-                  <div class="mb-3"><label class="form-label">Asset ID/Number <span class="text-danger">*</span></label><input type="text" class="form-control" name="id" required></div>
-                  <div class="mb-3"><label class="form-label">Quantity <span class="text-danger">*</span></label><input type="number" class="form-control" name="quantity" value="1" min="1" required></div>
-                  <div class="mb-3"><label class="form-label">Issued Date <span class="text-danger">*</span></label><input type="date" class="form-control" name="issued" required></div>
-                  <div class="mb-3"><label class="form-label">Issued By <span class="text-danger">*</span></label><input type="text" class="form-control" name="issuedBy" required></div>
-                  <div class="mb-3"><label class="form-label">Status <span class="text-danger">*</span></label>
-                    <select class="form-select" name="status" required>
-                      <option value="Active">Active</option>
-                      <option value="Pending Return">Pending Return</option>
-                      <option value="Returned">Returned</option>
-                    </select>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3"><label class="form-label">Asset Type <span class="text-danger">*</span></label><input type="text" class="form-control" name="type" required></div>
+                      <div class="mb-3"><label class="form-label">Asset ID/Number <span class="text-danger">*</span></label><input type="text" class="form-control" name="id" required></div>
+                      <div class="mb-3"><label class="form-label">Quantity <span class="text-danger">*</span></label><input type="number" class="form-control" name="quantity" value="1" min="1" required></div>
+                      <div class="mb-3"><label class="form-label">Issued Date <span class="text-danger">*</span></label><input type="date" class="form-control" name="issued" required></div>
+                      <div class="mb-3"><label class="form-label">Issued By <span class="text-danger">*</span></label><input type="text" class="form-control" name="issuedBy" required></div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3"><label class="form-label">Status <span class="text-danger">*</span></label>
+                        <select class="form-select" name="status" required>
+                          <option value="Active">Active</option>
+                          <option value="Pending Return">Pending Return</option>
+                          <option value="Returned">Returned</option>
+                        </select>
+                      </div>
+                      <div class="mb-3"><label class="form-label">Returned To</label><input type="text" class="form-control" name="returnedTo" placeholder="Person or department returned to"></div>
+                      <div class="mb-3"><label class="form-label">Return Date</label><input type="date" class="form-control" name="returnDate" placeholder="Date when returned"></div>
+                    </div>
                   </div>
-                  <div class="mb-3"><label class="form-label">Returned To</label><input type="text" class="form-control" name="returnedTo" placeholder="Person or department returned to"></div>
-                  <div class="mb-3"><label class="form-label">Return Date</label><input type="date" class="form-control" name="returnDate" placeholder="Date when returned"></div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="mb-3"><label class="form-label">Description <span class="text-danger">*</span></label><textarea class="form-control" name="description" rows="3" required placeholder="Detailed description of the asset"></textarea></div>
+                      <div class="mb-3"><label class="form-label">Remarks</label><textarea class="form-control" name="remarks" rows="3" placeholder="Additional notes or comments"></textarea></div>
+                    </div>
+                  </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -171,11 +260,12 @@
 
     // In-memory asset data for demo
     let assets = [
-      { type: 'FOB', description: 'Building Access FOB', id: 'FOB-00123', quantity: 1, issued: '2023-01-10', issuedBy: 'John Smith', status: 'Active', returnedTo: '', returnDate: '' },
-      { type: 'Laptop', description: 'Dell Latitude 5420', id: 'LT-45678', quantity: 1, issued: '2022-09-01', issuedBy: 'Sarah Johnson', status: 'Pending Return', returnedTo: '', returnDate: '' }
+      { type: 'FOB', description: 'Building Access FOB for main office entrance and parking garage', id: 'FOB-00123', quantity: 1, issued: '2023-01-10', issuedBy: 'John Smith', status: 'Active', returnedTo: '', returnDate: '', remarks: 'Standard issue FOB with building and parking access' },
+      { type: 'Laptop', description: 'Dell Latitude 5420 with 16GB RAM and 512GB SSD', id: 'LT-45678', quantity: 1, issued: '2022-09-01', issuedBy: 'Sarah Johnson', status: 'Pending Return', returnedTo: '', returnDate: '', remarks: 'IT department requested return for hardware upgrade' }
     ];
     let editIndex = null;
     let deleteIndex = null;
+    let viewIndex = null;
 
     function renderAssets() {
       const tbody = document.getElementById('assetsTableBody');
@@ -199,6 +289,7 @@
           <td>${asset.returnedTo || '-'}</td>
           <td>${asset.returnDate || '-'}</td>
           <td>
+            <button class="btn btn-sm btn-info me-1" onclick="openViewAsset(${idx})"><i class='bi bi-eye'></i> View</button>
             <button class="btn btn-sm btn-secondary me-1" onclick="openEditAsset(${idx})"><i class='bi bi-pencil'></i> Edit</button>
             <button class="btn btn-sm btn-danger" onclick="openDeleteAsset(${idx})"><i class='bi bi-trash'></i> Delete</button>
           </td>
@@ -220,7 +311,8 @@
         issuedBy: form.issuedBy.value,
         status: form.status.value,
         returnedTo: form.returnedTo.value,
-        returnDate: form.returnDate.value
+        returnDate: form.returnDate.value,
+        remarks: form.remarks.value
       });
       form.reset();
       renderAssets();
@@ -241,6 +333,7 @@
       form.status.value = asset.status;
       form.returnedTo.value = asset.returnedTo || '';
       form.returnDate.value = asset.returnDate || '';
+      form.remarks.value = asset.remarks || '';
       bootstrap.Modal.getOrCreateInstance(document.getElementById('editAssetModal')).show();
     };
     document.getElementById('editAssetForm').onsubmit = function(e) {
@@ -256,10 +349,39 @@
           issuedBy: form.issuedBy.value,
           status: form.status.value,
           returnedTo: form.returnedTo.value,
-          returnDate: form.returnDate.value
+          returnDate: form.returnDate.value,
+          remarks: form.remarks.value
         };
         renderAssets();
         bootstrap.Modal.getInstance(document.getElementById('editAssetModal')).hide();
+      }
+    };
+
+    // View Asset
+    window.openViewAsset = function(idx) {
+      viewIndex = idx;
+      const asset = assets[idx];
+      
+      // Populate view modal fields
+      document.getElementById('viewAssetType').textContent = asset.type;
+      document.getElementById('viewAssetId').textContent = asset.id;
+      document.getElementById('viewAssetQuantity').textContent = asset.quantity || 1;
+      document.getElementById('viewAssetIssued').textContent = asset.issued;
+      document.getElementById('viewAssetIssuedBy').textContent = asset.issuedBy || '-';
+      document.getElementById('viewAssetStatus').innerHTML = `<span class="badge ${asset.status === 'Active' ? 'bg-success' : asset.status === 'Pending Return' ? 'bg-warning text-dark' : 'bg-secondary'}">${asset.status}</span>`;
+      document.getElementById('viewAssetReturnedTo').textContent = asset.returnedTo || '-';
+      document.getElementById('viewAssetReturnDate').textContent = asset.returnDate || '-';
+      document.getElementById('viewAssetDescription').textContent = asset.description;
+      document.getElementById('viewAssetRemarks').textContent = asset.remarks || 'No remarks';
+      
+      bootstrap.Modal.getOrCreateInstance(document.getElementById('viewAssetModal')).show();
+    };
+
+    // Edit from view modal
+    document.getElementById('editFromViewBtn').onclick = function() {
+      if (viewIndex !== null) {
+        bootstrap.Modal.getInstance(document.getElementById('viewAssetModal')).hide();
+        openEditAsset(viewIndex);
       }
     };
 
