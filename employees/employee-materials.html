@@ -223,6 +223,7 @@
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../ui-highlighting.js"></script>
+  <script src="../js/modal-loader.js"></script>
   <script>
     fetch('../includes/topbar.html').then(r => r.text()).then(html => document.getElementById('topbar').outerHTML = html);
     fetch('../includes/sidebar.html').then(r => r.text()).then(html => document.getElementById('sidebar').outerHTML = html);
@@ -234,14 +235,7 @@
       });
     
     // Load shared add employee modal
-    fetch('../includes/add-employee-modal.html')
-      .then(r => r.text())
-      .then(html => {
-        document.getElementById('addEmployeeModalContainer').outerHTML = html;
-      })
-      .catch(error => {
-        console.error('Error loading add employee modal:', error);
-      });
+    // Modal loading is now handled by modal-loader.js
 
     // Material data - this would come from the organization files system
     let requiredDocuments = [
@@ -379,6 +373,13 @@
       // Initialize signature canvas
       initializeSignatureCanvas();
 
+      // Enable signature canvas if document is in progress or paused
+      if (doc.status === 'In Progress' || doc.status === 'Paused') {
+        if (window.enableSignatureCanvas) {
+          window.enableSignatureCanvas();
+        }
+      }
+
       // Show/hide buttons based on status
       const startBtn = document.getElementById('startBtn');
       const pauseBtn = document.getElementById('pauseBtn');
@@ -417,19 +418,16 @@
       let lastX = 0;
       let lastY = 0;
       let hasSignature = false;
-
-      canvas.addEventListener('mousedown', startDrawing);
-      canvas.addEventListener('mousemove', draw);
-      canvas.addEventListener('mouseup', stopDrawing);
-      canvas.addEventListener('mouseout', stopDrawing);
+      let isCanvasEnabled = false;
 
       function startDrawing(e) {
+        if (!isCanvasEnabled) return;
         isDrawing = true;
         [lastX, lastY] = [e.offsetX, e.offsetY];
       }
 
       function draw(e) {
-        if (!isDrawing) return;
+        if (!isDrawing || !isCanvasEnabled) return;
         ctx.beginPath();
         ctx.moveTo(lastX, lastY);
         ctx.lineTo(e.offsetX, e.offsetY);
@@ -444,10 +442,29 @@
         isDrawing = false;
       }
 
+      // Initially disable canvas
+      canvas.style.pointerEvents = 'none';
+      canvas.style.opacity = '0.5';
+
+      canvas.addEventListener('mousedown', startDrawing);
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('mouseup', stopDrawing);
+      canvas.addEventListener('mouseout', stopDrawing);
+
       // Store canvas reference and signature state for validation
       window.signatureCanvas = canvas;
       window.hasSignature = () => hasSignature;
       window.setHasSignature = (value) => { hasSignature = value; };
+      window.enableSignatureCanvas = () => {
+        isCanvasEnabled = true;
+        canvas.style.pointerEvents = 'auto';
+        canvas.style.opacity = '1';
+      };
+      window.disableSignatureCanvas = () => {
+        isCanvasEnabled = false;
+        canvas.style.pointerEvents = 'none';
+        canvas.style.opacity = '0.5';
+      };
     }
 
     function hasValidSignature() {
@@ -510,6 +527,10 @@
 
     function clearSignature() {
       const canvas = document.getElementById('signatureCanvas');
+      // 只有启用时才允许清除
+      if (window.enableSignatureCanvas && canvas.style.pointerEvents !== 'auto') {
+        return;
+      }
       const ctx = canvas.getContext('2d');
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
@@ -558,6 +579,11 @@
         document.getElementById('trackingStatus').textContent = 'In Progress';
         document.getElementById('trackingStartedAt').textContent = currentDocument.started;
         
+        // Enable signature canvas
+        if (window.enableSignatureCanvas) {
+          window.enableSignatureCanvas();
+        }
+        
         // Show/hide buttons
         document.getElementById('startBtn').style.display = 'none';
         document.getElementById('pauseBtn').style.display = 'block';
@@ -579,6 +605,11 @@
 
         // Update UI
         document.getElementById('trackingStatus').textContent = 'Paused';
+        
+        // Keep signature canvas enabled when paused
+        if (window.enableSignatureCanvas) {
+          window.enableSignatureCanvas();
+        }
         
         // Show/hide buttons
         document.getElementById('startBtn').style.display = 'block';

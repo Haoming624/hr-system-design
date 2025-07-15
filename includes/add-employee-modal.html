@@ -49,12 +49,12 @@
               </select>
             </div>
             <div class="col-md-3">
-              <label class="form-label">Date of Birth</label>
-              <input type="date" class="form-control" name="date_of_birth">
+              <label class="form-label">Date of Birth <span class="text-danger">*</span></label>
+              <input type="date" class="form-control" name="date_of_birth" required>
             </div>
             <div class="col-md-3">
-              <label class="form-label">Nationality</label>
-              <select class="form-select" name="nationality">
+              <label class="form-label">Nationality <span class="text-danger">*</span></label>
+              <select class="form-select" name="nationality" required>
                 <option value="">Select Nationality</option>
                 <option value="uk">United Kingdom</option>
                 <option value="us">United States</option>
@@ -78,16 +78,16 @@
               <input type="email" class="form-control" name="personal_email" placeholder="Enter personal email">
             </div>
             <div class="col-md-4">
-              <label class="form-label">Home Telephone</label>
-              <input type="tel" class="form-control" name="home_telephone" placeholder="Enter home phone">
-            </div>
-            <div class="col-md-4">
-              <label class="form-label">Personal Mobile</label>
-              <input type="tel" class="form-control" name="personal_mobile" placeholder="Enter personal mobile">
+              <label class="form-label">Personal Mobile <span class="text-danger">*</span></label>
+              <input type="tel" class="form-control" name="personal_mobile" placeholder="Enter personal mobile" required>
             </div>
             <div class="col-md-4">
               <label class="form-label">Work Mobile</label>
               <input type="tel" class="form-control" name="work_mobile" placeholder="Enter work mobile">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Home Telephone</label>
+              <input type="tel" class="form-control" name="home_telephone" placeholder="Enter home phone">
             </div>
             
             <!-- Address Information -->
@@ -95,8 +95,8 @@
               <h6 class="text-primary mb-3 mt-4"><i class="bi bi-geo-alt me-2"></i>Address Information</h6>
             </div>
             <div class="col-md-12">
-              <label class="form-label">Address Line 1</label>
-              <input type="text" class="form-control" name="address_line_1" placeholder="Enter address line 1">
+              <label class="form-label">Address Line 1 <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="address_line_1" placeholder="Enter address line 1" required>
             </div>
             <div class="col-md-6">
               <label class="form-label">Address Line 2</label>
@@ -107,28 +107,28 @@
               <input type="text" class="form-control" name="address_line_3" placeholder="Enter address line 3">
             </div>
             <div class="col-md-4">
-              <label class="form-label">City</label>
-              <input type="text" class="form-control" name="city" placeholder="Enter city">
+              <label class="form-label">City <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="city" placeholder="Enter city" required>
             </div>
             <div class="col-md-4">
               <label class="form-label">County</label>
               <input type="text" class="form-control" name="county" placeholder="Enter county">
             </div>
             <div class="col-md-4">
-              <label class="form-label">Post Code</label>
-              <input type="text" class="form-control" name="post_code" placeholder="Enter post code">
+              <label class="form-label">Post Code <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="post_code" placeholder="Enter post code" required>
             </div>
             <div class="col-md-6">
               <label class="form-label">Country</label>
               <select class="form-select" name="country">
-                <option value="">Select Country</option>
-                <option value="uk">United Kingdom</option>
+                <option value="uk" selected>United Kingdom</option>
                 <option value="us">United States</option>
                 <option value="de">Germany</option>
                 <option value="fr">France</option>
                 <option value="it">Italy</option>
                 <option value="es">Spain</option>
               </select>
+              <small class="text-muted">Default to current company country</small>
             </div>
             
             <!-- Employment Details -->
@@ -136,16 +136,17 @@
               <h6 class="text-primary mb-3 mt-4"><i class="bi bi-briefcase me-2"></i>Employment Details</h6>
             </div>
             <div class="col-md-6">
-              <label class="form-label">Staff ID</label>
-              <input type="text" class="form-control" name="staff_id" placeholder="Enter staff ID">
+              <label class="form-label">Staff ID <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="staff_id" placeholder="Enter staff ID" required>
             </div>
             <div class="col-md-6">
               <label class="form-label">Company ID</label>
-              <input type="text" class="form-control" name="company_id" placeholder="Enter company ID">
+              <input type="text" class="form-control" name="company_id" value="COMP001" readonly>
+              <small class="text-muted">Auto-assigned to current company</small>
             </div>
             <div class="col-md-6">
-              <label class="form-label">Payroll Number</label>
-              <input type="number" class="form-control" name="payroll_no" placeholder="Enter payroll number">
+              <label class="form-label">Payroll Number <span class="text-danger">*</span></label>
+              <input type="number" class="form-control" name="payroll_no" placeholder="Enter payroll number" required>
             </div>
             <div class="col-md-6">
               <label class="form-label">Employment Status <span class="text-danger">*</span></label>
@@ -195,8 +196,8 @@
               </div>
             </div>
             <div class="col-md-4">
-              <label class="form-label">Work Location</label>
-              <select class="form-select" name="work_location_id">
+              <label class="form-label">Work Location <span class="text-danger">*</span></label>
+              <select class="form-select" name="work_location_id" required>
                 <option value="">Select Work Location</option>
                 <option value="london">London Office</option>
                 <option value="manchester">Manchester Office</option>
@@ -205,8 +206,8 @@
               </select>
             </div>
             <div class="col-md-4">
-              <label class="form-label">Work Type</label>
-              <select class="form-select" name="work_type_id">
+              <label class="form-label">Work Type <span class="text-danger">*</span></label>
+              <select class="form-select" name="work_type_id" required>
                 <option value="">Select Work Type</option>
                 <option value="full_time">Full-time</option>
                 <option value="part_time">Part-time</option>
@@ -227,8 +228,8 @@
               <input type="date" class="form-control" name="contract_expiry_date">
             </div>
             <div class="col-md-4">
-              <label class="form-label">Weekly Working Hours</label>
-              <input type="number" class="form-control" name="weekly_working_hours" step="0.5" placeholder="e.g., 37.5">
+              <label class="form-label">Weekly Working Hours <span class="text-danger">*</span></label>
+              <input type="number" class="form-control" name="weekly_working_hours" step="0.5" placeholder="e.g., 37.5" required>
             </div>
             
             <!-- Compensation Information -->
@@ -240,16 +241,16 @@
               <input type="number" class="form-control" name="pay_amount" step="0.01" placeholder="Enter salary amount" required>
             </div>
             <div class="col-md-4">
-              <label class="form-label">Currency</label>
-              <select class="form-select" name="currency">
+              <label class="form-label">Currency <span class="text-danger">*</span></label>
+              <select class="form-select" name="currency" required>
                 <option value="gbp">GBP</option>
                 <option value="usd">USD</option>
                 <option value="eur">EUR</option>
               </select>
             </div>
             <div class="col-md-4">
-              <label class="form-label">Pay Frequency</label>
-              <select class="form-select" name="pay_frequency">
+              <label class="form-label">Pay Frequency <span class="text-danger">*</span></label>
+              <select class="form-select" name="pay_frequency" required>
                 <option value="">Select Pay Frequency</option>
                 <option value="hourly">Hourly</option>
                 <option value="weekly">Weekly</option>
@@ -258,20 +259,7 @@
                 <option value="contract">Contract</option>
               </select>
             </div>
-            <div class="col-md-6">
-              <label class="form-label">Allowance Type</label>
-              <select class="form-select" name="allowance_type">
-                <option value="">Select Allowance Type</option>
-                <option value="housing">Housing</option>
-                <option value="transportation">Transportation</option>
-                <option value="meal">Meal</option>
-                <option value="education">Education</option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Working Pattern</label>
-              <input type="text" class="form-control" name="working_pattern" placeholder="e.g., Monday-Friday 9-5">
-            </div>
+
             
             <!-- National ID Information -->
             <div class="col-12">
@@ -280,18 +268,18 @@
             <div class="col-md-6">
               <label class="form-label">National ID Type</label>
               <select class="form-select" name="national_id_type">
-                <option value="">Select ID Type</option>
-                <option value="nino">NINO (UK)</option>
+                <option value="nino" selected>NINO (UK)</option>
                 <option value="ssn">SSN (US)</option>
                 <option value="bsn">BSN (Netherlands)</option>
                 <option value="ppsn">PPSN (Ireland)</option>
                 <option value="passport">Passport</option>
                 <option value="driving_license">Driving License</option>
               </select>
+              <small class="text-muted">Default to current country ID type</small>
             </div>
             <div class="col-md-6">
-              <label class="form-label">National ID Number</label>
-              <input type="text" class="form-control" name="national_id_number" placeholder="Enter ID number">
+              <label class="form-label">National ID Number <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="national_id_number" placeholder="Enter ID number" required>
             </div>
             
             <!-- Emergency Contact -->
@@ -299,12 +287,12 @@
               <h6 class="text-primary mb-3 mt-4"><i class="bi bi-person-plus me-2"></i>Emergency Contact</h6>
             </div>
             <div class="col-md-4">
-              <label class="form-label">Contact Name</label>
-              <input type="text" class="form-control" name="emergency_contact_name" placeholder="Enter contact name">
+              <label class="form-label">Contact Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="emergency_contact_name" placeholder="Enter contact name" required>
             </div>
             <div class="col-md-4">
-              <label class="form-label">Relationship</label>
-              <select class="form-select" name="emergency_contact_relationship">
+              <label class="form-label">Relationship <span class="text-danger">*</span></label>
+              <select class="form-select" name="emergency_contact_relationship" required>
                 <option value="">Select Relationship</option>
                 <option value="spouse">Spouse</option>
                 <option value="parent">Parent</option>
@@ -314,8 +302,8 @@
               </select>
             </div>
             <div class="col-md-4">
-              <label class="form-label">Contact Phone</label>
-              <input type="tel" class="form-control" name="emergency_contact_phone" placeholder="Enter contact phone">
+              <label class="form-label">Contact Phone <span class="text-danger">*</span></label>
+              <input type="tel" class="form-control" name="emergency_contact_phone" placeholder="Enter contact phone" required>
             </div>
             
             <!-- Remarks -->
@@ -363,65 +351,75 @@ const jobTitleData = {
   'sales': ['Sales Manager', 'Sales Representative', 'Account Manager', 'Business Development']
 };
 
-// Department-Group nested dropdown
-document.getElementById('departmentSelect').addEventListener('change', function() {
-  const groupSelect = document.getElementById('groupSelect');
-  const jobTitleSelect = document.getElementById('jobTitleSelect');
-  const gradeSelect = document.getElementById('gradeSelect');
-  const selectedDepartment = this.value;
-  
-  // Reset group dropdown
-  groupSelect.innerHTML = '<option value="">Select Group</option>';
-  groupSelect.disabled = true;
-  
-  // Reset job title dropdown
-  jobTitleSelect.innerHTML = '<option value="">Select Job Title</option>';
-  jobTitleSelect.disabled = true;
-  
-  // Reset grade dropdown
-  gradeSelect.innerHTML = '<option value="">Select Grade</option>';
-  gradeSelect.disabled = true;
-  
-  if (selectedDepartment && departmentData[selectedDepartment]) {
-    departmentData[selectedDepartment].forEach(group => {
-      const option = document.createElement('option');
-      option.value = group.toLowerCase().replace(/\s+/g, '-');
-      option.textContent = group;
-      groupSelect.appendChild(option);
-    });
-    groupSelect.disabled = false;
+
+
+// Use event delegation for modal elements
+document.addEventListener('change', function(e) {
+  // Department-Group nested dropdown
+  if (e.target.id === 'departmentSelect') {
+    const groupSelect = document.getElementById('groupSelect');
+    const jobTitleSelect = document.getElementById('jobTitleSelect');
+    const gradeSelect = document.getElementById('gradeSelect');
+    const selectedDepartment = e.target.value;
+    
+    // Reset all dependent dropdowns
+    groupSelect.innerHTML = '<option value="">Select Group</option>';
+    groupSelect.disabled = true;
+    
+    jobTitleSelect.innerHTML = '<option value="">Select Job Title</option>';
+    jobTitleSelect.disabled = true;
+    
+    gradeSelect.innerHTML = '<option value="">Select Grade</option>';
+    gradeSelect.disabled = true;
+    
+    // Enable and populate group dropdown if department is selected
+    if (selectedDepartment && departmentData[selectedDepartment]) {
+      departmentData[selectedDepartment].forEach(group => {
+        const option = document.createElement('option');
+        option.value = group.toLowerCase().replace(/\s+/g, '-');
+        option.textContent = group;
+        groupSelect.appendChild(option);
+      });
+      groupSelect.disabled = false;
+    }
+    
+    // Enable and populate job title dropdown if department is selected
+    if (selectedDepartment && jobTitleData[selectedDepartment]) {
+      jobTitleData[selectedDepartment].forEach(jobTitle => {
+        const option = document.createElement('option');
+        option.value = jobTitle.toLowerCase().replace(/\s+/g, '-');
+        option.textContent = jobTitle;
+        jobTitleSelect.appendChild(option);
+      });
+      jobTitleSelect.disabled = false;
+    }
   }
   
-  if (selectedDepartment && jobTitleData[selectedDepartment]) {
-    jobTitleData[selectedDepartment].forEach(jobTitle => {
-      const option = document.createElement('option');
-      option.value = jobTitle.toLowerCase().replace(/\s+/g, '-');
-      option.textContent = jobTitle;
-      jobTitleSelect.appendChild(option);
-    });
-    jobTitleSelect.disabled = false;
+  // Job Title-Grade nested dropdown
+  if (e.target.id === 'jobTitleSelect') {
+    const gradeSelect = document.getElementById('gradeSelect');
+    const selectedJobTitle = e.target.value;
+    
+    // Reset grade dropdown
+    gradeSelect.innerHTML = '<option value="">Select Grade</option>';
+    gradeSelect.disabled = true;
+    
+    // Enable and populate grade dropdown if job title is selected
+    if (selectedJobTitle) {
+      // Standard grades for all job titles
+      const grades = ['A', 'B', 'C', 'None'];
+      grades.forEach(grade => {
+        const option = document.createElement('option');
+        option.value = grade.toLowerCase();
+        option.textContent = grade;
+        gradeSelect.appendChild(option);
+      });
+      gradeSelect.disabled = false;
+    }
   }
 });
 
-// Job Title-Grade nested dropdown
-document.getElementById('jobTitleSelect').addEventListener('change', function() {
-  const gradeSelect = document.getElementById('gradeSelect');
-  const selectedJobTitle = this.value;
-  
-  // Reset grade dropdown
-  gradeSelect.innerHTML = '<option value="">Select Grade</option>';
-  gradeSelect.disabled = true;
-  
-  // Standard grades for all job titles
-  const grades = ['A', 'B', 'C', 'None'];
-  grades.forEach(grade => {
-    const option = document.createElement('option');
-    option.value = grade.toLowerCase();
-    option.textContent = grade;
-    gradeSelect.appendChild(option);
-  });
-  gradeSelect.disabled = false;
-});
+
 
 // Form submission with data collection
 document.getElementById('addEmployeeForm').addEventListener('submit', function(e) {
@@ -437,8 +435,8 @@ document.getElementById('addEmployeeForm').addEventListener('submit', function(e
     }
   }
   
-  // Log the collected data (for debugging)
-  console.log('Employee Data:', employeeData);
+  // Add status for optional files (based on database structure)
+  employeeData.status = 'active'; // Default status for new employees
   
   // Here you would typically send the data to your API
   // For now, we'll just redirect to the profile page

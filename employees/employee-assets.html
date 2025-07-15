@@ -403,13 +403,6 @@
   </script>
   <!-- Add Employee Modal -->
   <div id="addEmployeeModalContainer"></div>
-  <script>
-    // Load shared add employee modal
-    fetch('../includes/add-employee-modal.html')
-      .then(r => r.text())
-      .then(html => {
-        document.getElementById('addEmployeeModalContainer').outerHTML = html;
-      });
-  </script>
+  <script src="../js/modal-loader.js"></script>
 </body>
 </html> 
