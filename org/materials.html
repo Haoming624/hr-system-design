@@ -218,7 +218,7 @@
               <td>Onboarding</td>
               <td><small>HR, IT</small></td>
               <td><small>Recruitment Team</small></td>
-              <td><span class="badge bg-danger">Yes</span></td>
+              <td><small><span class="badge bg-danger">Required</span> (Payroll)<br><span class="badge bg-secondary">Optional</span> (Recruitment)</small></td>
               <td><span class="badge bg-success">Yes</span></td>
               <td><span class="badge bg-success">Valid</span></td>
               <td><small>-</small></td>
@@ -241,7 +241,7 @@
               <td>Policy</td>
               <td><small>All</small></td>
               <td><small>-</small></td>
-              <td><span class="badge bg-danger">Yes</span></td>
+              <td><small><span class="badge bg-danger">Required</span> (All Groups)</small></td>
               <td><span class="badge bg-success">Yes</span></td>
               <td><span class="badge bg-warning text-dark">Expiring Soon</span></td>
               <td><small>2024-06-01 09:00</small></td>
@@ -264,7 +264,7 @@
               <td>Training</td>
               <td><small>All</small></td>
               <td><small>-</small></td>
-              <td><span class="badge bg-danger">Yes</span></td>
+              <td><small><span class="badge bg-secondary">Optional</span> (All Groups)</small></td>
               <td><span class="badge bg-success">Yes</span></td>
               <td><span class="badge bg-danger">Expired</span></td>
               <td><small>2023-03-15 09:00</small></td>
@@ -303,14 +303,7 @@
                 <div class="mb-3"><label class="form-label">Material Type <span class='text-danger'>*</span></label><select class="form-select" required><option>Onboarding</option><option>Policy</option><option>Training</option><option>Handbook</option><option>Other</option></select></div>
                 <div class="mb-3"><label class="form-label">Upload Material <span class='text-danger'>*</span></label><input type="file" class="form-control" required></div>
                 <div class="mb-3"><label class="form-label">Expiry Date</label><input type="date" class="form-control"></div>
-                <div class="mb-3"><label class="form-label">Must Read <span class='text-danger'>*</span></label>
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="addMaterialMustReadSwitch" checked required style="width: 3rem; height: 1.5rem;">
-                    <label class="form-check-label ms-3" for="addMaterialMustReadSwitch">
-                      <span class="badge bg-danger">Required</span>
-                    </label>
-                  </div>
-                </div>
+
                 <div class="mb-3"><label class="form-label">In Use <span class='text-danger'>*</span></label>
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="addMaterialInUseSwitch" checked required style="width: 3rem; height: 1.5rem;">
@@ -321,13 +314,19 @@
                 </div>
               </div>
               <div class="col-md-5">
-                <div class="mb-3 h-100 d-flex flex-column justify-content-between">
+                <div class="mb-3 h-100 d-flex flex-column">
                   <label class="form-label">Assign to Departments & Groups</label>
-                  <div class="border rounded p-3 bg-light">
+                  <div class="border rounded p-3 bg-light flex-grow-1">
                     <!-- All checkbox -->
                     <div class="form-check mb-3">
                       <input class="form-check-input" type="checkbox" id="addallAssignments">
                       <label class="form-check-label fw-bold text-primary" for="addallAssignments">All Departments & Groups</label>
+                      <div class="ms-3 mt-1">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="addrequiredAll" disabled>
+                          <label class="form-check-label small text-muted" for="addrequiredAll">Required</label>
+                        </div>
+                      </div>
                     </div>
                     <hr class="my-3">
                     <!-- Department checkboxes -->
@@ -336,30 +335,66 @@
                         <div class="form-check mb-2">
                           <input class="form-check-input" type="checkbox" id="adddeptHR">
                           <label class="form-check-label fw-bold" for="adddeptHR">Human Resources</label>
+                          <div class="ms-3 mt-1">
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="addrequiredHR" disabled>
+                              <label class="form-check-label small text-muted" for="addrequiredHR">Required</label>
+                            </div>
+                          </div>
                         </div>
                         <div class="ms-4">
                           <div class="form-check mb-1">
                             <input class="form-check-input" type="checkbox" id="addgroupPayroll">
                             <label class="form-check-label small" for="addgroupPayroll">Payroll Team</label>
+                            <div class="ms-3 mt-1">
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="addrequiredPayroll" disabled>
+                                <label class="form-check-label small text-muted" for="addrequiredPayroll">Required</label>
+                              </div>
+                            </div>
                           </div>
                           <div class="form-check mb-1">
                             <input class="form-check-input" type="checkbox" id="addgroupRecruitment">
                             <label class="form-check-label small" for="addgroupRecruitment">Recruitment Team</label>
+                            <div class="ms-3 mt-1">
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="addrequiredRecruitment" disabled>
+                                <label class="form-check-label small text-muted" for="addrequiredRecruitment">Required</label>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div class="form-check mb-2 mt-3">
                           <input class="form-check-input" type="checkbox" id="adddeptFinance">
                           <label class="form-check-label fw-bold" for="adddeptFinance">Finance</label>
+                          <div class="ms-3 mt-1">
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="addrequiredFinance" disabled>
+                              <label class="form-check-label small text-muted" for="addrequiredFinance">Required</label>
+                            </div>
+                          </div>
                         </div>
                         <div class="ms-4">
                           <div class="form-check mb-1">
                             <input class="form-check-input" type="checkbox" id="addgroupITSupport">
                             <label class="form-check-label small" for="addgroupITSupport">IT Support</label>
+                            <div class="ms-3 mt-1">
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="addrequiredITSupport" disabled>
+                                <label class="form-check-label small text-muted" for="addrequiredITSupport">Required</label>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div class="form-check mb-2 mt-3">
                           <input class="form-check-input" type="checkbox" id="adddeptIT">
                           <label class="form-check-label fw-bold" for="adddeptIT">IT</label>
+                          <div class="ms-3 mt-1">
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="addrequiredIT" disabled>
+                              <label class="form-check-label small text-muted" for="addrequiredIT">Required</label>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -393,14 +428,7 @@
                 <div class="mb-3"><label class="form-label">Material Type</label><select class="form-select"><option>Onboarding</option><option>Policy</option><option>Training</option><option>Handbook</option><option>Other</option></select></div>
                 <div class="mb-3"><label class="form-label">Replace Material</label><input type="file" class="form-control"></div>
                 <div class="mb-3"><label class="form-label">Expiry Date</label><input type="date" class="form-control"></div>
-                <div class="mb-3"><label class="form-label">Must Read</label>
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="editMaterialMustReadSwitch" checked style="width: 3rem; height: 1.5rem;">
-                    <label class="form-check-label ms-3" for="editMaterialMustReadSwitch">
-                      <span class="badge bg-danger">Required</span>
-                    </label>
-                  </div>
-                </div>
+
                 <div class="mb-3"><label class="form-label">In Use</label>
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="editMaterialInUseSwitch" checked style="width: 3rem; height: 1.5rem;">
@@ -411,13 +439,19 @@
                 </div>
               </div>
               <div class="col-md-5">
-                <div class="mb-3 h-100 d-flex flex-column justify-content-between">
+                <div class="mb-3 h-100 d-flex flex-column">
                   <label class="form-label">Assign to Departments & Groups</label>
-                  <div class="border rounded p-3 bg-light">
+                  <div class="border rounded p-3 bg-light flex-grow-1">
                     <!-- All checkbox -->
                     <div class="form-check mb-3">
                       <input class="form-check-input" type="checkbox" id="editallAssignments">
                       <label class="form-check-label fw-bold text-primary" for="editallAssignments">All Departments & Groups</label>
+                      <div class="ms-3 mt-1">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="editrequiredAll" disabled>
+                          <label class="form-check-label small text-muted" for="editrequiredAll">Required</label>
+                        </div>
+                      </div>
                     </div>
                     <hr class="my-3">
                     <!-- Department checkboxes -->
@@ -426,30 +460,66 @@
                         <div class="form-check mb-2">
                           <input class="form-check-input" type="checkbox" id="editdeptHR">
                           <label class="form-check-label fw-bold" for="editdeptHR">Human Resources</label>
+                          <div class="ms-3 mt-1">
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="editrequiredHR" disabled>
+                              <label class="form-check-label small text-muted" for="editrequiredHR">Required</label>
+                            </div>
+                          </div>
                         </div>
                         <div class="ms-4">
                           <div class="form-check mb-1">
                             <input class="form-check-input" type="checkbox" id="editgroupPayroll">
                             <label class="form-check-label small" for="editgroupPayroll">Payroll Team</label>
+                            <div class="ms-3 mt-1">
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="editrequiredPayroll" disabled>
+                                <label class="form-check-label small text-muted" for="editrequiredPayroll">Required</label>
+                              </div>
+                            </div>
                           </div>
                           <div class="form-check mb-1">
                             <input class="form-check-input" type="checkbox" id="editgroupRecruitment">
                             <label class="form-check-label small" for="editgroupRecruitment">Recruitment Team</label>
+                            <div class="ms-3 mt-1">
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="editrequiredRecruitment" disabled>
+                                <label class="form-check-label small text-muted" for="editrequiredRecruitment">Required</label>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div class="form-check mb-2 mt-3">
                           <input class="form-check-input" type="checkbox" id="editdeptFinance">
                           <label class="form-check-label fw-bold" for="editdeptFinance">Finance</label>
+                          <div class="ms-3 mt-1">
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="editrequiredFinance" disabled>
+                              <label class="form-check-label small text-muted" for="editrequiredFinance">Required</label>
+                            </div>
+                          </div>
                         </div>
                         <div class="ms-4">
                           <div class="form-check mb-1">
                             <input class="form-check-input" type="checkbox" id="editgroupITSupport">
                             <label class="form-check-label small" for="editgroupITSupport">IT Support</label>
+                            <div class="ms-3 mt-1">
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="editrequiredITSupport" disabled>
+                                <label class="form-check-label small text-muted" for="editrequiredITSupport">Required</label>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div class="form-check mb-2 mt-3">
                           <input class="form-check-input" type="checkbox" id="editdeptIT">
                           <label class="form-check-label fw-bold" for="editdeptIT">IT</label>
+                          <div class="ms-3 mt-1">
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="editrequiredIT" disabled>
+                              <label class="form-check-label small text-muted" for="editrequiredIT">Required</label>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -486,31 +556,82 @@
   </div>
   <!-- Material Preview Modal -->
   <div class="modal fade" id="materialPreviewModal" tabindex="-1" aria-labelledby="materialPreviewModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title" id="materialPreviewModalLabel">Material Preview {Material name}</h5>
+          <h5 class="modal-title" id="materialPreviewModalLabel">View Material</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body p-0">
-          <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
-            <div>
-              <h6 class="mb-1">Onboarding Checklist.pdf</h6>
-              <small class="text-muted">Checklist for new hires</small>
+        <div class="modal-body p-4">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Material Name</label>
+              <p class="mb-0">Onboarding Checklist.pdf</p>
             </div>
-            <div class="d-flex gap-2">
-              <button class="btn btn-sm btn-info" title="Download">
-                <i class="bi bi-download me-1"></i>Download
-              </button>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Material Type</label>
+              <p class="mb-0"><span class="badge bg-info">Onboarding</span></p>
             </div>
-          </div>
-          <div class="p-3">
-            <div class="ratio ratio-16x9">
-              <iframe src="about:blank" title="Material Preview" class="border rounded"></iframe>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Uploaded</label>
+              <p class="mb-0">2023-02-01 09:00</p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Expiry Date</label>
+              <p class="mb-0">-</p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Status</label>
+              <p class="mb-0"><span class="badge bg-success">Valid</span></p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">In Use</label>
+              <p class="mb-0"><span class="badge bg-success">Yes</span></p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">File Size</label>
+              <p class="mb-0">1.8 MB</p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Updated By</label>
+              <p class="mb-0">John Smith</p>
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-bold">Description</label>
+              <p class="mb-0">Checklist for new hires</p>
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-bold">Assigned Departments & Groups</label>
+              <div class="border rounded p-3 bg-light">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h6 class="mb-2">Departments</h6>
+                    <ul class="list-unstyled mb-0">
+                      <li><i class="bi bi-check-circle-fill text-success me-2"></i>Human Resources</li>
+                      <li><i class="bi bi-check-circle-fill text-success me-2"></i>IT</li>
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <h6 class="mb-2">Groups</h6>
+                    <ul class="list-unstyled mb-0">
+                      <li><i class="bi bi-check-circle-fill text-success me-2"></i>Payroll Team <span class="badge bg-danger ms-1">Required</span></li>
+                      <li><i class="bi bi-check-circle-fill text-success me-2"></i>Recruitment Team <span class="badge bg-secondary ms-1">Optional</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-bold">File Preview</label>
+              <div class="border rounded p-3 bg-light text-center">
+                <i class="bi bi-file-pdf text-danger" style="font-size: 3rem;"></i>
+                <p class="mb-0 mt-2">PDF Document</p>
+                <button class="btn btn-primary btn-sm mt-2"><i class="bi bi-download"></i> Download</button>
+              </div>
             </div>
           </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer border-0 pt-0">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <div class="ms-auto">
             <button type="button" class="btn btn-danger me-2" data-bs-toggle="modal" data-bs-target="#deleteMaterialModal" data-bs-dismiss="modal">Delete</button>
@@ -542,31 +663,16 @@
       }
     }
 
-    // Dynamic "Must Read" badge functionality
-    function updateMustReadBadge(checkboxId, badgeElement) {
-      const checkbox = document.getElementById(checkboxId);
-      const badge = badgeElement.querySelector('.badge');
-      
-      if (checkbox.checked) {
-        badge.className = 'badge bg-danger';
-        badge.textContent = 'Required';
-      } else {
-        badge.className = 'badge bg-secondary';
-        badge.textContent = 'Optional';
-      }
-    }
 
-    // Add event listeners for all "In Use" and "Must Read" checkboxes
+
+    // Add event listeners for all "In Use" checkboxes
     document.addEventListener('DOMContentLoaded', function() {
       const inUseCheckboxes = [
         { checkboxId: 'addMaterialInUseSwitch', labelId: 'addMaterialInUseSwitch' },
         { checkboxId: 'editMaterialInUseSwitch', labelId: 'editMaterialInUseSwitch' }
       ];
 
-      const mustReadCheckboxes = [
-        { checkboxId: 'addMaterialMustReadSwitch', labelId: 'addMaterialMustReadSwitch' },
-        { checkboxId: 'editMaterialMustReadSwitch', labelId: 'editMaterialMustReadSwitch' }
-      ];
+
 
       inUseCheckboxes.forEach(item => {
         const checkbox = document.getElementById(item.checkboxId);
@@ -583,20 +689,7 @@
         }
       });
 
-      mustReadCheckboxes.forEach(item => {
-        const checkbox = document.getElementById(item.checkboxId);
-        const label = document.querySelector(`label[for="${item.labelId}"]`);
-        
-        if (checkbox && label) {
-          // Initial state
-          updateMustReadBadge(item.checkboxId, label);
-          
-          // Event listener for changes
-          checkbox.addEventListener('change', function() {
-            updateMustReadBadge(item.checkboxId, label);
-          });
-        }
-      });
+
     });
 
     // Nested checkbox logic for department/group assignment
@@ -618,10 +711,101 @@
     function updateChildCheckboxes(parentId, childIds) {
       const parent = document.getElementById(parentId);
       childIds.forEach(id => {
-        document.getElementById(id).checked = parent.checked;
+        const childCheckbox = document.getElementById(id);
+        if (childCheckbox) {
+          childCheckbox.checked = parent.checked;
+          // If this is a group checkbox, also update its required checkbox
+          const requiredId = id.replace('group', 'required');
+          const requiredCheckbox = document.getElementById(requiredId);
+          if (requiredCheckbox) {
+            requiredCheckbox.disabled = !parent.checked;
+            if (!parent.checked) {
+              requiredCheckbox.checked = false;
+            }
+          }
+        }
       });
+      
+      // Update parent's required checkbox
+      const parentRequiredId = parentId.replace('dept', 'required').replace('allAssignments', 'requiredAll');
+      const parentRequiredCheckbox = document.getElementById(parentRequiredId);
+      if (parentRequiredCheckbox) {
+        parentRequiredCheckbox.disabled = !parent.checked;
+        if (!parent.checked) {
+          parentRequiredCheckbox.checked = false;
+        }
+      }
+      
       // Remove indeterminate state when parent is toggled
       parent.indeterminate = false;
+    }
+
+    // Function to update child required checkboxes when parent required is toggled
+    function updateChildRequiredCheckboxes(parentRequiredId, childIds) {
+      const parentRequired = document.getElementById(parentRequiredId);
+      if (!parentRequired) return;
+      
+      childIds.forEach(id => {
+        const childRequiredId = id.replace('group', 'required').replace('dept', 'required');
+        const childRequiredCheckbox = document.getElementById(childRequiredId);
+        if (childRequiredCheckbox && !childRequiredCheckbox.disabled) {
+          childRequiredCheckbox.checked = parentRequired.checked;
+        }
+      });
+    }
+
+    // Handle required checkboxes for all levels
+    function handleRequiredCheckbox(parentId, requiredId) {
+      const parentCheckbox = document.getElementById(parentId);
+      const requiredCheckbox = document.getElementById(requiredId);
+      
+      if (parentCheckbox && requiredCheckbox) {
+        // Enable/disable required checkbox based on parent selection
+        requiredCheckbox.disabled = !parentCheckbox.checked;
+        
+        // If parent is unchecked, uncheck required
+        if (!parentCheckbox.checked) {
+          requiredCheckbox.checked = false;
+        }
+        
+        // Add event listener for parent checkbox
+        parentCheckbox.addEventListener('change', function() {
+          requiredCheckbox.disabled = !this.checked;
+          if (!this.checked) {
+            requiredCheckbox.checked = false;
+          }
+        });
+        
+        // Add event listener for required checkbox to cascade to children
+        requiredCheckbox.addEventListener('change', function() {
+          // Get child IDs based on parent type
+          let childIds = [];
+          if (parentId.includes('allAssignments')) {
+            // All level - affects all departments and groups
+            childIds = ['adddeptHR', 'adddeptFinance', 'adddeptIT', 'addgroupPayroll', 'addgroupRecruitment', 'addgroupITSupport'];
+            if (parentId.startsWith('edit')) {
+              childIds = childIds.map(id => id.replace('add', 'edit'));
+            }
+          } else if (parentId.includes('dept')) {
+            // Department level - affects its groups
+            if (parentId.includes('HR')) {
+              childIds = ['addgroupPayroll', 'addgroupRecruitment'];
+              if (parentId.startsWith('edit')) {
+                childIds = childIds.map(id => id.replace('add', 'edit'));
+              }
+            } else if (parentId.includes('Finance')) {
+              childIds = ['addgroupITSupport'];
+              if (parentId.startsWith('edit')) {
+                childIds = childIds.map(id => id.replace('add', 'edit'));
+              }
+            }
+          }
+          
+          if (childIds.length > 0) {
+            updateChildRequiredCheckboxes(requiredId, childIds);
+          }
+        });
+      }
     }
 
     // Department to group mapping (for both Add and Edit modals)
@@ -653,6 +837,65 @@
             if (checkbox) {
               checkbox.checked = allCheckbox.checked;
               checkbox.indeterminate = false;
+              
+              // If this is a group checkbox, also update its required checkbox
+              if (id.includes('group')) {
+                const requiredId = id.replace('group', 'required');
+                const requiredCheckbox = document.getElementById(requiredId);
+                if (requiredCheckbox) {
+                  requiredCheckbox.disabled = !allCheckbox.checked;
+                  if (!allCheckbox.checked) {
+                    requiredCheckbox.checked = false;
+                  }
+                }
+              }
+              
+              // If this is a department checkbox, also update its required checkbox
+              if (id.includes('dept')) {
+                const requiredId = id.replace('dept', 'required');
+                const requiredCheckbox = document.getElementById(requiredId);
+                if (requiredCheckbox) {
+                  requiredCheckbox.disabled = !allCheckbox.checked;
+                  if (!allCheckbox.checked) {
+                    requiredCheckbox.checked = false;
+                  }
+                }
+              }
+            }
+          });
+          
+          // Update All's required checkbox
+          const allRequiredId = allCheckboxId.replace('allAssignments', 'requiredAll');
+          const allRequiredCheckbox = document.getElementById(allRequiredId);
+          if (allRequiredCheckbox) {
+            allRequiredCheckbox.disabled = !allCheckbox.checked;
+            if (!allCheckbox.checked) {
+              allRequiredCheckbox.checked = false;
+            }
+          }
+        });
+      }
+      
+      // All required checkbox logic
+      const allRequiredId = allCheckboxId.replace('allAssignments', 'requiredAll');
+      const allRequiredCheckbox = document.getElementById(allRequiredId);
+      if (allRequiredCheckbox) {
+        allRequiredCheckbox.addEventListener('change', function() {
+          // Update all department and group required checkboxes
+          const allRequiredCheckboxes = [
+            'addrequiredHR', 'addrequiredFinance', 'addrequiredIT',
+            'addrequiredPayroll', 'addrequiredRecruitment', 'addrequiredITSupport'
+          ];
+          if (prefix === 'edit') {
+            allRequiredCheckboxes.forEach((id, index) => {
+              allRequiredCheckboxes[index] = id.replace('add', 'edit');
+            });
+          }
+          
+          allRequiredCheckboxes.forEach(id => {
+            const requiredCheckbox = document.getElementById(id);
+            if (requiredCheckbox && !requiredCheckbox.disabled) {
+              requiredCheckbox.checked = allRequiredCheckbox.checked;
             }
           });
         });
@@ -682,10 +925,41 @@
             child.addEventListener('change', function() {
               updateParentCheckbox(parentId, deptGroupMap[parentId]);
               updateAllCheckbox(allCheckboxId, individualCheckboxes);
+              
+              // If this is a group checkbox, also update its required checkbox
+              if (childId.includes('group')) {
+                const requiredId = childId.replace('group', 'required');
+                const requiredCheckbox = document.getElementById(requiredId);
+                if (requiredCheckbox) {
+                  requiredCheckbox.disabled = !child.checked;
+                  if (!child.checked) {
+                    requiredCheckbox.checked = false;
+                  }
+                }
+              }
             });
           }
         });
       });
+      
+      // Initialize required checkboxes for all levels
+      if (prefix === 'add') {
+        handleRequiredCheckbox('addgroupPayroll', 'addrequiredPayroll');
+        handleRequiredCheckbox('addgroupRecruitment', 'addrequiredRecruitment');
+        handleRequiredCheckbox('addgroupITSupport', 'addrequiredITSupport');
+        handleRequiredCheckbox('adddeptHR', 'addrequiredHR');
+        handleRequiredCheckbox('adddeptFinance', 'addrequiredFinance');
+        handleRequiredCheckbox('adddeptIT', 'addrequiredIT');
+        handleRequiredCheckbox('addallAssignments', 'addrequiredAll');
+      } else if (prefix === 'edit') {
+        handleRequiredCheckbox('editgroupPayroll', 'editrequiredPayroll');
+        handleRequiredCheckbox('editgroupRecruitment', 'editrequiredRecruitment');
+        handleRequiredCheckbox('editgroupITSupport', 'editrequiredITSupport');
+        handleRequiredCheckbox('editdeptHR', 'editrequiredHR');
+        handleRequiredCheckbox('editdeptFinance', 'editrequiredFinance');
+        handleRequiredCheckbox('editdeptIT', 'editrequiredIT');
+        handleRequiredCheckbox('editallAssignments', 'editrequiredAll');
+      }
     });
     
     function updateAllCheckbox(allCheckboxId, individualCheckboxes) {

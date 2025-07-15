@@ -37,44 +37,44 @@
               <td>Birthday</td>
               <td>7</td>
               <td>calendar</td>
-              <td>Email</td>
+              <td><span class="badge bg-primary me-1">Email</span><span class="badge bg-info">Lark</span></td>
               <td>Happy Birthday {Employee Name}!</td>
               <td><span class="badge bg-success">Yes</span></td>
               <td>
-                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editEventAlertModal"><i class="bi bi-pencil"></i> Edit</button>
+                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editEventAlertModal"><i class="bi bi-pencil"></i></button>
               </td>
             </tr>
             <tr>
               <td>Probation End</td>
               <td>14</td>
               <td>working</td>
-              <td>Lark</td>
+              <td><span class="badge bg-info">Lark</span></td>
               <td>Probation ending soon for {Employee Name}</td>
               <td><span class="badge bg-success">Yes</span></td>
               <td>
-                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editEventAlertModal"><i class="bi bi-pencil"></i> Edit</button>
+                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editEventAlertModal"><i class="bi bi-pencil"></i></button>
               </td>
             </tr>
             <tr>
               <td>Contract Expiry Date</td>
               <td>14</td>
               <td>calendar</td>
-              <td>Email</td>
+              <td><span class="badge bg-primary">Email</span></td>
               <td>{Employee Name} contract will expire in 2 weeks. Please review and renew if needed.</td>
               <td><span class="badge bg-success">Yes</span></td>
               <td>
-                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editEventAlertModal"><i class="bi bi-pencil"></i> Edit</button>
+                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editEventAlertModal"><i class="bi bi-pencil"></i></button>
               </td>
             </tr>
             <tr>
               <td>Anniversary</td>
               <td>7</td>
               <td>calendar</td>
-              <td>Email</td>
+              <td><span class="badge bg-primary">Email</span></td>
               <td>Happy Anniversary {Employee Name}!</td>
               <td><span class="badge bg-danger">No</span></td>
               <td>
-                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editEventAlertModal"><i class="bi bi-pencil"></i> Edit</button>
+                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editEventAlertModal"><i class="bi bi-pencil"></i></button>
               </td>
             </tr>
           </tbody>
@@ -103,22 +103,22 @@
               <td>License</td>
               <td>30</td>
               <td>calendar</td>
-              <td>Email</td>
+              <td><span class="badge bg-primary me-1">Email</span><span class="badge bg-info">Lark</span></td>
               <td>{Employee Name} license will expire soon. Please renew if needed.</td>
               <td><span class="badge bg-success">Yes</span></td>
               <td>
-                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editFileExpiryAlertModal"><i class="bi bi-pencil"></i> Edit</button>
+                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editFileExpiryAlertModal"><i class="bi bi-pencil"></i></button>
               </td>
             </tr>
             <tr>
               <td>Certificate</td>
               <td>14</td>
               <td>calendar</td>
-              <td>Lark</td>
+              <td><span class="badge bg-info">Lark</span></td>
               <td>{Employee Name} certificate is expiring in 2 weeks. Please review and renew if needed.</td>
               <td><span class="badge bg-success">Yes</span></td>
               <td>
-                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editFileExpiryAlertModal"><i class="bi bi-pencil"></i> Edit</button>
+                <button class="btn btn-sm btn-secondary me-1" data-bs-toggle="modal" data-bs-target="#editFileExpiryAlertModal"><i class="bi bi-pencil"></i></button>
               </td>
             </tr>
           </tbody>
@@ -154,11 +154,15 @@
           </div>
           <div class="mb-3">
             <label class="form-label">Method <span class='text-danger'>*</span></label>
-            <select class="form-select" required>
-              <option value="email" selected>Email</option>
-              <option value="lark">Lark</option>
-              <option value="sms">SMS</option>
-            </select>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="editEventAlertEmail" value="email" checked>
+              <label class="form-check-label" for="editEventAlertEmail">Email</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="editEventAlertLark" value="lark">
+              <label class="form-check-label" for="editEventAlertLark">Lark</label>
+            </div>
+            <small class="text-muted">Select one or more alert methods</small>
           </div>
           <div class="mb-3">
             <label class="form-label">Message <span class='text-danger'>*</span></label>
@@ -209,11 +213,15 @@
           </div>
           <div class="mb-3">
             <label class="form-label">Method <span class='text-danger'>*</span></label>
-            <select class="form-select" required>
-              <option value="email" selected>Email</option>
-              <option value="lark">Lark</option>
-              <option value="sms">SMS</option>
-            </select>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="editFileExpiryAlertEmail" value="email" checked>
+              <label class="form-check-label" for="editFileExpiryAlertEmail">Email</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="editFileExpiryAlertLark" value="lark">
+              <label class="form-check-label" for="editFileExpiryAlertLark">Lark</label>
+            </div>
+            <small class="text-muted">Select one or more alert methods</small>
           </div>
           <div class="mb-3">
             <label class="form-label">Message <span class='text-danger'>*</span></label>
@@ -279,6 +287,83 @@
           // Event listener for changes
           checkbox.addEventListener('change', function() {
             updateAlertInUseBadge(item.checkboxId, label);
+          });
+        }
+      });
+
+      // Handle multiple alert method selection validation
+      function validateAlertMethods(modalId) {
+        const checkboxes = document.querySelectorAll(`#${modalId} input[type="checkbox"][value]`);
+        const checkedBoxes = Array.from(checkboxes).filter(cb => cb.checked);
+        
+        if (checkedBoxes.length === 0) {
+          alert('Please select at least one alert method');
+          return false;
+        }
+        return true;
+      }
+
+      // Add form submission handlers for both modals
+      const eventAlertForm = document.querySelector('#editEventAlertModal form');
+      const fileExpiryAlertForm = document.querySelector('#editFileExpiryAlertModal form');
+
+      if (eventAlertForm) {
+        eventAlertForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          if (validateAlertMethods('editEventAlertModal')) {
+            // Collect selected methods
+            const selectedMethods = Array.from(document.querySelectorAll('#editEventAlertModal input[type="checkbox"][value]:checked'))
+              .map(cb => cb.value);
+            console.log('Selected event alert methods:', selectedMethods);
+            alert('Event alert preference updated successfully!');
+            bootstrap.Modal.getInstance(document.getElementById('editEventAlertModal')).hide();
+          }
+        });
+      }
+
+      if (fileExpiryAlertForm) {
+        fileExpiryAlertForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          if (validateAlertMethods('editFileExpiryAlertModal')) {
+            // Collect selected methods
+            const selectedMethods = Array.from(document.querySelectorAll('#editFileExpiryAlertModal input[type="checkbox"][value]:checked'))
+              .map(cb => cb.value);
+            console.log('Selected file expiry alert methods:', selectedMethods);
+            alert('File expiry alert preference updated successfully!');
+            bootstrap.Modal.getInstance(document.getElementById('editFileExpiryAlertModal')).hide();
+          }
+        });
+      }
+
+      // Populate modal with data when Edit button is clicked
+      document.addEventListener('click', function(e) {
+        const editButton = e.target.closest('button[data-bs-target="#editEventAlertModal"], button[data-bs-target="#editFileExpiryAlertModal"]');
+        if (editButton) {
+          const row = editButton.closest('tr');
+          const cells = row.querySelectorAll('td');
+          
+          // Get the methods from the badges in the Method column
+          const methodCell = cells[3];
+          const methodBadges = methodCell.querySelectorAll('.badge');
+          const selectedMethods = Array.from(methodBadges).map(badge => {
+            const text = badge.textContent.toLowerCase();
+            if (text === 'email') return 'email';
+            if (text === 'lark') return 'lark';
+            return text;
+          });
+
+          // Determine which modal to populate
+          const isEventAlert = editButton.getAttribute('data-bs-target') === '#editEventAlertModal';
+          const modalId = isEventAlert ? 'editEventAlertModal' : 'editFileExpiryAlertModal';
+          
+          // Reset all checkboxes
+          const checkboxes = document.querySelectorAll(`#${modalId} input[type="checkbox"][value]`);
+          checkboxes.forEach(cb => cb.checked = false);
+          
+          // Check the appropriate checkboxes based on selected methods
+          selectedMethods.forEach(method => {
+            const checkbox = document.querySelector(`#${modalId} input[value="${method}"]`);
+            if (checkbox) checkbox.checked = true;
           });
         }
       });
